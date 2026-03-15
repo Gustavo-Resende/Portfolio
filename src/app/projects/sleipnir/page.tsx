@@ -303,18 +303,11 @@ function JourneyAnimatedSection() {
   return (
     <div ref={containerRef} className="max-w-4xl mx-auto relative px-4">
       
-      {/* LINHA DE PROGRESSO (DESKTOP E MOBILE ABSOLUTA) */}
-      <div className="absolute 
-        md:top-10 md:left-24 md:right-24 md:h-[2px] md:w-auto 
-        top-10 bottom-10 left-10 w-[2px] md:bottom-auto 
-        bg-white/10 rounded-full z-0 overflow-hidden"
-      >
+      {/* LINHA DE PROGRESSO (APENAS DESKTOP) */}
+      <div className="hidden md:block absolute top-10 left-24 right-24 h-[2px] bg-white/10 rounded-full z-0 overflow-hidden">
         {/* Hack responsivo de framer-motion via CSS Inject */}
         <style jsx>{`
-          .anim-progress { transform-origin: top; transform: scaleY(var(--progress)); width: 100%; height: 100%; }
-          @media (min-width: 768px) {
-            .anim-progress { transform-origin: left; transform: scaleX(var(--progress)); }
-          }
+          .anim-progress { transform-origin: left; transform: scaleX(var(--progress)); width: 100%; height: 100%; }
         `}</style>
         <motion.div 
           className="anim-progress bg-lime-primary shadow-[0_0_15px_#a3e635]"
@@ -325,7 +318,7 @@ function JourneyAnimatedSection() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 relative z-10">
         
         {/* Checkpoint 1 */}
-        <div className="flex flex-row md:flex-col items-center md:items-center text-left md:text-center gap-8 md:gap-6 relative">
+        <div className="flex flex-col items-center text-center gap-6 relative">
           <motion.div 
             initial={{ scale: 0, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once:true, margin: "-100px" }}
             className="w-16 h-16 md:w-20 md:h-20 shrink-0 rounded-full bg-black border-2 border-red-500/80 flex items-center justify-center shadow-[0_0_30px_rgba(239,68,68,0.3)]"
@@ -341,7 +334,7 @@ function JourneyAnimatedSection() {
         </div>
 
         {/* Checkpoint 2 */}
-        <div className="flex flex-row-reverse md:flex-col items-center md:items-center text-right md:text-center gap-8 md:gap-6 relative">
+        <div className="flex flex-col items-center text-center gap-6 relative">
           <motion.div 
             initial={{ scale: 0, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once:true, margin: "-100px" }}
             className="w-16 h-16 md:w-20 md:h-20 shrink-0 rounded-full bg-black border-2 border-amber-500/80 flex items-center justify-center shadow-[0_0_30px_rgba(245,158,11,0.3)]"
@@ -357,7 +350,7 @@ function JourneyAnimatedSection() {
         </div>
 
         {/* Checkpoint 3 */}
-        <div className="flex flex-row md:flex-col items-center md:items-center text-left md:text-center gap-8 md:gap-6 relative">
+        <div className="flex flex-col items-center text-center gap-6 relative">
           <motion.div 
             initial={{ scale: 0, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once:true, margin: "-100px" }}
             className="w-16 h-16 md:w-20 md:h-20 shrink-0 rounded-full bg-black border-2 border-lime-primary/80 flex items-center justify-center shadow-[0_0_30px_rgba(163,230,53,0.3)]"
