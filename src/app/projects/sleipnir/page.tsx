@@ -131,7 +131,7 @@ export default function SleipnirProject() {
           {/* Feature 1 (Texto Esquerda, Imagem Direita) - FORMATO DOCUMENTAL */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6 order-2 lg:order-1">
-              <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">DOC_SECTION_01</span>
+              <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">INTEGRIDADE DE DADOS</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
                 Domínio Rico com <span className="text-lime-primary">{`{ DDD & Validações }`}</span>
               </h2>
@@ -158,7 +158,7 @@ export default function SleipnirProject() {
                </div>
             </div>
             <div className="space-y-6">
-              <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">DOC_SECTION_02</span>
+              <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">ALTA DISPONIBILIDADE</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
                 Persistência de Alta Performance com <span className="text-lime-primary">{`{ PostgreSQL & EF Core }`}</span>
               </h2>
@@ -171,7 +171,7 @@ export default function SleipnirProject() {
           {/* Feature 3 (Texto Esquerda, Imagem Direita) - TERCEIRA SEÇÃO ADICIONADA */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6 order-2 lg:order-1">
-              <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">DOC_SECTION_03</span>
+              <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">MÁXIMA ESCALABILIDADE</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
                 Desacoplamento via <span className="text-lime-primary">{`{ MediatR & Event Bus }`}</span>
               </h2>
