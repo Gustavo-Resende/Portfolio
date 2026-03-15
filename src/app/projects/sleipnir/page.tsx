@@ -287,6 +287,11 @@ export default function SleipnirProject() {
         </div>
       </section>
       
+      {/* Footer idêntico ao da Home */}
+      <footer className="w-full text-center py-6 text-text-muted text-sm relative z-10 border-t border-white/5 mt-auto bg-black max-w-5xl mx-auto">
+        <p>&copy; {new Date().getFullYear()} Gustavo Resende. Construído com Next.js & Tailwind CSS.</p>
+      </footer>
+
     </main>
   );
 }
