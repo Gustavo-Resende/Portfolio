@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowLeft, ExternalLink, Github, CheckCircle2, Calendar, Code2, Briefcase, Target, Lightbulb, AlertTriangle, Zap, Server, Activity, TrendingUp } from "lucide-react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { ArrowLeft, ExternalLink, Github, CheckCircle2, Calendar, Code2, Briefcase, Target, Lightbulb, AlertTriangle, Zap, Server, Activity, TrendingUp, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { BackToTop } from "@/components/BackToTop";
@@ -143,19 +143,88 @@ export default function SleipnirProject() {
                 <li className="flex items-center gap-3 text-white/70"><CheckCircle2 className="text-lime-primary w-4 h-4" /> Rastreamento histórico de cada evento (Audit Log).</li>
               </ul>
             </div>
-            <div className="relative w-full aspect-square md:aspect-[4/3] rounded-2xl bg-[#09090b] border border-white/10 overflow-hidden order-1 lg:order-2 group">
-               <div className="absolute inset-0 flex items-center justify-center text-white/20 font-mono text-sm group-hover:scale-105 transition-transform duration-700">
-                  <span>[ Screenshot de Entidade / Código Clean Architecture ]</span>
-               </div>
+            <div className="relative w-full aspect-square md:aspect-[4/3] order-1 lg:order-2">
+               <CodeCarousel 
+                 snippets={[
+                   {
+                     title: "Entity Constructor & Guard Clauses",
+                     code: `public Route(string plate, string origin, string destination)
+{
+  Plate = plate;
+  Origin = origin;
+  Destination = destination;
+  
+  // Guard Clauses garantindo estado válido
+  Guard.Against.NullOrWhiteSpace(plate);
+  CreatedAt = DateTimeOffset.UtcNow;
+}`
+                   },
+                   {
+                     title: "Logic-Rich StartRoute",
+                     code: `public void StartRoute(DateTimeOffset estimatedEndAt, Tracking tracking)
+{
+    Guard.Against.InvalidInput(StartedAt, x => x == null, "Já iniciada");
+    
+    StartedAt = tracking.EventAt;
+    EstimatedEndAt = estimatedEndAt;
+    
+    AddTrackingHistory(tracking);
+}`
+                   },
+                   {
+                     title: "Tracking History Validation",
+                     code: `public void AddTrackingHistory(Tracking tracking)
+{
+    if (StartedAt.HasValue && tracking.EventAt < StartedAt.Value)
+    {
+        throw new ArgumentException("Data inválida.");
+    }
+    _tracking.Add(tracking);
+}`
+                   }
+
+                 ]}
+               />
             </div>
           </div>
 
           {/* Feature 2 (Imagem Esquerda, Texto Direita) */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-             <div className="relative w-full aspect-square md:aspect-[4/3] rounded-2xl bg-[#09090b] border border-white/10 overflow-hidden group">
-               <div className="absolute inset-0 flex items-center justify-center text-white/20 font-mono text-sm group-hover:scale-105 transition-transform duration-700">
-                  <span>[ Diagrama de Fluxo / Webhooks Dashboard ]</span>
-               </div>
+             <div className="relative w-full aspect-square md:aspect-[4/3]">
+                <CodeCarousel 
+                  color="amber"
+                  snippets={[
+                    {
+                      title: "Npgsql & Retry Policy",
+                      code: `services.AddDbContext<SqlDbContext>(options => {
+    options.UseNpgsql(connString, npgsql => {
+        npgsql.EnableRetryOnFailure(
+            maxRetryCount: 5,
+            maxRetryDelay: TimeSpan.FromSeconds(5)
+        );
+    });
+});`
+                    },
+                    {
+                      title: "Generic Repository Patterns",
+                      code: `public class EfRepository<T> : RepositoryBase<T>, IRepository<T> 
+    where T : class, IAggregateRoot
+{
+    public EfRepository(SqlDbContext dbContext) : base(dbContext)
+    {
+    }
+}`
+                    },
+                    {
+                      title: "Specification Integration",
+                      code: `public async Task<T?> GetBySpecAsync(ISpecification<T> spec)
+{
+    return await ApplySpecification(spec).FirstOrDefaultAsync();
+}`
+                    }
+
+                  ]}
+                />
             </div>
             <div className="space-y-6">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">ALTA DISPONIBILIDADE</span>
@@ -179,10 +248,42 @@ export default function SleipnirProject() {
                 A aplicação utiliza padrões de mensageria internos para processar eventos de domínio de forma assíncrona, permitindo que novas funcionalidades (como notificações ou webhooks) sejam adicionadas sem alterar a lógica core da rota.
               </p>
             </div>
-            <div className="relative w-full aspect-square md:aspect-[4/3] rounded-2xl bg-[#09090b] border border-white/10 overflow-hidden order-1 lg:order-2 group">
-               <div className="absolute inset-0 flex items-center justify-center text-white/20 font-mono text-sm group-hover:scale-105 transition-transform duration-700">
-                  <span>[ Print do Grafana / Logs do Seq ]</span>
-               </div>
+            <div className="relative w-full aspect-square md:aspect-[4/3] order-1 lg:order-2">
+               <CodeCarousel 
+                 color="lime"
+                 snippets={[
+                   {
+                     title: "Domain Event Dispatcher",
+                     code: `public async Task Publish<T>(T domainEvent) where T : IDomainEvent
+{
+    var handlers = _container.ResolveAll<IDomainEventHandler<T>>();
+    foreach (var handler in handlers)
+    {
+        await handler.Handle(domainEvent);
+    }
+}`
+                   },
+                   {
+                     title: "MediatR Injection Setup",
+                     code: `services.AddMediatR(cfg => {
+    cfg.RegisterServicesFromAssembly(typeof(Setup).Assembly);
+    cfg.AddOpenBehavior(typeof(LoggingBehavior<,>));
+    cfg.AddOpenBehavior(typeof(ValidationBehavior<,>));
+});`
+                   },
+                   {
+                     title: "Clean Domain Event Handler",
+                     code: `public class RouteStartedHandler : INotificationHandler<RouteStartedEvent>
+{
+    public async Task Handle(RouteStartedEvent notification, CancellationToken ct)
+    {
+        // Notificação assíncrona desacoplada
+    }
+}`
+                   }
+
+                 ]}
+               />
             </div>
           </div>
 
@@ -377,3 +478,64 @@ function JourneyAnimatedSection() {
     </div>
   )
 }
+function CodeCarousel({ snippets, color = "lime" }: { snippets: { title: string, code: string }[], color?: "lime" | "amber" | "red" }) {
+  const [index, setIndex] = useState(0);
+  const colorClass = color === "lime" ? "text-lime-primary border-lime-primary/30" : color === "amber" ? "text-amber-500 border-amber-500/30" : "text-red-500 border-red-500/30";
+  const glowClass = color === "lime" ? "shadow-[0_0_20px_rgba(163,230,53,0.1)]" : color === "amber" ? "shadow-[0_0_20px_rgba(245,158,11,0.1)]" : "shadow-[0_0_20px_rgba(239,68,68,0.1)]";
+
+  const next = () => setIndex((prev) => (prev + 1) % snippets.length);
+  const prev = () => setIndex((prev) => (prev - 1 + snippets.length) % snippets.length);
+
+  return (
+    <div className={`w-full h-full bg-[#09090b] rounded-2xl border border-white/10 overflow-hidden flex flex-col ${glowClass}`}>
+      {/* Header */}
+      <div className="p-4 border-b border-white/5 flex items-center justify-between bg-white/[0.02]">
+        <div className="flex gap-1.5">
+          <div className="w-2.5 h-2.5 rounded-full bg-red-500/40" />
+          <div className="w-2.5 h-2.5 rounded-full bg-amber-500/40" />
+          <div className="w-2.5 h-2.5 rounded-full bg-lime-primary/40" />
+        </div>
+        <span className={`text-[10px] font-mono uppercase tracking-widest opacity-50 ${colorClass}`}>
+          {snippets[index].title}
+        </span>
+        <div className="flex gap-2">
+          <button onClick={prev} className="p-1 hover:bg-white/5 rounded transition-colors opacity-50 hover:opacity-100">
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <button onClick={next} className="p-1 hover:bg-white/5 rounded transition-colors opacity-50 hover:opacity-100">
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+
+      {/* Code Area */}
+      <div className="flex-1 p-6 relative overflow-hidden flex flex-col justify-center">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3 }}
+            className="font-mono text-[13px] leading-relaxed text-white/80 whitespace-pre-wrap flex flex-col gap-4"
+          >
+            <code className="block">
+              {snippets[index].code}
+            </code>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Footer / Info */}
+      <div className="p-3 border-t border-white/5 bg-white/[0.01] flex justify-between items-center">
+         <span className="text-[9px] text-white/20 font-mono">Sleipnir Engine v1.0</span>
+         <div className="flex gap-1">
+            {snippets.map((_, i) => (
+              <div key={i} className={`w-1 h-1 rounded-full transition-all ${i === index ? "bg-lime-primary w-3" : "bg-white/10"}`} />
+            ))}
+         </div>
+      </div>
+    </div>
+  );
+}
+
