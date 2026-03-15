@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowLeft, ExternalLink, Github, CheckCircle2, Calendar, Code2, Briefcase, Target, Lightbulb, AlertTriangle, Zap, Server, Activity } from "lucide-react";
+import { useState, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowLeft, ExternalLink, Github, CheckCircle2, Calendar, Code2, Briefcase, Target, Lightbulb, AlertTriangle, Zap, Server, Activity, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/i18n/LanguageContext";
 
@@ -105,47 +106,14 @@ export default function SleipnirProject() {
             </motion.div>
           </div>
 
-          {/* A Jornada: Problema -> Objetivo -> Solução */}
-          <div className="w-full relative">
-            <div className="text-center mb-16">
+          {/* A Jornada: Problema -> Objetivo -> Solução (Animada) */}
+          <div className="w-full relative pt-10">
+            <div className="text-center mb-24">
                <span className="text-lime-primary text-xs font-bold tracking-widest uppercase mb-2 block">O Cenário</span>
                <h2 className="text-4xl font-bold text-white">A Jornada do Projeto</h2>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 relative">
-              {/* Linha conectora (visível apenas MD ou maior) */}
-              <div className="hidden md:block absolute top-[2.5rem] left-[15%] right-[15%] h-px bg-gradient-to-r from-transparent via-lime-primary/50 to-transparent z-0"></div>
-              
-              <div className="flex flex-col items-center text-center relative z-10 space-y-6">
-                <div className="w-20 h-20 rounded-full bg-black border border-red-500/50 shadow-[0_0_30px_rgba(239,68,68,0.2)] flex items-center justify-center">
-                   <AlertTriangle className="w-8 h-8 text-red-500" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">1. O Problema</h3>
-                  <p className="text-text-muted leading-relaxed text-sm md:text-base">O cliente processava centenas de conciliações em planilhas manuais. O sistema legado anterior sofria de downtime constante sob carga pesada, travando as operações de faturamento no fim do mês.</p>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center text-center relative z-10 space-y-6">
-                <div className="w-20 h-20 rounded-full bg-black border border-amber-500/50 shadow-[0_0_30px_rgba(245,158,11,0.2)] flex items-center justify-center">
-                   <Target className="w-8 h-8 text-amber-500" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">2. O Objetivo</h3>
-                  <p className="text-text-muted leading-relaxed text-sm md:text-base">Desenvolver um núcleo de processos ultraleve para lidar com múltiplas instâncias concorrentes. A principal meta técnica era eliminar totalmente a necessidade de intervenção humana.</p>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center text-center relative z-10 space-y-6">
-                <div className="w-20 h-20 rounded-full bg-black border border-lime-primary/50 shadow-[0_0_30px_rgba(163,230,53,0.3)] flex items-center justify-center">
-                   <Lightbulb className="w-8 h-8 text-lime-primary" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">3. A Solução</h3>
-                  <p className="text-text-muted leading-relaxed text-sm md:text-base">Uma API .NET utilizando Clean Architecture e Filas, acoplada a um Front-end minimalista. Fluxos inteiros orquestrados por eventos de banco de dados e disparo automático de Webhooks.</p>
-                </div>
-              </div>
-            </div>
+            <JourneyAnimatedSection />
           </div>
         </div>
       </section>
@@ -181,7 +149,7 @@ export default function SleipnirProject() {
             </div>
           </div>
 
-          {/* Feature 2 (Imagem Esquerda, Texto Direita) - FORMATO DOCUMENTAL */}
+          {/* Feature 2 (Imagem Esquerda, Texto Direita) */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
              <div className="relative w-full aspect-square md:aspect-[4/3] rounded-2xl bg-[#09090b] border border-white/10 overflow-hidden group">
                <div className="absolute inset-0 flex items-center justify-center text-white/20 font-mono text-sm group-hover:scale-105 transition-transform duration-700">
@@ -196,6 +164,24 @@ export default function SleipnirProject() {
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed">
                 Em vez de sobrecarregar as requisições principais da API com tarefas pesadas (ex: formatação assíncrona de relatórios gigantes), implementamos filas em background que absorvem altos picos de tráfego instantaneamente.
               </p>
+            </div>
+          </div>
+
+          {/* Feature 3 (Texto Esquerda, Imagem Direita) - TERCEIRA SEÇÃO ADICIONADA */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-6 order-2 lg:order-1">
+              <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">DOC_SECTION_03</span>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
+                Telemetria e Observabilidade <span className="text-lime-primary">{`{ Real-Time }`}</span>
+              </h2>
+              <p className="text-text-body text-lg font-light pt-4 leading-relaxed">
+                Toda a execução do sistema é monitorada milissegundo a milissegundo. Adicionamos tracing distribuído que permite rastrear uma requisição de ponta a ponta, desde a origem até o commit no banco de dados, falhando silenciosamente ou alertando a equipe técnica via Slack.
+              </p>
+            </div>
+            <div className="relative w-full aspect-square md:aspect-[4/3] rounded-2xl bg-[#09090b] border border-white/10 overflow-hidden order-1 lg:order-2 group">
+               <div className="absolute inset-0 flex items-center justify-center text-white/20 font-mono text-sm group-hover:scale-105 transition-transform duration-700">
+                  <span>[ Print do Grafana / Logs do Seq ]</span>
+               </div>
             </div>
           </div>
 
@@ -217,26 +203,77 @@ export default function SleipnirProject() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-             <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} className="bg-[#111] border border-lime-primary/30 p-10 rounded-3xl text-center shadow-[0_0_30px_rgba(163,230,53,0.05)] relative overflow-hidden group">
-               <div className="absolute inset-0 bg-lime-primary/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
-               <Zap className="w-10 h-10 text-lime-primary mx-auto mb-6 relative z-10" />
-               <h4 className="text-5xl font-extrabold text-white mb-4 relative z-10">-85%</h4>
-               <p className="text-white/60 font-medium relative z-10">Tempo Gasto em Operação Manual</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+             {/* Anim Metric 1: Progress Bar shrinking */}
+             <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} className="bg-[#111] border border-lime-primary/30 p-8 rounded-3xl text-center shadow-[0_0_30px_rgba(163,230,53,0.05)] relative overflow-hidden flex flex-col items-center justify-center min-h-[250px]">
+               <Zap className="w-8 h-8 text-lime-primary mb-4" />
+               <h4 className="text-5xl font-extrabold text-white mb-2">-85%</h4>
+               <p className="text-white/60 font-medium text-sm">Tempo de Operação Manual</p>
+               
+               {/* Progress bar animation */}
+               <div className="w-full h-1 bg-white/10 rounded-full mt-6 overflow-hidden">
+                 <motion.div 
+                   initial={{ width: "100%" }} 
+                   whileInView={{ width: "15%" }} 
+                   viewport={{ once: true }}
+                   transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
+                   className="h-full bg-lime-primary shadow-[0_0_10px_#a3e635]" 
+                 />
+               </div>
              </motion.div>
              
-             <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} transition={{ delay: 0.1 }} className="bg-[#111] border border-lime-primary/30 p-10 rounded-3xl text-center shadow-[0_0_30px_rgba(163,230,53,0.05)] relative overflow-hidden group">
-               <div className="absolute inset-0 bg-lime-primary/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
-               <Server className="w-10 h-10 text-lime-primary mx-auto mb-6 relative z-10" />
-               <h4 className="text-5xl font-extrabold text-white mb-4 relative z-10">Zero</h4>
-               <p className="text-white/60 font-medium relative z-10">Downtime Registrado em Produção</p>
+             {/* Anim Metric 2: Pulsing Server / Heartbeat */}
+             <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} transition={{ delay: 0.1 }} className="bg-[#111] border border-lime-primary/30 p-8 rounded-3xl text-center shadow-[0_0_30px_rgba(163,230,53,0.05)] relative overflow-hidden flex flex-col items-center justify-center min-h-[250px]">
+               <motion.div
+                 animate={{ scale: [1, 1.2, 1] }}
+                 transition={{ repeat: Infinity, duration: 2 }}
+               >
+                 <Server className="w-8 h-8 text-lime-primary mb-4" />
+               </motion.div>
+               <h4 className="text-5xl font-extrabold text-white mb-2 drop-shadow-[0_0_15px_rgba(163,230,53,0.5)]">Zero</h4>
+               <p className="text-white/60 font-medium text-sm">Downtime Registrado</p>
+               <span className="mt-4 px-3 py-1 bg-lime-primary/10 text-lime-primary text-xs rounded-full border border-lime-primary/20 flex items-center gap-2">
+                 <div className="w-1.5 h-1.5 rounded-full bg-lime-primary animate-pulse" /> Online
+               </span>
              </motion.div>
 
-             <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} transition={{ delay: 0.2 }} className="bg-[#111] border border-lime-primary/30 p-10 rounded-3xl text-center shadow-[0_0_30px_rgba(163,230,53,0.05)] relative overflow-hidden group">
-               <div className="absolute inset-0 bg-lime-primary/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
-               <Activity className="w-10 h-10 text-lime-primary mx-auto mb-6 relative z-10" />
-               <h4 className="text-5xl font-extrabold text-white mb-4 relative z-10">10k+</h4>
-               <p className="text-white/60 font-medium relative z-10">Requisições sem Gargalo Mensal</p>
+             {/* Anim Metric 3: Flowing requests (dots moving) */}
+             <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} transition={{ delay: 0.2 }} className="bg-[#111] border border-lime-primary/30 p-8 rounded-3xl text-center shadow-[0_0_30px_rgba(163,230,53,0.05)] relative overflow-hidden flex flex-col items-center justify-center min-h-[250px]">
+               <Activity className="w-8 h-8 text-lime-primary mb-4" />
+               <h4 className="text-5xl font-extrabold text-white mb-2">10k+</h4>
+               <p className="text-white/60 font-medium text-sm">Reqs/min Sem Gargalo</p>
+               
+               {/* Conveyor belt animation dots */}
+               <div className="flex gap-2 mt-6 overflow-hidden w-full justify-center opacity-50">
+                 {[1,2,3,4].map((i) => (
+                   <motion.div 
+                     key={i}
+                     animate={{ x: [20, -20], opacity: [0, 1, 0] }}
+                     transition={{ repeat: Infinity, duration: 1.5, delay: i * 0.2 }}
+                     className="w-2 h-2 rounded-full bg-lime-primary"
+                   />
+                 ))}
+               </div>
+             </motion.div>
+
+             {/* Anim Metric 4: Trending Up Chart */}
+             <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} transition={{ delay: 0.3 }} className="bg-[#111] border border-lime-primary/30 p-8 rounded-3xl text-center shadow-[0_0_30px_rgba(163,230,53,0.05)] relative overflow-hidden flex flex-col items-center justify-center min-h-[250px]">
+               <TrendingUp className="w-8 h-8 text-lime-primary mb-4" />
+               <h4 className="text-5xl font-extrabold text-white mb-2">+30%</h4>
+               <p className="text-white/60 font-medium text-sm">Aumento de Capacidade</p>
+               
+               <div className="flex items-end gap-1.5 mt-6 h-8 justify-center">
+                 {[40, 60, 50, 80, 100].map((height, i) => (
+                   <motion.div 
+                     key={i}
+                     initial={{ height: 0 }}
+                     whileInView={{ height: `${height}%` }}
+                     viewport={{ once: true }}
+                     transition={{ duration: 0.8, delay: 0.5 + (i * 0.1), ease: "easeOut" }}
+                     className="w-3 bg-lime-primary rounded-t-sm opacity-80"
+                   />
+                 ))}
+               </div>
              </motion.div>
           </div>
           
@@ -252,4 +289,92 @@ export default function SleipnirProject() {
       
     </main>
   );
+}
+
+function JourneyAnimatedSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  // Usaremos um offset mais longo para que a barra vá preenchendo MUITO suavemente
+  // conforme a pessoa cruza toda a sessão (do início no topo até o fim da tela)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 65%", "end 65%"] // Suaviza a proporção da rolagem
+  });
+
+  return (
+    <div ref={containerRef} className="max-w-5xl mx-auto relative px-4 py-12 md:py-24">
+      
+      {/* LINHA DE PROGRESSO (DESKTOP E MOBILE ABSOLUTA) */}
+      <div className="absolute 
+        md:top-36 md:left-[10%] md:right-[10%] md:h-[2px] md:w-auto 
+        top-12 bottom-12 left-12 w-[2px] md:bottom-auto 
+        bg-white/5 rounded-full z-0 overflow-hidden"
+      >
+        {/* Hack responsivo de framer-motion via CSS Inject */}
+        <style jsx>{`
+          .anim-progress { transform-origin: top; transform: scaleY(var(--progress)); width: 100%; height: 100%; }
+          @media (min-width: 768px) {
+            .anim-progress { transform-origin: left; transform: scaleX(var(--progress)); }
+          }
+        `}</style>
+        <motion.div 
+          className="anim-progress bg-lime-primary shadow-[0_0_15px_#a3e635]"
+          style={{ "--progress": scrollYProgress } as any}
+        />
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-24 md:gap-12 relative z-10 
+                      min-h-[600px] md:min-h-0" /* Força mais espaço vertical no mobile */>
+        
+        {/* Checkpoint 1 */}
+        <div className="flex flex-row md:flex-col items-center md:items-center text-left md:text-center gap-10 md:gap-8 relative">
+          <motion.div 
+            initial={{ scale: 0, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once:true, margin: "-100px" }}
+            className="w-24 h-24 md:w-28 md:h-28 shrink-0 rounded-full bg-black border-[3px] border-red-500/80 flex items-center justify-center shadow-[0_0_40px_rgba(239,68,68,0.2)] md:shadow-none"
+          >
+             <AlertTriangle className="w-10 h-10 md:w-12 md:h-12 text-red-500" />
+          </motion.div>
+          <div>
+            <h3 className="text-3xl font-extrabold text-white mb-4">1. O Problema</h3>
+            <p className="text-white/70 leading-relaxed text-base md:text-lg max-w-[280px] md:max-w-none mx-auto">
+              O cliente processava centenas de conciliações em planilhas manuais. O sistema travava as operações de faturamento todo fim do mês.
+            </p>
+          </div>
+        </div>
+
+        {/* Checkpoint 2 */}
+        <div className="flex flex-row md:flex-col items-center md:items-center text-left md:text-center gap-10 md:gap-8 relative md:mt-0 ml-[20%] md:ml-0">
+          <motion.div 
+            initial={{ scale: 0, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once:true, margin: "-100px" }}
+            className="w-24 h-24 md:w-28 md:h-28 shrink-0 rounded-full bg-black border-[3px] border-amber-500/80 flex items-center justify-center shadow-[0_0_40px_rgba(245,158,11,0.2)] md:shadow-none"
+          >
+             <Target className="w-10 h-10 md:w-12 md:h-12 text-amber-500" />
+          </motion.div>
+          <div>
+            <h3 className="text-3xl font-extrabold text-white mb-4">2. O Objetivo</h3>
+            <p className="text-white/70 leading-relaxed text-base md:text-lg max-w-[280px] md:max-w-none mx-auto">
+              Desenvolver um núcleo de processos ultraleve para lidar com instâncias concorrentes, eliminando totalmente a intervenção humana.
+            </p>
+          </div>
+        </div>
+
+        {/* Checkpoint 3 */}
+        <div className="flex flex-row md:flex-col items-center md:items-center text-left md:text-center gap-10 md:gap-8 relative md:mt-0">
+          <motion.div 
+            initial={{ scale: 0, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once:true, margin: "-100px" }}
+            className="w-24 h-24 md:w-28 md:h-28 shrink-0 rounded-full bg-black border-[3px] border-lime-primary/80 flex items-center justify-center shadow-[0_0_40px_rgba(163,230,53,0.3)] md:shadow-none"
+          >
+             <Lightbulb className="w-10 h-10 md:w-12 md:h-12 text-lime-primary" />
+          </motion.div>
+          <div>
+            <h3 className="text-3xl font-extrabold text-white mb-4">3. A Solução</h3>
+            <p className="text-white/70 leading-relaxed text-base md:text-lg max-w-[280px] md:max-w-none mx-auto">
+              Uma API .NET utilizando Clean Architecture e Filas, acoplada a Webhooks para rodar todos os fluxos de forma autônoma.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  )
 }
