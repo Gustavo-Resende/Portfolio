@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-text-body font-sans antialiased overflow-x-hidden relative;
+    background-color: #050505;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .glass {
+    @apply bg-dark-bg/60 backdrop-blur-md border border-dark-border;
+  }
+  
+  .glass-card {
+    @apply glass rounded-card hover:border-dark-hover transition-colors duration-300;
+  }
+  
+  .glass-btn {
+    @apply glass bg-dark-bg/80 hover:bg-dark-hover/50 rounded-btn transition-colors duration-300;
+  }
+}

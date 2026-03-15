@@ -1,0 +1,74 @@
+{
+  "theme_name": "Modern Dark Engineering",
+  "visual_style": "Glassmorphism / Bento Grid",
+  "colors": {
+    "background": {
+      "primary": "#0A0A0A",
+      "secondary": "#111111",
+      "gradient_blobs": "radial-gradient(circle, rgba(163, 230, 53, 0.05) 0%, rgba(0,0,0,0) 70%)"
+    },
+    "accent": {
+      "lime_primary": "#A3E635",
+      "lime_hover": "#bef264",
+      "text_on_accent": "#000000"
+    },
+    "text": {
+      "heading": "#FFFFFF",
+      "body": "#A1A1AA",
+      "muted": "#71717A"
+    },
+    "cards": {
+      "bg": "#18181B",
+      "border": "#27272A",
+      "hover_border": "#3F3F46"
+    }
+  },
+  "typography": {
+    "font_family": "Inter, system-ui, sans-serif",
+    "headings": {
+      "h1": "3.5rem / Bold",
+      "h2": "2.25rem / Semibold",
+      "h3": "1.5rem / Medium"
+    },
+    "body": "1rem / Regular / Line-height: 1.6"
+  },
+  "layout_properties": {
+    "border_radius": {
+      "cards": "24px",
+      "buttons": "12px",
+      "tags": "8px"
+    },
+    "spacing": {
+      "section_padding": "120px 0",
+      "grid_gap": "24px"
+    },
+    "shadows": {
+      "card_glow": "0 0 20px rgba(163, 230, 53, 0.03)"
+    }
+  },
+  "components": {
+    "hero": {
+      "layout": "Centered",
+      "avatar_style": "Circular with border",
+      "cta_buttons": [
+        "Github",
+        "Email",
+        "LinkedIn"
+      ]
+    },
+    "bento_grid": {
+      "sections": [
+        "Education",
+        "Experience",
+        "Skills",
+        "Resume"
+      ],
+      "card_variant": "Dark Glass"
+    },
+    "project_cards": {
+      "image_ratio": "16:9",
+      "tag_style": "Pill / Dark Gray Bg",
+      "hover_effect": "Lift + Scale 1.02"
+    }
+  }
+}
