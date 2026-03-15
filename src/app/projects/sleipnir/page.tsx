@@ -294,21 +294,20 @@ export default function SleipnirProject() {
 function JourneyAnimatedSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   
-  // Usaremos um offset mais longo para que a barra vá preenchendo MUITO suavemente
-  // conforme a pessoa cruza toda a sessão (do início no topo até o fim da tela)
+  // Track scroll inside the container to fill the progress bar
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 65%", "end 65%"] // Suaviza a proporção da rolagem
+    offset: ["start 65%", "end 65%"] // Progressão suave conforme o scroll da tela
   });
 
   return (
-    <div ref={containerRef} className="max-w-5xl mx-auto relative px-4 py-12 md:py-24">
+    <div ref={containerRef} className="max-w-4xl mx-auto relative px-4">
       
       {/* LINHA DE PROGRESSO (DESKTOP E MOBILE ABSOLUTA) */}
       <div className="absolute 
-        md:top-36 md:left-[10%] md:right-[10%] md:h-[2px] md:w-auto 
-        top-12 bottom-12 left-12 w-[2px] md:bottom-auto 
-        bg-white/5 rounded-full z-0 overflow-hidden"
+        md:top-10 md:left-24 md:right-24 md:h-[2px] md:w-auto 
+        top-10 bottom-10 left-10 w-[2px] md:bottom-auto 
+        bg-white/10 rounded-full z-0 overflow-hidden"
       >
         {/* Hack responsivo de framer-motion via CSS Inject */}
         <style jsx>{`
@@ -323,52 +322,51 @@ function JourneyAnimatedSection() {
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-24 md:gap-12 relative z-10 
-                      min-h-[600px] md:min-h-0" /* Força mais espaço vertical no mobile */>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 relative z-10">
         
         {/* Checkpoint 1 */}
-        <div className="flex flex-row md:flex-col items-center md:items-center text-left md:text-center gap-10 md:gap-8 relative">
+        <div className="flex flex-row md:flex-col items-center md:items-center text-left md:text-center gap-8 md:gap-6 relative">
           <motion.div 
             initial={{ scale: 0, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once:true, margin: "-100px" }}
-            className="w-24 h-24 md:w-28 md:h-28 shrink-0 rounded-full bg-black border-[3px] border-red-500/80 flex items-center justify-center shadow-[0_0_40px_rgba(239,68,68,0.2)] md:shadow-none"
+            className="w-16 h-16 md:w-20 md:h-20 shrink-0 rounded-full bg-black border-2 border-red-500/80 flex items-center justify-center shadow-[0_0_30px_rgba(239,68,68,0.3)]"
           >
-             <AlertTriangle className="w-10 h-10 md:w-12 md:h-12 text-red-500" />
+             <AlertTriangle className="w-6 h-6 md:w-8 md:h-8 text-red-500" />
           </motion.div>
           <div>
-            <h3 className="text-3xl font-extrabold text-white mb-4">1. O Problema</h3>
-            <p className="text-white/70 leading-relaxed text-base md:text-lg max-w-[280px] md:max-w-none mx-auto">
+            <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">1. O Problema</h3>
+            <p className="text-text-muted leading-relaxed text-sm md:text-base">
               O cliente processava centenas de conciliações em planilhas manuais. O sistema travava as operações de faturamento todo fim do mês.
             </p>
           </div>
         </div>
 
         {/* Checkpoint 2 */}
-        <div className="flex flex-row md:flex-col items-center md:items-center text-left md:text-center gap-10 md:gap-8 relative md:mt-0 ml-[20%] md:ml-0">
+        <div className="flex flex-row-reverse md:flex-col items-center md:items-center text-right md:text-center gap-8 md:gap-6 relative">
           <motion.div 
             initial={{ scale: 0, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once:true, margin: "-100px" }}
-            className="w-24 h-24 md:w-28 md:h-28 shrink-0 rounded-full bg-black border-[3px] border-amber-500/80 flex items-center justify-center shadow-[0_0_40px_rgba(245,158,11,0.2)] md:shadow-none"
+            className="w-16 h-16 md:w-20 md:h-20 shrink-0 rounded-full bg-black border-2 border-amber-500/80 flex items-center justify-center shadow-[0_0_30px_rgba(245,158,11,0.3)]"
           >
-             <Target className="w-10 h-10 md:w-12 md:h-12 text-amber-500" />
+             <Target className="w-6 h-6 md:w-8 md:h-8 text-amber-500" />
           </motion.div>
           <div>
-            <h3 className="text-3xl font-extrabold text-white mb-4">2. O Objetivo</h3>
-            <p className="text-white/70 leading-relaxed text-base md:text-lg max-w-[280px] md:max-w-none mx-auto">
+            <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">2. O Objetivo</h3>
+            <p className="text-text-muted leading-relaxed text-sm md:text-base">
               Desenvolver um núcleo de processos ultraleve para lidar com instâncias concorrentes, eliminando totalmente a intervenção humana.
             </p>
           </div>
         </div>
 
         {/* Checkpoint 3 */}
-        <div className="flex flex-row md:flex-col items-center md:items-center text-left md:text-center gap-10 md:gap-8 relative md:mt-0">
+        <div className="flex flex-row md:flex-col items-center md:items-center text-left md:text-center gap-8 md:gap-6 relative">
           <motion.div 
             initial={{ scale: 0, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once:true, margin: "-100px" }}
-            className="w-24 h-24 md:w-28 md:h-28 shrink-0 rounded-full bg-black border-[3px] border-lime-primary/80 flex items-center justify-center shadow-[0_0_40px_rgba(163,230,53,0.3)] md:shadow-none"
+            className="w-16 h-16 md:w-20 md:h-20 shrink-0 rounded-full bg-black border-2 border-lime-primary/80 flex items-center justify-center shadow-[0_0_30px_rgba(163,230,53,0.3)]"
           >
-             <Lightbulb className="w-10 h-10 md:w-12 md:h-12 text-lime-primary" />
+             <Lightbulb className="w-6 h-6 md:w-8 md:h-8 text-lime-primary" />
           </motion.div>
           <div>
-            <h3 className="text-3xl font-extrabold text-white mb-4">3. A Solução</h3>
-            <p className="text-white/70 leading-relaxed text-base md:text-lg max-w-[280px] md:max-w-none mx-auto">
+            <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">3. A Solução</h3>
+            <p className="text-text-muted leading-relaxed text-sm md:text-base">
               Uma API .NET utilizando Clean Architecture e Filas, acoplada a Webhooks para rodar todos os fluxos de forma autônoma.
             </p>
           </div>
