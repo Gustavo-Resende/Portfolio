@@ -38,7 +38,7 @@ export default function SleipnirProject() {
                 Sleipnir
               </h1>
               <p className="text-xl md:text-2xl text-white/70 font-light max-w-xl leading-relaxed">
-                Um sistema ultrarrápido projetado para resolver <span className="text-lime-primary font-semibold">problemas complexos de logística</span> e integrar APIs de terceiros.
+                Um ecossistema de rastreamento logístico escalável que garante <span className="text-lime-primary font-semibold">visibilidade total sobre frotas e rotas</span> em tempo real.
               </p>
             </div>
 
@@ -79,8 +79,8 @@ export default function SleipnirProject() {
               </div>
               <div>
                 <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">Duração</span>
-                <h3 className="text-2xl font-bold text-white">Contínuo</h3>
-                <p className="text-text-muted text-sm mt-2">Design, arquitetura inicial e manutenção ativa até hoje.</p>
+                <h3 className="text-2xl font-bold text-white">Ciclo Contínuo</h3>
+                <p className="text-text-muted text-sm mt-2">Do MVP à escala industrial, com manutenção ativa e evolução constante da arquitetura.</p>
               </div>
             </motion.div>
 
@@ -90,8 +90,8 @@ export default function SleipnirProject() {
               </div>
               <div>
                 <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">Stack Tecnológica</span>
-                <h3 className="text-xl font-bold text-white">.NET Core, React, SQL Server</h3>
-                <p className="text-text-muted text-sm mt-2">Webhooks, CQRS, Docker e deploys automatizados via CI/CD.</p>
+                <h3 className="text-xl font-bold text-white">.NET 9, PostgreSQL, Docker</h3>
+                <p className="text-text-muted text-sm mt-2">Utilizando EF Core para persistência e MediatR para desacoplamento de eventos.</p>
               </div>
             </motion.div>
 
@@ -101,8 +101,8 @@ export default function SleipnirProject() {
               </div>
               <div>
                 <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">Modelo Comercial</span>
-                <h3 className="text-2xl font-bold text-white">Venda B2B</h3>
-                <p className="text-text-muted text-sm mt-2">Projeto vendido com contrato de atualizações por demanda.</p>
+                <h3 className="text-2xl font-bold text-white">Entrega Corporativa</h3>
+                <p className="text-text-muted text-sm mt-2">Licenciamento de software customizado com suporte crítico de engenharia.</p>
               </div>
             </motion.div>
           </div>
@@ -133,14 +133,14 @@ export default function SleipnirProject() {
             <div className="space-y-6 order-2 lg:order-1">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">DOC_SECTION_01</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                Isolamento total de regras via <span className="text-lime-primary">{`{ Clean Architecture }`}</span>
+                Domínio Rico com <span className="text-lime-primary">{`{ DDD & Validações }`}</span>
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed">
-                A aplicação foi estruturada abstraindo completamente os provedores externos. As lógicas complexas de conciliação e roteamento não dependem de detalhes da base de dados, permitindo implementações atômicas e testes unitários infalíveis.
+                Toda a lógica de negócios está centrada no `Core`, onde Agregados como `Route` gerenciam seu próprio estado através de Guard Clauses rigorosas, garantindo que o sistema nunca entre em um estado inválido.
               </p>
               <ul className="space-y-3 pt-4 font-mono text-sm">
-                <li className="flex items-center gap-3 text-white/70"><CheckCircle2 className="text-lime-primary w-4 h-4" /> `Domain_Driven_Design` aplicado à risca.</li>
-                <li className="flex items-center gap-3 text-white/70"><CheckCircle2 className="text-lime-primary w-4 h-4" /> Repositórios Injetados via Dependency Injection.</li>
+                <li className="flex items-center gap-3 text-white/70"><CheckCircle2 className="text-lime-primary w-4 h-4" /> Entidades protegidas contra inconsistências.</li>
+                <li className="flex items-center gap-3 text-white/70"><CheckCircle2 className="text-lime-primary w-4 h-4" /> Rastreamento histórico de cada evento (Audit Log).</li>
               </ul>
             </div>
             <div className="relative w-full aspect-square md:aspect-[4/3] rounded-2xl bg-[#09090b] border border-white/10 overflow-hidden order-1 lg:order-2 group">
@@ -160,10 +160,10 @@ export default function SleipnirProject() {
             <div className="space-y-6">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">DOC_SECTION_02</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                Escalabilidade orientada a eventos usando <span className="text-lime-primary">{`{ Background Workers }`}</span>
+                Persistência de Alta Performance com <span className="text-lime-primary">{`{ PostgreSQL & EF Core }`}</span>
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed">
-                Em vez de sobrecarregar as requisições principais da API com tarefas pesadas (ex: formatação assíncrona de relatórios gigantes), implementamos filas em background que absorvem altos picos de tráfego instantaneamente.
+                Utilizando uma infraestrutura moderna baseada em .NET 9, a camada de dados foi otimizada com Npgsql e políticas de Retry na conexão, garantindo resiliência em ambientes de alta concorrência.
               </p>
             </div>
           </div>
@@ -173,10 +173,10 @@ export default function SleipnirProject() {
             <div className="space-y-6 order-2 lg:order-1">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">DOC_SECTION_03</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                Telemetria e Observabilidade <span className="text-lime-primary">{`{ Real-Time }`}</span>
+                Desacoplamento via <span className="text-lime-primary">{`{ MediatR & Event Bus }`}</span>
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed">
-                Toda a execução do sistema é monitorada milissegundo a milissegundo. Adicionamos tracing distribuído que permite rastrear uma requisição de ponta a ponta, desde a origem até o commit no banco de dados, falhando silenciosamente ou alertando a equipe técnica via Slack.
+                A aplicação utiliza padrões de mensageria internos para processar eventos de domínio de forma assíncrona, permitindo que novas funcionalidades (como notificações ou webhooks) sejam adicionadas sem alterar a lógica core da rota.
               </p>
             </div>
             <div className="relative w-full aspect-square md:aspect-[4/3] rounded-2xl bg-[#09090b] border border-white/10 overflow-hidden order-1 lg:order-2 group">
@@ -336,7 +336,7 @@ function JourneyAnimatedSection() {
           <div>
             <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">1. O Problema</h3>
             <p className="text-text-muted leading-relaxed text-sm md:text-base">
-              O cliente processava centenas de conciliações em planilhas manuais. O sistema travava as operações de faturamento todo fim do mês.
+              Rastreabilidade ineficiente e falta de padrões no gerenciamento de frotas, gerando dados inconsistentes e atrasos operacionais críticos.
             </p>
           </div>
         </div>
@@ -352,7 +352,7 @@ function JourneyAnimatedSection() {
           <div>
             <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">2. O Objetivo</h3>
             <p className="text-text-muted leading-relaxed text-sm md:text-base">
-              Desenvolver um núcleo de processos ultraleve para lidar com instâncias concorrentes, eliminando totalmente a intervenção humana.
+              Arquitetar um sistema de monitoramento resiliente, focado em Domain-Driven Design para garantir regras de negócio inquebráveis e auditáveis.
             </p>
           </div>
         </div>
@@ -368,7 +368,7 @@ function JourneyAnimatedSection() {
           <div>
             <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">3. A Solução</h3>
             <p className="text-text-muted leading-relaxed text-sm md:text-base">
-              Uma API .NET utilizando Clean Architecture e Filas, acoplada a Webhooks para rodar todos os fluxos de forma autônoma.
+              Uma API escalável em .NET 9 com PostgreSQL, implementando filas de rastreamento e eventos de domínio para automação total de rotas.
             </p>
           </div>
         </div>
