@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowLeft, ExternalLink, Github, CheckCircle2, Calendar, Code2, Briefcase, Target, Lightbulb, AlertTriangle, Zap, Server, Activity, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { BackToTop } from "@/components/BackToTop";
 
 export default function SleipnirProject() {
   const { language } = useLanguage();
@@ -288,8 +289,10 @@ export default function SleipnirProject() {
       </section>
       
       {/* Footer idêntico ao da Home */}
-      <footer className="w-full text-center py-6 text-text-muted text-sm relative z-10 border-t border-white/5 mt-auto bg-black max-w-5xl mx-auto">
-        <p>&copy; {new Date().getFullYear()} Gustavo Resende. Construído com Next.js & Tailwind CSS.</p>
+      <footer className="w-full text-center py-6 text-text-muted text-sm relative z-10 border-t border-white/5 mt-auto bg-black">
+        <div className="max-w-5xl mx-auto px-4">
+          <p>&copy; {new Date().getFullYear()} Gustavo Resende. Construído com Next.js & Tailwind CSS.</p>
+        </div>
       </footer>
 
     </main>
