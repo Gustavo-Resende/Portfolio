@@ -301,10 +301,10 @@ function JourneyAnimatedSection() {
   });
 
   return (
-    <div ref={containerRef} className="max-w-4xl mx-auto relative px-4">
+    <div ref={containerRef} className="max-w-6xl mx-auto relative px-4">
       
       {/* LINHA DE PROGRESSO (APENAS DESKTOP) */}
-      <div className="hidden md:block absolute top-10 left-24 right-24 h-[2px] bg-white/10 rounded-full z-0 overflow-hidden">
+      <div className="hidden md:block absolute top-10 left-[15%] right-[15%] h-[2px] bg-white/10 rounded-full z-0 overflow-hidden">
         {/* Hack responsivo de framer-motion via CSS Inject */}
         <style jsx>{`
           .anim-progress { transform-origin: left; transform: scaleX(var(--progress)); width: 100%; height: 100%; }
@@ -315,7 +315,7 @@ function JourneyAnimatedSection() {
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 relative z-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-24 md:gap-20 lg:gap-24 relative z-10">
         
         {/* Checkpoint 1 */}
         <div className="flex flex-col items-center text-center gap-6 relative">
