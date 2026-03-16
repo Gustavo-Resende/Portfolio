@@ -71,8 +71,7 @@ export function Header() {
           >
             <motion.div
               className="w-4 h-4 rounded-full bg-lime-primary shadow-sm"
-              layout
-              transition={{ type: "spring", stiffness: 700, damping: 30 }}
+              transition={{ type: "spring", stiffness: 500, damping: 30 }}
               initial={false}
               animate={{
                 x: language === "en" ? 22 : 0,
@@ -83,6 +82,14 @@ export function Header() {
           <span className={`text-xs font-semibold flex items-center gap-1 ${language === 'en' ? 'text-white' : 'text-text-muted'}`}>
             EN <span className="text-sm leading-none">🇺🇸</span>
           </span>
+
+          <a
+            href="#contact"
+            onClick={(e) => handleScroll(e, "#contact")}
+            className="hidden sm:flex ml-4 bg-lime-primary hover:bg-[#b4f04b] text-black text-xs font-bold py-2 px-4 rounded-full transition-all"
+          >
+            {t.hero.contactMe}
+          </a>
         </div>
       </div>
     </motion.header>
