@@ -130,20 +130,20 @@ export default function SleipnirProject() {
 
           {/* Feature 1 (Texto Esquerda, Imagem Direita) - FORMATO DOCUMENTAL */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-6 order-2 lg:order-1">
+            <div className="space-y-6 order-1 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">INTEGRIDADE DE DADOS</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
                 Domínio Rico com <span className="text-lime-primary">{`{ DDD & Validações }`}</span>
               </h2>
-              <p className="text-text-body text-lg font-light pt-4 leading-relaxed">
+              <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
                 Toda a lógica de negócios está centrada no `Core`, onde Agregados como `Route` gerenciam seu próprio estado através de Guard Clauses rigorosas, garantindo que o sistema nunca entre em um estado inválido.
               </p>
-              <ul className="space-y-3 pt-4 font-mono text-sm">
-                <li className="flex items-center gap-3 text-white/70"><CheckCircle2 className="text-lime-primary w-4 h-4" /> Entidades protegidas contra inconsistências.</li>
-                <li className="flex items-center gap-3 text-white/70"><CheckCircle2 className="text-lime-primary w-4 h-4" /> Rastreamento histórico de cada evento (Audit Log).</li>
+              <ul className="space-y-3 pt-4 font-mono text-sm flex flex-col items-center lg:items-start">
+                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-lime-primary w-4 h-4 shrink-0" /> Entidades protegidas contra inconsistências.</li>
+                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-lime-primary w-4 h-4 shrink-0" /> Rastreamento histórico de cada evento (Audit Log).</li>
               </ul>
             </div>
-            <div className="relative w-full aspect-square md:aspect-[4/3] order-1 lg:order-2">
+            <div className="relative w-full aspect-square md:aspect-[4/3] order-2 lg:order-2">
                <CodeCarousel 
                  snippets={[
                    {
@@ -190,7 +190,7 @@ export default function SleipnirProject() {
 
           {/* Feature 2 (Imagem Esquerda, Texto Direita) */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-             <div className="relative w-full aspect-square md:aspect-[4/3]">
+             <div className="relative w-full aspect-square md:aspect-[4/3] order-2 lg:order-1">
                 <CodeCarousel 
                   color="amber"
                   snippets={[
@@ -226,37 +226,37 @@ export default function SleipnirProject() {
                   ]}
                 />
             </div>
-            <div className="space-y-6">
+            <div className="space-y-6 order-1 lg:order-2 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">ALTA DISPONIBILIDADE</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
                 Persistência de Alta Performance com <span className="text-lime-primary">{`{ PostgreSQL & EF Core }`}</span>
               </h2>
-              <p className="text-text-body text-lg font-light pt-4 leading-relaxed">
+              <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
                 Utilizando uma infraestrutura moderna baseada em .NET 9, a camada de dados foi otimizada com Npgsql e políticas de Retry na conexão, garantindo resiliência em ambientes de alta concorrência.
               </p>
-              <ul className="space-y-3 pt-4 font-mono text-sm">
-                <li className="flex items-center gap-3 text-white/70"><CheckCircle2 className="text-amber-500 w-4 h-4" /> Conexão resiliente com Retry Policy.</li>
-                <li className="flex items-center gap-3 text-white/70"><CheckCircle2 className="text-amber-500 w-4 h-4" /> Persistência otimizada com PostgreSQL.</li>
+              <ul className="space-y-3 pt-4 font-mono text-sm flex flex-col items-center lg:items-start">
+                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-amber-500 w-4 h-4 shrink-0" /> Conexão resiliente com Retry Policy.</li>
+                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-amber-500 w-4 h-4 shrink-0" /> Persistência otimizada com PostgreSQL.</li>
               </ul>
             </div>
           </div>
 
           {/* Feature 3 (Texto Esquerda, Imagem Direita) - TERCEIRA SEÇÃO ADICIONADA */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-6 order-2 lg:order-1">
+            <div className="space-y-6 order-1 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">MÁXIMA ESCALABILIDADE</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
                 Desacoplamento via <span className="text-lime-primary">{`{ MediatR & Event Bus }`}</span>
               </h2>
-              <p className="text-text-body text-lg font-light pt-4 leading-relaxed">
+              <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
                 A aplicação utiliza padrões de mensageria internos para processar eventos de domínio de forma assíncrona, permitindo que novas funcionalidades (como notificações ou webhooks) sejam adicionadas sem alterar a lógica core da rota.
               </p>
-              <ul className="space-y-3 pt-4 font-mono text-sm">
-                <li className="flex items-center gap-3 text-white/70"><CheckCircle2 className="text-lime-primary w-4 h-4" /> Processamento assíncrono via MediatR.</li>
-                <li className="flex items-center gap-3 text-white/70"><CheckCircle2 className="text-lime-primary w-4 h-4" /> Eventos totalmente desacoplados.</li>
+              <ul className="space-y-3 pt-4 font-mono text-sm flex flex-col items-center lg:items-start">
+                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-lime-primary w-4 h-4 shrink-0" /> Processamento assíncrono via MediatR.</li>
+                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-lime-primary w-4 h-4 shrink-0" /> Eventos totalmente desacoplados.</li>
               </ul>
             </div>
-            <div className="relative w-full aspect-square md:aspect-[4/3] order-1 lg:order-2">
+            <div className="relative w-full aspect-square md:aspect-[4/3] order-2 lg:order-2">
                <CodeCarousel 
                  color="lime"
                  snippets={[
