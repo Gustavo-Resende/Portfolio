@@ -7,28 +7,39 @@ import { useLanguage } from "@/i18n/LanguageContext";
 
 const projects = [
   {
-    title: "BotFatura",
-    description: "WhatsApp Bot para automação de faturas e pagamentos integrado a APIs financeiras.",
-    tags: [".NET", "WhatsApp API", "CQRS"],
-    github: "#",
-    live: "#",
+    title: "Sleipnir",
+    description: "Motor de logística de alta performance com DDD, Rastreamento em tempo real e .NET 9.",
+    tags: [".NET 9", "DDD", "PostgreSQL"],
+    live: "/projects/sleipnir",
     category: "net"
   },
   {
-    title: "PostIn",
-    description: "Sistema de automação para publicações no LinkedIn com agendamento avançado.",
-    tags: [".NET", "React", "LinkedIn API"],
-    github: "#",
-    live: "#",
-    category: "react"
+    title: "Muninn",
+    description: "Template arquitetural robusto para microsserviços e sistemas escaláveis em .NET.",
+    tags: [".NET 9", "Clean Arch", "Serilog"],
+    live: "/projects/muninn",
+    category: "net"
   },
   {
     title: "Frigg",
-    description: "Real Estate System complexo com uso de Clean Architecture e DDD para gestão imobiliária.",
-    tags: [".NET", "SQL", "Clean Arch"],
-    github: "#",
-    live: "#",
-    category: "sql"
+    description: "Sistema de gestão imobiliária complexo com automações e integrações de API.",
+    tags: ["React", "Cloud Code", "System Design"],
+    live: "/projects/frigg",
+    category: "react"
+  },
+  {
+    title: "BotFatura",
+    description: "Automação completa de faturas e cobranças via WhatsApp integrado ao ecossistema Frigg.",
+    tags: ["WhatsApp API", "Automation", ".NET"],
+    live: "/projects/bot-fatura",
+    category: "net"
+  },
+  {
+    title: "Resumax",
+    description: "Plataforma inteligente de resumos de conteúdos impulsionada por IA (Em Desenvolvimento).",
+    tags: ["AI", "OpenAI", "Next.js"],
+    live: "/projects/resumax",
+    category: "react"
   }
 ];
 
@@ -103,10 +114,7 @@ export function ProjectCard() {
               </div>
 
               <div className="flex gap-3 mt-auto">
-                <a href={project.github} className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-colors text-sm font-semibold text-white">
-                  <Github className="w-4 h-4" /> {t.projects.code}
-                </a>
-                <a href={project.live} className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-lime-primary text-black hover:bg-lime-primary/90 rounded-lg transition-colors text-sm font-bold">
+                <a href={project.live} className="flex-1 flex items-center justify-center gap-2 py-3 bg-lime-primary text-black hover:bg-lime-primary/90 rounded-lg transition-colors text-sm font-bold">
                   <ExternalLink className="w-4 h-4" /> {t.projects.live}
                 </a>
               </div>

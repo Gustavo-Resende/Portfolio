@@ -57,21 +57,14 @@ export default function SleipnirProject() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(163,230,53,0.1)] bg-[#18181B] group"
+            className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(163,230,53,0.1)] bg-[#050505]/50 group flex items-center justify-center"
           >
-            {/* Imagem Real com Overlay de Blur para Privacidade */}
-            <div className="absolute inset-0 z-0">
-               {/* Espaço para a imagem real que o usuário vai subir */}
-               <div className="w-full h-full bg-[url('/projects/sleipnir-hero.png')] bg-cover bg-center grayscale-[0.5] group-hover:grayscale-0 transition-all duration-700" />
-            </div>
-            
-            {/* Camada de Blur Seletivo / Proteção de Dados */}
-            <div className="absolute inset-0 z-10 backdrop-blur-[6px] bg-black/20 flex flex-col items-center justify-center text-center p-8">
-               <div className="bg-black/60 border border-white/10 p-4 rounded-lg backdrop-blur-md shadow-2xl">
-                  <AlertTriangle className="w-8 h-8 text-amber-500 mx-auto mb-3" />
-                  <p className="text-white font-bold text-sm uppercase tracking-widest mb-1">Dados Protegidos</p>
-                  <p className="text-white/60 text-xs">Informações sensíveis ocultadas para preservação de sigilo comercial.</p>
+            {/* Minimalist Placeholder for real screenshots later */}
+            <div className="flex flex-col items-center gap-4 text-white/5 opacity-20 group-hover:opacity-40 transition-opacity duration-700">
+               <div className="w-16 h-16 rounded-2xl border-2 border-dashed border-current flex items-center justify-center">
+                  <Activity className="w-8 h-8" />
                </div>
+               <span className="text-xs font-mono tracking-widest uppercase">Placeholder for Hero Screenshot</span>
             </div>
           </motion.div>
 
