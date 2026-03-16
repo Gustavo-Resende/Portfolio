@@ -3,13 +3,14 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Server, Code2, Layers } from "lucide-react";
+import { ContactCTA } from "./ContactCTA";
 
 export function Skills() {
   const { t } = useLanguage();
 
   return (
-    <section className="py-24 relative z-10 w-full max-w-6xl mx-auto px-4" id="skills">
-      <div className="mb-16 flex flex-col items-center text-center">
+    <section className="py-16 relative z-10 w-full max-w-6xl mx-auto px-4" id="skills">
+      <div className="mb-12 flex flex-col items-center text-center">
         <span className="text-lime-primary text-xs font-bold tracking-widest uppercase mb-2 block">
           {t.skills.eyebrow}
         </span>
@@ -111,6 +112,8 @@ export function Skills() {
         </motion.div>
 
       </div>
+
+      <ContactCTA variant="inline" />
     </section>
   );
 }

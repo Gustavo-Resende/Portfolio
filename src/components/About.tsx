@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { ContactCTA } from "./ContactCTA";
 
 export function About() {
   const { t } = useLanguage();
@@ -31,6 +32,8 @@ export function About() {
           <p dangerouslySetInnerHTML={{ __html: t.about.p3 }} />
         </motion.div>
       </div>
+
+      <ContactCTA variant="inline" />
     </section>
   );
 }

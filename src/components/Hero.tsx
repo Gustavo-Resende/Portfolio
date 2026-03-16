@@ -80,10 +80,10 @@ export function Hero() {
         <div className="flex sm:hidden w-16 h-px bg-white/10 my-2"></div>
 
         <div className="flex items-center justify-center gap-8 sm:gap-5 text-white/60">
-          <a href="https://github.com/SeuGithub" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+          <a href="https://github.com/Gustavo-Resende" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
             <Github className="w-7 h-7 sm:w-5 sm:h-5" />
           </a>
-          <a href="https://linkedin.com/in/SeuLinkedIn" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+          <a href="https://www.linkedin.com/in/gustavo-resende-90a110231" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
             <Linkedin className="w-7 h-7 sm:w-5 sm:h-5" />
           </a>
         </div>
