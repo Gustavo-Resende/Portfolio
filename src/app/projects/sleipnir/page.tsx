@@ -234,6 +234,10 @@ export default function SleipnirProject() {
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed">
                 Utilizando uma infraestrutura moderna baseada em .NET 9, a camada de dados foi otimizada com Npgsql e políticas de Retry na conexão, garantindo resiliência em ambientes de alta concorrência.
               </p>
+              <ul className="space-y-3 pt-4 font-mono text-sm">
+                <li className="flex items-center gap-3 text-white/70"><CheckCircle2 className="text-amber-500 w-4 h-4" /> Conexão resiliente com Retry Policy.</li>
+                <li className="flex items-center gap-3 text-white/70"><CheckCircle2 className="text-amber-500 w-4 h-4" /> Persistência otimizada com PostgreSQL.</li>
+              </ul>
             </div>
           </div>
 
@@ -247,6 +251,10 @@ export default function SleipnirProject() {
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed">
                 A aplicação utiliza padrões de mensageria internos para processar eventos de domínio de forma assíncrona, permitindo que novas funcionalidades (como notificações ou webhooks) sejam adicionadas sem alterar a lógica core da rota.
               </p>
+              <ul className="space-y-3 pt-4 font-mono text-sm">
+                <li className="flex items-center gap-3 text-white/70"><CheckCircle2 className="text-lime-primary w-4 h-4" /> Processamento assíncrono via MediatR.</li>
+                <li className="flex items-center gap-3 text-white/70"><CheckCircle2 className="text-lime-primary w-4 h-4" /> Eventos totalmente desacoplados.</li>
+              </ul>
             </div>
             <div className="relative w-full aspect-square md:aspect-[4/3] order-1 lg:order-2">
                <CodeCarousel 
@@ -540,26 +548,35 @@ function CodeCarousel({ snippets, color = "lime" }: { snippets: { title: string,
 }
 
 function highlightCSharp(code: string) {
-  const parts = code.split(/(\/\/.*|"[^"]*"|\b(?:public|private|protected|internal|class|interface|enum|struct|void|string|int|decimal|DateTimeOffset|DateTime|TimeSpan|async|await|task|Task|foreach|in|var|new|throw|if|else|return|using|namespace|static|typeof|base|where|params|readonly)\b|\b[A-Z][a-zA-Z0-9_]*\b)/g);
+  // Enhanced regex for C# syntax highlighting matching the provided VS Code-style screenshot
+  const parts = code.split(/(\/\/.*|"[^"]*"|\b(?:public|private|protected|internal|class|interface|enum|struct|void|string|int|decimal|DateTimeOffset|DateTime|TimeSpan|async|await|task|Task|foreach|in|var|new|throw|if|else|return|using|namespace|static|typeof|base|where|params|readonly|nameof)\b|\b[A-Z][a-zA-Z0-9_]*\b|\b[a-z][a-zA-Z0-9_]*\b(?=\())/g);
 
   return parts.map((part, i) => {
     if (!part) return null;
 
-    // Comments
+    // Comments (Greenish)
     if (part.startsWith("//")) {
-      return <span key={i} className="text-white/30 italic">{part}</span>;
+      return <span key={i} className="text-[#6A9955] italic">{part}</span>;
     }
-    // Strings
+    // Strings (Orange/Brown)
     if (part.startsWith("\"")) {
-      return <span key={i} className="text-amber-200/90">{part}</span>;
+      return <span key={i} className="text-[#CE9178]">{part}</span>;
     }
-    // Keywords
-    if (/^(public|private|protected|internal|class|interface|enum|struct|void|string|int|decimal|DateTimeOffset|DateTime|TimeSpan|async|await|task|Task|foreach|in|var|new|throw|if|else|return|using|namespace|static|typeof|base|where|params|readonly)$/.test(part)) {
-      return <span key={i} className="text-pink-400">{part}</span>;
+    // Control Flow Keywords (Pink)
+    if (/^(if|else|return|await|throw|foreach|in|using|namespace|where)$/.test(part)) {
+      return <span key={i} className="text-[#C586C0]">{part}</span>;
     }
-    // Types / Classes (Simple heuristic: starts with Uppercase)
-    if (/^[A-Z][a-zA-Z0-9_]*$/.test(part)) {
-      return <span key={i} className="text-sky-300">{part}</span>;
+    // Definition Keywords (Blue/Cyan)
+    if (/^(public|private|protected|internal|class|interface|enum|struct|void|async|static|readonly|var|new|typeof|base|nameof)$/.test(part)) {
+      return <span key={i} className="text-[#569CD6]">{part}</span>;
+    }
+    // Types / Classes / Interfaces (Teal/Cyan)
+    if (/^(string|int|decimal|DateTimeOffset|DateTime|TimeSpan|Task|Guid|[A-Z][a-zA-Z0-9_]*)$/.test(part)) {
+       return <span key={i} className="text-[#4EC9B0]">{part}</span>;
+    }
+    // Method/Function calls (Yellow)
+    if (part.endsWith("(") || (i > 0 && /^[a-z][a-zA-Z0-9_]*$/.test(part) && parts[i+1]?.startsWith("("))) {
+       return <span key={i} className="text-[#DCDCAA]">{part}</span>;
     }
 
     return part;
