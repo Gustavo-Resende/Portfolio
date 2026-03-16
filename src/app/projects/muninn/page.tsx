@@ -1,8 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowLeft, CheckCircle2, Calendar, Code2, Briefcase, Target, Lightbulb, AlertTriangle, Zap, Server, Activity, TrendingUp, ChevronLeft, ChevronRight, Layout, Database, Shield } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowLeft, CheckCircle2, Calendar, Code2, Briefcase, Target, Lightbulb, AlertTriangle, Zap, Server, Activity, TrendingUp, ChevronLeft, ChevronRight, Layout, Database, Shield, Globe, Cpu } from "lucide-react";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { BackToTop } from "@/components/BackToTop";
 
@@ -32,16 +33,16 @@ export default function MuninnPage() {
 
             <div className="space-y-4">
               <span className="inline-block px-3 py-1 rounded-full bg-lime-primary/10 border border-lime-primary/20 text-lime-primary text-[10px] font-bold tracking-widest uppercase">
-                Product Template & Architecture
+                Enterprise .NET 9 Template
               </span>
               <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[0.9]">
                 Muninn <br />
-                <span className="text-lime-primary">Template.</span>
+                <span className="text-lime-primary">Architecture.</span>
               </h1>
             </div>
 
             <p className="text-text-body text-xl font-light leading-relaxed max-w-xl">
-              Uma base arquitetural robusta e extensível em .NET 9, desenhada para acelerar o desenvolvimento de microsserviços modernos, garantindo padrões de Clean Architecture e resiliência desde o primeiro dia.
+              Uma fundação arquitetural definitiva para o ecossistema .NET 9. Desenvolvida para eliminar o boilerplate e impor padrões de Clean Architecture, resiliência e alta disponibilidade desde o primeiro commit.
             </p>
 
             <div className="flex flex-wrap gap-4 pt-4">
@@ -51,7 +52,7 @@ export default function MuninnPage() {
               </div>
               <div className="flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 rounded-xl">
                 <Layout className="w-5 h-5 text-lime-primary" />
-                <span className="text-sm font-mono tracking-tight text-white/80">Clean Arch</span>
+                <span className="text-sm font-mono tracking-tight text-white/80">Clean Architecture</span>
               </div>
               <div className="flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 rounded-xl">
                 <Database className="w-5 h-5 text-lime-primary" />
@@ -66,11 +67,12 @@ export default function MuninnPage() {
             transition={{ delay: 0.2 }}
             className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(163,230,53,0.1)] bg-[#050505]/50 group flex items-center justify-center"
           >
+            {/* Minimalist Placeholder for real screenshots later */}
             <div className="flex flex-col items-center gap-4 text-white/5 opacity-20 group-hover:opacity-40 transition-opacity duration-700">
                <div className="w-16 h-16 rounded-2xl border-2 border-dashed border-current flex items-center justify-center">
-                  <Code2 className="w-8 h-8" />
+                  <Cpu className="w-8 h-8" />
                </div>
-               <span className="text-xs font-mono tracking-widest uppercase">Placeholder for Muninn Screenshot</span>
+               <span className="text-xs font-mono tracking-widest uppercase">Placeholder for Hero Screenshot</span>
             </div>
           </motion.div>
 
@@ -82,88 +84,114 @@ export default function MuninnPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <motion.div 
              whileHover={{ y: -5 }}
-             className="md:col-span-2 p-8 rounded-2xl bg-[#0A0A0A] border border-white/5 flex flex-col justify-between"
+             className="md:col-span-2 p-8 rounded-2xl bg-[#0A0A0A] border border-white/5 flex flex-col justify-between group"
           >
             <div className="space-y-4">
-              <Briefcase className="w-8 h-8 text-lime-primary mb-4" />
-              <h3 className="text-2xl font-bold">O Problema</h3>
-              <p className="text-text-muted leading-relaxed">
-                Desenvolver múltiplos projetos do zero muitas vezes resulta em inconsistências arquiteturais, duplicação de boilerplate e falta de padrões de resiliência e logging, atrasando o go-to-market.
+              <div className="flex items-center gap-4 mb-4">
+                 <Briefcase className="w-8 h-8 text-lime-primary" />
+                 <div className="h-[1px] flex-1 bg-gradient-to-r from-lime-primary/50 to-transparent" />
+              </div>
+              <h3 className="text-3xl font-bold">O Problema</h3>
+              <p className="text-text-muted text-lg leading-relaxed">
+                Desenvolver sistemas complexos do zero leva a inconsistências. Cada projeto acaba com uma estrutura diferente, falta de padrões de resiliência e um "debt" técnico que cresce exponencialmente.
               </p>
             </div>
           </motion.div>
 
           <motion.div 
              whileHover={{ y: -5 }}
-             className="p-8 rounded-2xl bg-lime-primary flex flex-col justify-between"
+             className="p-8 rounded-2xl bg-lime-primary flex flex-col justify-between shadow-[0_0_30px_rgba(163,230,53,0.2)]"
           >
             <div className="space-y-4">
               <Target className="w-8 h-8 text-black mb-4" />
-              <h3 className="text-2xl font-bold text-black">Objetivo</h3>
-              <p className="text-black/80 font-medium leading-relaxed">
-                Fornecer uma fundação técnica pronta para produção que encapsula as melhores práticas de design de software e escalabilidade.
+              <h3 className="text-3xl font-bold text-black">Objetivo</h3>
+              <p className="text-black/80 font-medium text-lg leading-relaxed">
+                Fornecer uma fundação técnica agnóstica de negócio que encapsula as melhores práticas de design de software e resiliência empresarial.
               </p>
             </div>
           </motion.div>
 
           <motion.div 
              whileHover={{ y: -5 }}
-             className="p-8 rounded-2xl bg-[#0A0A0A] border border-white/5"
+             className="p-8 rounded-2xl bg-[#0A0A0A] border border-white/5 group"
           >
-             <Lightbulb className="w-8 h-8 text-amber-500 mb-4" />
-             <h3 className="text-2xl font-bold mb-4">Solução</h3>
-             <p className="text-text-muted leading-relaxed">
-               Implementação modular com pipeline de MediatR, resiliência nativa e estrutura desacoplada.
-             </p>
+             <Lightbulb className="w-8 h-8 text-amber-500 mb-4 group-hover:drop-shadow-[0_0_10px_rgba(245,158,11,0.5)]" />
+             <h3 className="text-2xl font-bold mb-4">A Solução</h3>
+             <ul className="space-y-3 text-text-muted">
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-lime-primary shrink-0 mt-1" /> Modularidade desacoplada.</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-lime-primary shrink-0 mt-1" /> Pipeline de MediatR nativo.</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-lime-primary shrink-0 mt-1" /> Resiliência com Polly.</li>
+             </ul>
           </motion.div>
-          
-          <div className="md:col-span-2 grid grid-cols-2 gap-6">
-            <div className="p-8 rounded-2xl bg-[#0A0A0A] border border-white/5">
-               <Activity className="w-8 h-8 text-lime-primary mb-4" />
-               <h4 className="text-lg font-bold mb-2">Performance</h4>
-               <p className="text-text-muted text-sm">Otimizado para .NET 9 com hosted services para warmup e inicialização.</p>
-            </div>
-            <div className="p-8 rounded-2xl bg-[#0A0A0A] border border-white/5">
-               <Shield className="w-8 h-8 text-lime-primary mb-4" />
-               <h4 className="text-lg font-bold mb-2">Resiliência</h4>
-               <p className="text-text-muted text-sm">Políticas de retry e circuit breaker integradas via Polly.</p>
-            </div>
+
+          <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+             <div className="p-8 rounded-2xl bg-[#0A0A0A] border border-white/5">
+                <Zap className="w-8 h-8 text-lime-primary mb-4" />
+                <h4 className="text-xl font-bold mb-2">Kickstart Instantâneo</h4>
+                <p className="text-text-muted text-sm leading-relaxed">Scripts de instalação via Bash (`dotnet new muninn`) garantem que o desenvolvedor tenha o ambiente pronto em segundos, com CI/CD e Docker pré-configurados.</p>
+             </div>
+             <div className="p-8 rounded-2xl bg-[#0A0A0A] border border-white/5">
+                <Shield className="w-8 h-8 text-lime-primary mb-4" />
+                <h4 className="text-xl font-bold mb-2">Segurança por Design</h4>
+                <p className="text-text-muted text-sm leading-relaxed">Integração nativa com Identity, JWT e políticas de segurança granulares, além de auditoria automática em todas as transações de banco de dados.</p>
+             </div>
           </div>
         </div>
       </section>
 
       {/* 3. FUNCIONALIDADES CORE (Doc-Style Zig-Zag) */}
-      <section className="py-24 px-4 relative z-10 w-full bg-[#050505]/50 backdrop-blur-sm border-b border-white/5">
+      <section className="py-24 px-4 relative z-10 w-full bg-[#050505]/50 backdrop-blur-sm border-y border-white/5">
         <div className="max-w-6xl mx-auto space-y-32">
           
           <div className="text-center mb-16">
-            <span className="text-lime-primary text-xs font-bold tracking-widest uppercase mb-2 block">Foundational Snippets</span>
-            <h2 className="text-4xl font-bold text-white">Arquitetura Muninn em Detalhes</h2>
+            <span className="text-lime-primary text-xs font-bold tracking-widest uppercase mb-2 block">Foundational Patterns</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">O Motor por trás do Muninn</h2>
+            <div className="h-1 w-20 bg-lime-primary mx-auto mt-4 rounded-full" />
           </div>
 
-          {/* Feature 1 */}
+          {/* Feature 1: DDD & Guard Clauses */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-6 order-1 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
-              <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">Arquitetura de Domínio</span>
+            <div className="space-y-6 order-2 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left pt-8 lg:pt-0">
+              <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">Design de Software</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                Garantindo o <span className="text-lime-primary">{`{ Domain State }`}</span>
+                Integridade no <span className="text-lime-primary">{`{ Domain Core }`}</span>
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
-                Muninn utiliza um motor de Domain Guard extensível para garantir que as regras de negócio sejam aplicadas de forma fluida e reutilizável em todo o agregado.
+                O Muninn impõe o uso de Domínios Ricos e Guard Clauses extensíveis. Nenhuma entidade entra em estado inválido, garantindo que as regras de negócio sejam a única fonte de verdade.
               </p>
               <ul className="space-y-3 pt-4 font-mono text-sm flex flex-col items-center lg:items-start">
-                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-lime-primary w-4 h-4 shrink-0" /> Guard Clauses personalizadas por domínio.</li>
-                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-lime-primary w-4 h-4 shrink-0" /> Exceções de domínio estruturadas.</li>
+                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-lime-primary w-4 h-4 shrink-0" /> Validações fluídas de input e estado.</li>
+                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-lime-primary w-4 h-4 shrink-0" /> Value Objects robustos (Email, Password, Name).</li>
               </ul>
             </div>
-            <div className="relative w-full aspect-square md:aspect-[4/3] order-2 lg:order-2">
+            <div className="relative w-full aspect-square md:aspect-[16/10] order-1 lg:order-2">
                <CodeCarousel 
                  snippets={[
                    {
-                     title: "IDomainGuard & Extensions",
-                     code: `public interface IDomainGuard { }
+                     title: "Account Domain Entity",
+                     code: `public class Account : Entity<Guid>, IAggregateRoot
+{
+    public Account(Email email, Password password, FullName fullName)
+    {
+        Email = email;
+        Password = password;
+        FullName = fullName;
+        CreatedAt = DateTimeOffset.UtcNow;
+        IsActive = true;
 
-public static partial class IDomainGuardExtensions
+        AddDomainEvent(new AccountCreatedEvent(Email.Value));
+    }
+
+    public void UpdateFullName(FullName fullName)
+    {
+        FullName = Guard.Against.Null(fullName, nameof(FullName), 
+            "O nome completo não pode ser nulo.");
+    }
+}`
+                   },
+                   {
+                     title: "Domain Guard Architecture",
+                     code: `public static partial class IDomainGuardExtensions
 {
     public static void When(this IDomainGuard _, bool condition, string message)
     {
@@ -175,7 +203,6 @@ public static partial class IDomainGuardExtensions
     {
         if (!predicate(input))
             throw new DomainException(message);
-
         return input;
     }
 }`
@@ -184,6 +211,60 @@ public static partial class IDomainGuardExtensions
                />
             </div>
           </div>
+
+          {/* Feature 2: Infrastructure & Dispatching */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="relative w-full aspect-square md:aspect-[16/10] order-1 lg:order-1">
+               <CodeCarousel 
+                 color="amber"
+                 snippets={[
+                   {
+                     title: "Event Dispatching Logic",
+                     code: `private async Task DispatchEventsAsync(CancellationToken cancellationToken)
+{
+    var domainEntities = this.ChangeTracker
+        .Entries<IDomainEventSource>()
+        .Where(x => x.Entity.DomainEvents != null && x.Entity.DomainEvents.Any());
+
+    var domainEvents = domainEntities
+        .SelectMany(x => x.Entity.DomainEvents).ToList();
+
+    foreach (var entity in domainEntities)
+        entity.Entity.ClearDomainEvents();
+
+    foreach (var domainEvent in domainEvents)
+        await mediator.Publish(domainEvent, cancellationToken);
+}`
+                   },
+                   {
+                     title: "Integration Dispatcher",
+                     code: `foreach (var integrationEvent in domainEvents.OfType<INotification>())
+{
+    if (integrationEvent is ISignalIntegrationEvent signalrEvent)
+    {
+        var dispatcher = this.GetService<IEventDispatcher<ISignalIntegrationEvent>>();
+        await dispatcher.DispatchAsync(signalrEvent, cancellationToken);
+    }
+}`
+                   }
+                 ]}
+               />
+            </div>
+            <div className="space-y-6 order-2 lg:order-2 flex flex-col items-center lg:items-start text-center lg:text-left pt-8 lg:pt-0">
+              <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-amber-500 pl-3">Infraestrutura & Eventos</span>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
+                Orquestração <span className="text-amber-500">{`{ Event-Driven }`}</span>
+              </h2>
+              <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
+                O Muninn gerencia o ciclo de vida dos eventos de domínio automaticamente durante o `SaveChangesAsync`. Isso garante que efeitos colaterais (e-mails, webhooks, SignalR) sejam disparados apenas em caso de sucesso na transação.
+              </p>
+              <ul className="space-y-3 pt-4 font-mono text-sm flex flex-col items-center lg:items-start">
+                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-amber-500 w-4 h-4 shrink-0" /> Desacoplamento total via MediatR.</li>
+                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-amber-500 w-4 h-4 shrink-0" /> Suporte nativo a Outbox Pattern.</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -205,7 +286,6 @@ public static partial class IDomainGuardExtensions
   );
 }
 
-// Reuse components from Sleipnir but consider localizing common UI if it grows
 function Header() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-[100] bg-black/50 backdrop-blur-xl border-b border-white/5">
@@ -216,7 +296,7 @@ function Header() {
           </div>
           <span className="font-extrabold text-xl tracking-tighter">GR Portfolio</span>
         </Link>
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-8 text-center sm:text-left">
           <Link href="/#projects" className="text-xs font-bold uppercase tracking-widest text-white/70 hover:text-white transition-colors">Portfólio</Link>
           <Link href="/#contact" className="px-5 py-2.5 bg-lime-primary text-black rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-lime-primary/90 transition-all">Contato</Link>
         </div>
@@ -226,25 +306,61 @@ function Header() {
 }
 
 function CodeCarousel({ snippets, color = "lime" }: { snippets: { title: string; code: string }[], color?: "lime" | "amber" }) {
-  const [index, setIndex] = Object.assign([] as any, { 0: 0, 1: (v: any) => {} }); // Placeholder for state management since it's a huge component to copy
-  // NOTE: Re-implementing simplified for now or importing if possible
+  const [index, setIndex] = useState(0);
+  
+  const next = () => setIndex((prev) => (prev + 1) % snippets.length);
+  const prev = () => setIndex((prev) => (prev - 1 + snippets.length) % snippets.length);
+
+  const colorClass = color === "lime" ? "text-lime-primary" : "text-amber-500";
+  const bgBadge = color === "lime" ? "bg-lime-primary/20" : "bg-amber-500/20";
+
   return (
-    <div className="w-full h-full glass-card rounded-2xl border border-white/10 bg-[#0A0A0A]/80 backdrop-blur-md overflow-hidden flex flex-col shadow-2xl">
+    <div className="w-full h-full glass-card rounded-2xl border border-white/10 bg-[#0A0A0A]/80 backdrop-blur-md overflow-hidden flex flex-col shadow-2xl group/card">
+      {/* Header Bar */}
       <div className="p-4 border-b border-white/5 bg-white/[0.02] flex items-center justify-between">
         <div className="flex gap-1.5">
           <div className="w-3 h-3 rounded-full bg-red-500/40" />
           <div className="w-3 h-3 rounded-full bg-amber-500/40" />
           <div className="w-3 h-3 rounded-full bg-lime-primary/40" />
         </div>
-        <span className={`text-xs font-mono uppercase tracking-widest opacity-70 ${color === "lime" ? "text-lime-primary" : "text-amber-500"}`}>
-          {snippets[0].title}
+        <span className={`text-xs md:text-sm font-mono uppercase tracking-widest opacity-70 ${colorClass}`}>
+          {snippets[index].title}
         </span>
+        <div className="flex gap-2">
+          <button onClick={prev} className="p-1 hover:bg-white/5 rounded-md transition-colors text-white/40 hover:text-white">
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <button onClick={next} className="p-1 hover:bg-white/5 rounded-md transition-colors text-white/40 hover:text-white">
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
       </div>
+
+      {/* Code Area */}
       <div className="flex-1 p-6 md:p-8 relative overflow-hidden flex flex-col justify-center">
-        <div className="font-mono text-sm md:text-base leading-relaxed whitespace-pre-wrap">
-          <code className="block text-white/90">
-            {highlightCSharp(snippets[0].code)}
-          </code>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3 }}
+            className="font-mono text-sm md:text-base leading-relaxed whitespace-pre"
+          >
+            <code className="block">
+              {highlightCSharp(snippets[index].code)}
+            </code>
+          </motion.div>
+        </AnimatePresence>
+        
+        {/* Progress Indicators */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+          {snippets.map((_, i) => (
+            <div 
+              key={i} 
+              className={`h-1 transition-all duration-300 rounded-full ${i === index ? `w-6 ${color === "lime" ? "bg-lime-primary" : "bg-amber-500"}` : 'w-2 bg-white/10'}`} 
+            />
+          ))}
         </div>
       </div>
     </div>
