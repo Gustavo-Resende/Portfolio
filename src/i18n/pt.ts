@@ -110,8 +110,21 @@ export const pt = {
     submittingText: "Enviando...",
     successMessage: "Mensagem enviada com sucesso!"
   },
+  cta: {
+    inline: {
+      title: "Gostou do que viu?",
+      subtitle: "Vamos conversar sobre como posso ajudar seu time.",
+      button: "Fale Comigo"
+    },
+    prominent: {
+      title: "Vamos construir algo incrível juntos?",
+      subtitle: "Estou disponível para novos projetos e oportunidades. Vamos conversar sobre como posso entregar resultados para sua empresa.",
+      button: "Iniciar Conversa"
+    }
+  },
   footer: {
-    builtWith: "Construído com Next.js & Tailwind CSS."
+    builtWith: "Construído com Next.js & Tailwind CSS.",
+    contact: "Fale Comigo"
   },
   projectPages: {
     common: {

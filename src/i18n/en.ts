@@ -110,8 +110,21 @@ export const en = {
     submittingText: "Submitting...",
     successMessage: "Message sent successfully!"
   },
+  cta: {
+    inline: {
+      title: "Interested in what you see?",
+      subtitle: "Let's talk about how I can help your team.",
+      button: "Get in Touch"
+    },
+    prominent: {
+      title: "Let's build something incredible together?",
+      subtitle: "I'm available for new projects and opportunities. Let's discuss how I can help deliver results for your company.",
+      button: "Start a Conversation"
+    }
+  },
   footer: {
-    builtWith: "Built with Next.js & Tailwind CSS."
+    builtWith: "Built with Next.js & Tailwind CSS.",
+    contact: "Get in Touch"
   },
   projectPages: {
     common: {
