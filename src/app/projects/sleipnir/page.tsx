@@ -1,25 +1,38 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ExternalLink, Github, CheckCircle2, Calendar, Code2, Briefcase, Target, Lightbulb, AlertTriangle, Zap, Server, Activity, TrendingUp, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, useScroll, AnimatePresence } from "framer-motion";
+import { CheckCircle2, Calendar, Code2, Briefcase, Target, Lightbulb, AlertTriangle, Zap, Server, Activity, TrendingUp, ChevronLeft, ChevronRight, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { ProjectHeader } from "@/components/ProjectHeader";
 import { BackToTop } from "@/components/BackToTop";
 
 export default function SleipnirProject() {
-  const { language } = useLanguage();
+  const { t } = useLanguage();
 
   return (
     <main className="flex min-h-screen flex-col font-sans bg-black text-white relative selection:bg-lime-primary/30 selection:text-white">
+      <ProjectHeader 
+        projectName="Sleipnir" 
+        accentColor="lime-primary"
+        sections={[
+          { name: t.projectPages.common.sections.overview, href: "#hero" },
+          { name: t.projectPages.common.sections.journey, href: "#metadata" },
+          { name: t.projectPages.common.sections.architecture, href: "#architecture" },
+          { name: t.projectPages.common.sections.results, href: "#results" },
+          { name: t.projectPages.common.sections.contact, href: "#cta" },
+        ]}
+      />
+
       {/* Background idêntico à página principal */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#122010_0%,_#050505_100%)] opacity-80 mix-blend-screen"></div>
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
       </div>
 
-      {/* 1. PROJECT HERO (Cartão de Visita) */}
-      <section className="relative w-full pt-32 pb-20 px-4 min-h-[70vh] flex items-center border-b border-white/5 overflow-hidden z-10">
+      {/* 1. PROJECT HERO */}
+      <section id="hero" className="relative w-full pt-32 pb-20 px-4 min-h-[70vh] flex items-center border-b border-white/5 overflow-hidden z-10">
         <div className="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           
           {/* Lado Esquerdo: Textos e CTAs */}
@@ -28,27 +41,23 @@ export default function SleipnirProject() {
             animate={{ opacity: 1, x: 0 }}
             className="flex flex-col items-start space-y-8"
           >
-            <Link href="/#projects" className="flex items-center gap-2 text-text-muted hover:text-lime-primary transition-colors text-sm font-semibold uppercase tracking-widest">
-              <ArrowLeft className="w-4 h-4" />
-              Voltar aos Projetos
-            </Link>
 
             <div className="space-y-4">
               <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight">
                 Sleipnir
               </h1>
               <p className="text-xl md:text-2xl text-white/70 font-light max-w-xl leading-relaxed">
-                Um ecossistema de rastreamento logístico escalável que garante <span className="text-lime-primary font-semibold">visibilidade total sobre frotas e rotas</span> em tempo real.
+                {(() => {
+                  const parts = t.projectPages.sleipnir.hero.split(/<\/?accent>/);
+                  return <>{parts[0]}<span className="text-lime-primary font-semibold">{parts[1]}</span>{parts[2]}</>;
+                })()}
               </p>
             </div>
 
             <div className="flex flex-wrap items-center gap-4 pt-4">
-              <a href="#" className="bg-lime-primary hover:bg-[#b4f04b] text-black px-6 py-3 rounded-md font-bold transition-colors flex items-center gap-2">
-                Live Demo <ExternalLink className="w-4 h-4" />
-              </a>
-              <a href="#" className="bg-transparent border border-white/20 hover:border-white/50 hover:bg-white/5 text-white px-6 py-3 rounded-md font-bold transition-all flex items-center gap-2">
-                Ver Código <Github className="w-4 h-4" />
-              </a>
+              <Link href="/#contact" className="bg-lime-primary hover:bg-[#b4f04b] text-black px-6 py-3 rounded-md font-bold transition-colors flex items-center gap-2">
+                <MessageCircle className="w-4 h-4" /> {t.projectPages.common.contactButton}
+              </Link>
             </div>
           </motion.div>
 
@@ -72,7 +81,7 @@ export default function SleipnirProject() {
       </section>
 
       {/* 2. METADATA E JORNADA DO PROJETO */}
-      <section className="py-24 px-4 relative z-10 w-full border-b border-white/5">
+      <section id="metadata" className="py-24 px-4 relative z-10 w-full border-b border-white/5">
         <div className="max-w-7xl mx-auto space-y-32">
           
           {/* Metadata Cards (Ícones + Interativo) */}
@@ -82,9 +91,9 @@ export default function SleipnirProject() {
                 <Calendar className="w-6 h-6 text-lime-primary" />
               </div>
               <div>
-                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">Duração</span>
-                <h3 className="text-2xl font-bold text-white">Ciclo Contínuo</h3>
-                <p className="text-text-muted text-sm mt-2">Do MVP à escala industrial, com manutenção ativa e evolução constante da arquitetura.</p>
+                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.common.metadata.duration}</span>
+                <h3 className="text-2xl font-bold text-white">{t.projectPages.sleipnir.metadata.duration.title}</h3>
+                <p className="text-text-muted text-sm mt-2">{t.projectPages.sleipnir.metadata.duration.description}</p>
               </div>
             </motion.div>
 
@@ -93,9 +102,9 @@ export default function SleipnirProject() {
                 <Code2 className="w-6 h-6 text-lime-primary" />
               </div>
               <div>
-                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">Stack Tecnológica</span>
-                <h3 className="text-xl font-bold text-white">.NET 9, PostgreSQL, Docker</h3>
-                <p className="text-text-muted text-sm mt-2">Utilizando EF Core para persistência e MediatR para desacoplamento de eventos.</p>
+                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.common.metadata.stack}</span>
+                <h3 className="text-xl font-bold text-white">{t.projectPages.sleipnir.metadata.stack.title}</h3>
+                <p className="text-text-muted text-sm mt-2">{t.projectPages.sleipnir.metadata.stack.description}</p>
               </div>
             </motion.div>
 
@@ -104,9 +113,9 @@ export default function SleipnirProject() {
                 <Briefcase className="w-6 h-6 text-lime-primary" />
               </div>
               <div>
-                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">Modelo Comercial</span>
-                <h3 className="text-2xl font-bold text-white">Entrega Corporativa</h3>
-                <p className="text-text-muted text-sm mt-2">Licenciamento de software customizado com suporte crítico de engenharia.</p>
+                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.common.metadata.model}</span>
+                <h3 className="text-2xl font-bold text-white">{t.projectPages.sleipnir.metadata.model.title}</h3>
+                <p className="text-text-muted text-sm mt-2">{t.projectPages.sleipnir.metadata.model.description}</p>
               </div>
             </motion.div>
           </div>
@@ -114,8 +123,8 @@ export default function SleipnirProject() {
           {/* A Jornada: Problema -> Objetivo -> Solução (Animada) */}
           <div className="w-full relative pt-10">
             <div className="text-center mb-24">
-               <span className="text-lime-primary text-xs font-bold tracking-widest uppercase mb-2 block">O Cenário</span>
-               <h2 className="text-4xl font-bold text-white">A Jornada do Projeto</h2>
+               <span className="text-lime-primary text-xs font-bold tracking-widest uppercase mb-2 block">{t.projectPages.common.journey.eyebrow}</span>
+               <h2 className="text-4xl font-bold text-white">{t.projectPages.common.journey.title}</h2>
             </div>
             
             <JourneyAnimatedSection />
@@ -124,27 +133,27 @@ export default function SleipnirProject() {
       </section>
 
       {/* 3. FUNCIONALIDADES CORE (Doc-Style Zig-Zag) */}
-      <section className="py-24 px-4 relative z-10 w-full bg-[#050505]/50 backdrop-blur-sm border-b border-white/5">
+      <section id="architecture" className="py-24 px-4 relative z-10 w-full bg-[#050505]/50 backdrop-blur-sm border-b border-white/5">
         <div className="max-w-6xl mx-auto space-y-32">
           
           <div className="text-center mb-16">
-            <span className="text-lime-primary text-xs font-bold tracking-widest uppercase mb-2 block">Arquitetura CORE</span>
-            <h2 className="text-4xl font-bold text-white">Como o sistema foi desenhado</h2>
+            <span className="text-lime-primary text-xs font-bold tracking-widest uppercase mb-2 block">{t.projectPages.common.architecture.eyebrow}</span>
+            <h2 className="text-4xl font-bold text-white">{t.projectPages.common.architecture.title}</h2>
           </div>
 
           {/* Feature 1 (Texto Esquerda, Imagem Direita) - FORMATO DOCUMENTAL */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6 order-1 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
-              <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">INTEGRIDADE DE DADOS</span>
+              <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">{t.projectPages.sleipnir.features.f1.eyebrow}</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                Domínio Rico com <span className="text-lime-primary">{`{ DDD & Validações }`}</span>
+                {t.projectPages.sleipnir.features.f1.title} <span className="text-lime-primary">{t.projectPages.sleipnir.features.f1.highlight}</span>
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
-                Toda a lógica de negócios está centrada no `Core`, onde Agregados como `Route` gerenciam seu próprio estado através de Guard Clauses rigorosas, garantindo que o sistema nunca entre em um estado inválido.
+                {t.projectPages.sleipnir.features.f1.description}
               </p>
               <ul className="space-y-3 pt-4 font-mono text-sm flex flex-col items-center lg:items-start">
-                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-lime-primary w-4 h-4 shrink-0" /> Entidades protegidas contra inconsistências.</li>
-                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-lime-primary w-4 h-4 shrink-0" /> Rastreamento histórico de cada evento (Audit Log).</li>
+                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-lime-primary w-4 h-4 shrink-0" /> {t.projectPages.sleipnir.features.f1.checks[0]}</li>
+                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-lime-primary w-4 h-4 shrink-0" /> {t.projectPages.sleipnir.features.f1.checks[1]}</li>
               </ul>
             </div>
             <div className="relative w-full aspect-square md:aspect-[4/3] order-2 lg:order-2">
@@ -231,16 +240,16 @@ export default function SleipnirProject() {
                 />
             </div>
             <div className="space-y-6 order-1 lg:order-2 flex flex-col items-center lg:items-start text-center lg:text-left">
-              <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">ALTA DISPONIBILIDADE</span>
+              <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">{t.projectPages.sleipnir.features.f2.eyebrow}</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                Persistência de Alta Performance com <span className="text-lime-primary">{`{ PostgreSQL & EF Core }`}</span>
+                {t.projectPages.sleipnir.features.f2.title} <span className="text-lime-primary">{t.projectPages.sleipnir.features.f2.highlight}</span>
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
-                Utilizando uma infraestrutura moderna baseada em .NET 9, a camada de dados foi otimizada com Npgsql e políticas de Retry na conexão, garantindo resiliência em ambientes de alta concorrência.
+                {t.projectPages.sleipnir.features.f2.description}
               </p>
               <ul className="space-y-3 pt-4 font-mono text-sm flex flex-col items-center lg:items-start">
-                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-amber-500 w-4 h-4 shrink-0" /> Conexão resiliente com Retry Policy.</li>
-                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-amber-500 w-4 h-4 shrink-0" /> Persistência otimizada com PostgreSQL.</li>
+                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-amber-500 w-4 h-4 shrink-0" /> {t.projectPages.sleipnir.features.f2.checks[0]}</li>
+                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-amber-500 w-4 h-4 shrink-0" /> {t.projectPages.sleipnir.features.f2.checks[1]}</li>
               </ul>
             </div>
           </div>
@@ -248,16 +257,16 @@ export default function SleipnirProject() {
           {/* Feature 3 (Texto Esquerda, Imagem Direita) - TERCEIRA SEÇÃO ADICIONADA */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6 order-1 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
-              <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">MÁXIMA ESCALABILIDADE</span>
+              <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">{t.projectPages.sleipnir.features.f3.eyebrow}</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                Desacoplamento via <span className="text-lime-primary">{`{ MediatR & Event Bus }`}</span>
+                {t.projectPages.sleipnir.features.f3.title} <span className="text-lime-primary">{t.projectPages.sleipnir.features.f3.highlight}</span>
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
-                A aplicação utiliza padrões de mensageria internos para processar eventos de domínio de forma assíncrona, permitindo que novas funcionalidades (como notificações ou webhooks) sejam adicionadas sem alterar a lógica core da rota.
+                {t.projectPages.sleipnir.features.f3.description}
               </p>
               <ul className="space-y-3 pt-4 font-mono text-sm flex flex-col items-center lg:items-start">
-                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-lime-primary w-4 h-4 shrink-0" /> Processamento assíncrono via MediatR.</li>
-                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-lime-primary w-4 h-4 shrink-0" /> Eventos totalmente desacoplados.</li>
+                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-lime-primary w-4 h-4 shrink-0" /> {t.projectPages.sleipnir.features.f3.checks[0]}</li>
+                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-lime-primary w-4 h-4 shrink-0" /> {t.projectPages.sleipnir.features.f3.checks[1]}</li>
               </ul>
             </div>
             <div className="relative w-full aspect-square md:aspect-[4/3] order-2 lg:order-2">
@@ -303,7 +312,7 @@ export default function SleipnirProject() {
       </section>
 
       {/* 4. RESULTADOS (High Impacto Visual) */}
-      <section className="pt-32 pb-16 px-4 relative overflow-hidden z-10 bg-black">
+      <section id="results" className="pt-32 pb-16 px-4 relative overflow-hidden z-10 bg-black">
         {/* Glow de fundo pro Call to action */}
         <div className="absolute inset-0 pointer-events-none z-0 flex items-center justify-center">
           <div className="w-[400px] h-[400px] bg-lime-primary rounded-full blur-[180px] opacity-[0.08]" />
@@ -311,9 +320,9 @@ export default function SleipnirProject() {
 
         <div className="max-w-6xl mx-auto relative z-10 space-y-16">
           <div className="text-center">
-            <span className="text-lime-primary text-xs font-bold tracking-widest uppercase block mb-2">Métricas e Entregas</span>
+            <span className="text-lime-primary text-xs font-bold tracking-widest uppercase block mb-2">{t.projectPages.common.results.eyebrow}</span>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">
-              O Sucesso da Implementação
+              {t.projectPages.common.results.title}
             </h2>
           </div>
 
@@ -321,8 +330,8 @@ export default function SleipnirProject() {
              {/* Anim Metric 1: Progress Bar shrinking */}
              <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} className="bg-[#111] border border-lime-primary/30 p-8 rounded-3xl text-center shadow-[0_0_30px_rgba(163,230,53,0.05)] relative overflow-hidden flex flex-col items-center justify-center min-h-[250px]">
                <Zap className="w-8 h-8 text-lime-primary mb-4" />
-               <h4 className="text-5xl font-extrabold text-white mb-2">-85%</h4>
-               <p className="text-white/60 font-medium text-sm">Tempo de Operação Manual</p>
+               <h4 className="text-5xl font-extrabold text-white mb-2">{t.projectPages.sleipnir.results.m1.value}</h4>
+               <p className="text-white/60 font-medium text-sm">{t.projectPages.sleipnir.results.m1.label}</p>
                
                {/* Progress bar animation */}
                <div className="w-full h-1 bg-white/10 rounded-full mt-6 overflow-hidden">
@@ -344,18 +353,18 @@ export default function SleipnirProject() {
                >
                  <Server className="w-8 h-8 text-lime-primary mb-4" />
                </motion.div>
-               <h4 className="text-5xl font-extrabold text-white mb-2 drop-shadow-[0_0_15px_rgba(163,230,53,0.5)]">Zero</h4>
-               <p className="text-white/60 font-medium text-sm">Downtime Registrado</p>
+               <h4 className="text-5xl font-extrabold text-white mb-2 drop-shadow-[0_0_15px_rgba(163,230,53,0.5)]">{t.projectPages.sleipnir.results.m2.value}</h4>
+               <p className="text-white/60 font-medium text-sm">{t.projectPages.sleipnir.results.m2.label}</p>
                <span className="mt-4 px-3 py-1 bg-lime-primary/10 text-lime-primary text-xs rounded-full border border-lime-primary/20 flex items-center gap-2">
-                 <div className="w-1.5 h-1.5 rounded-full bg-lime-primary animate-pulse" /> Online
+                 <div className="w-1.5 h-1.5 rounded-full bg-lime-primary animate-pulse" /> {t.projectPages.common.online}
                </span>
              </motion.div>
 
              {/* Anim Metric 3: Flowing requests (dots moving) */}
              <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} transition={{ delay: 0.2 }} className="bg-[#111] border border-lime-primary/30 p-8 rounded-3xl text-center shadow-[0_0_30px_rgba(163,230,53,0.05)] relative overflow-hidden flex flex-col items-center justify-center min-h-[250px]">
                <Activity className="w-8 h-8 text-lime-primary mb-4" />
-               <h4 className="text-5xl font-extrabold text-white mb-2">10k+</h4>
-               <p className="text-white/60 font-medium text-sm">Reqs/min Sem Gargalo</p>
+               <h4 className="text-5xl font-extrabold text-white mb-2">{t.projectPages.sleipnir.results.m3.value}</h4>
+               <p className="text-white/60 font-medium text-sm">{t.projectPages.sleipnir.results.m3.label}</p>
                
                {/* Conveyor belt animation dots */}
                <div className="flex gap-2 mt-6 overflow-hidden w-full justify-center opacity-50">
@@ -373,8 +382,8 @@ export default function SleipnirProject() {
              {/* Anim Metric 4: Trending Up Chart */}
              <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} transition={{ delay: 0.3 }} className="bg-[#111] border border-lime-primary/30 p-8 rounded-3xl text-center shadow-[0_0_30px_rgba(163,230,53,0.05)] relative overflow-hidden flex flex-col items-center justify-center min-h-[250px]">
                <TrendingUp className="w-8 h-8 text-lime-primary mb-4" />
-               <h4 className="text-5xl font-extrabold text-white mb-2">+30%</h4>
-               <p className="text-white/60 font-medium text-sm">Aumento de Capacidade</p>
+               <h4 className="text-5xl font-extrabold text-white mb-2">{t.projectPages.sleipnir.results.m4.value}</h4>
+               <p className="text-white/60 font-medium text-sm">{t.projectPages.sleipnir.results.m4.label}</p>
                
                <div className="flex items-end gap-1.5 mt-6 h-8 justify-center">
                  {[40, 60, 50, 80, 100].map((height, i) => (
@@ -391,11 +400,11 @@ export default function SleipnirProject() {
              </motion.div>
           </div>
           
-          <div className="pt-24 flex flex-col items-center gap-6 text-center">
-            <h3 className="text-3xl font-bold text-white">Gostou dessa abordagem arquitetural?</h3>
-            <p className="text-white/60 mb-4 max-w-xl">Software de ponta exige fundações robustas e código limpo. Vamos construir seu próximo Case de Sucesso juntos.</p>
+          <div id="cta" className="pt-24 flex flex-col items-center gap-6 text-center">
+            <h3 className="text-3xl font-bold text-white">{t.projectPages.common.cta.title}</h3>
+            <p className="text-white/60 mb-4 max-w-xl">{t.projectPages.common.cta.description}</p>
             <Link href="/#contact" className="bg-lime-primary hover:bg-[#b4f04b] text-black px-10 py-4 rounded-full font-bold transition-all text-lg shadow-[0_0_40px_rgba(163,230,53,0.4)] hover:shadow-[0_0_60px_rgba(163,230,53,0.6)] hover:scale-105">
-              Falar sobre Meu Projeto
+              {t.projectPages.common.cta.button}
             </Link>
           </div>
         </div>
@@ -404,15 +413,18 @@ export default function SleipnirProject() {
       {/* Footer idêntico ao da Home */}
       <footer className="w-full text-center py-6 text-text-muted text-sm relative z-10 border-t border-white/5 mt-auto bg-black">
         <div className="max-w-5xl mx-auto px-4">
-          <p>&copy; {new Date().getFullYear()} Gustavo Resende. Construído com Next.js & Tailwind CSS.</p>
+          <p>&copy; {new Date().getFullYear()} Gustavo Resende. {t.projectPages.common.footer}</p>
         </div>
       </footer>
+
+      <BackToTop />
 
     </main>
   );
 }
 
 function JourneyAnimatedSection() {
+  const { t } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
   
   // Track scroll inside the container to fill the progress bar
@@ -432,7 +444,7 @@ function JourneyAnimatedSection() {
         `}</style>
         <motion.div 
           className="anim-progress bg-lime-primary shadow-[0_0_15px_#a3e635]"
-          style={{ "--progress": scrollYProgress } as any}
+          style={{ "--progress": scrollYProgress } as React.CSSProperties}
         />
       </div>
 
@@ -447,9 +459,9 @@ function JourneyAnimatedSection() {
              <AlertTriangle className="w-6 h-6 md:w-8 md:h-8 text-red-500" />
           </motion.div>
           <div>
-            <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">1. O Problema</h3>
+            <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{t.projectPages.common.journey.problem}</h3>
             <p className="text-text-muted leading-relaxed text-sm md:text-base">
-              Rastreabilidade ineficiente e falta de padrões no gerenciamento de frotas, gerando dados inconsistentes e atrasos operacionais críticos.
+              {t.projectPages.sleipnir.journey.problem}
             </p>
           </div>
         </div>
@@ -463,9 +475,9 @@ function JourneyAnimatedSection() {
              <Target className="w-6 h-6 md:w-8 md:h-8 text-amber-500" />
           </motion.div>
           <div>
-            <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">2. O Objetivo</h3>
+            <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{t.projectPages.common.journey.objective}</h3>
             <p className="text-text-muted leading-relaxed text-sm md:text-base">
-              Arquitetar um sistema de monitoramento resiliente, focado em Domain-Driven Design para garantir regras de negócio inquebráveis e auditáveis.
+              {t.projectPages.sleipnir.journey.objective}
             </p>
           </div>
         </div>
@@ -479,9 +491,9 @@ function JourneyAnimatedSection() {
              <Lightbulb className="w-6 h-6 md:w-8 md:h-8 text-lime-primary" />
           </motion.div>
           <div>
-            <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">3. A Solução</h3>
+            <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{t.projectPages.common.journey.solution}</h3>
             <p className="text-text-muted leading-relaxed text-sm md:text-base">
-              Uma API escalável em .NET 9 com PostgreSQL, implementando filas de rastreamento e eventos de domínio para automação total de rotas.
+              {t.projectPages.sleipnir.journey.solution}
             </p>
           </div>
         </div>
