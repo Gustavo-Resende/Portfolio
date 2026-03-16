@@ -4,13 +4,12 @@ import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 import Image from "next/image";
 import { useLanguage } from "@/i18n/LanguageContext";
-
 export function Testimonials() {
   const { t } = useLanguage();
 
   return (
-    <section className="py-24 relative z-10 w-full max-w-5xl mx-auto px-4" id="testimonials">
-      <div className="mb-16 text-center">
+    <section className="py-16 relative z-10 w-full max-w-5xl mx-auto px-4" id="testimonials">
+      <div className="mb-12 text-center">
         <span className="text-lime-primary text-xs font-bold tracking-widest uppercase mb-2 block">
           {t.testimonials.eyebrow}
         </span>
@@ -45,6 +44,7 @@ export function Testimonials() {
           </motion.div>
         ))}
       </div>
+
     </section>
   );
 }
