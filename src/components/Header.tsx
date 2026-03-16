@@ -60,8 +60,10 @@ export function Header() {
 
         {/* Language Toggle (iOS Style) */}
         <div className="flex items-center gap-3">
-          <span className={`text-xs font-semibold ${language === 'pt' ? 'text-white' : 'text-text-muted'}`}>PT</span>
-          
+          <span className={`text-xs font-semibold flex items-center gap-1 ${language === 'pt' ? 'text-white' : 'text-text-muted'}`}>
+            <span className="text-sm leading-none">🇧🇷</span> PT
+          </span>
+
           <button
             onClick={toggleLanguage}
             className="relative w-12 h-6 rounded-full bg-dark-bg border border-white/10 flex items-center p-1 cursor-pointer transition-colors hover:border-lime-primary/50"
@@ -77,8 +79,10 @@ export function Header() {
               }}
             />
           </button>
-          
-          <span className={`text-xs font-semibold ${language === 'en' ? 'text-white' : 'text-text-muted'}`}>EN</span>
+
+          <span className={`text-xs font-semibold flex items-center gap-1 ${language === 'en' ? 'text-white' : 'text-text-muted'}`}>
+            EN <span className="text-sm leading-none">🇺🇸</span>
+          </span>
         </div>
       </div>
     </motion.header>

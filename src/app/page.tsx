@@ -6,6 +6,7 @@ import { About } from "@/components/About";
 import { Testimonials } from "@/components/Testimonials";
 import { ContactForm } from "@/components/ContactForm";
 import { BackToTop } from "@/components/BackToTop";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -31,10 +32,7 @@ export default function Home() {
       <Testimonials />
       <ContactForm />
 
-      {/* Footer */}
-      <footer className="w-full text-center py-6 text-text-muted text-sm relative z-10 border-t border-white/5 mt-16 max-w-5xl mx-auto">
-        <p>&copy; {new Date().getFullYear()} Gustavo Resende. Construído com Next.js & Tailwind CSS.</p>
-      </footer>
+      <Footer />
 
       <BackToTop />
     </main>

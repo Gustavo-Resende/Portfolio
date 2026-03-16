@@ -1,42 +1,42 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 const projects = [
   {
     title: "Sleipnir",
-    description: "Motor de logística de alta performance com DDD, Rastreamento em tempo real e .NET 9.",
+    descriptionKey: "sleipnir" as const,
     tags: [".NET 9", "DDD", "PostgreSQL"],
     live: "/projects/sleipnir",
     category: "net"
   },
   {
     title: "Muninn",
-    description: "Template arquitetural robusto para microsserviços e sistemas escaláveis em .NET.",
+    descriptionKey: "muninn" as const,
     tags: [".NET 9", "Clean Arch", "Serilog"],
     live: "/projects/muninn",
     category: "net"
   },
   {
     title: "Frigg",
-    description: "Sistema de gestão imobiliária complexo com automações e integrações de API.",
+    descriptionKey: "frigg" as const,
     tags: ["React", "Cloud Code", "System Design"],
     live: "/projects/frigg",
     category: "react"
   },
   {
     title: "BotFatura",
-    description: "Automação completa de faturas e cobranças via WhatsApp integrado ao ecossistema Frigg.",
+    descriptionKey: "botfatura" as const,
     tags: ["WhatsApp API", "Automation", ".NET"],
     live: "/projects/bot-fatura",
     category: "net"
   },
   {
     title: "Resumax",
-    description: "Plataforma inteligente de resumos de conteúdos impulsionada por IA (Em Desenvolvimento).",
+    descriptionKey: "resumax" as const,
     tags: ["AI", "OpenAI", "Next.js"],
     live: "/projects/resumax",
     category: "react"
@@ -51,7 +51,6 @@ export function ProjectCard() {
     { id: "all", label: t.projects.filters.all },
     { id: "net", label: t.projects.filters.net },
     { id: "react", label: t.projects.filters.react },
-    { id: "sql", label: t.projects.filters.sql },
   ];
 
   const filteredProjects = projects.filter(project => 
@@ -103,7 +102,7 @@ export function ProjectCard() {
             
             <div className="p-6 flex flex-col flex-grow">
               <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-              <p className="text-text-body text-sm mb-4 flex-grow">{project.description}</p>
+              <p className="text-text-body text-sm mb-4 flex-grow">{t.projects.descriptions[project.descriptionKey]}</p>
               
               <div className="flex flex-wrap gap-2 mb-6">
                 {project.tags.map(tag => (

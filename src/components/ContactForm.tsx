@@ -14,7 +14,7 @@ export function ContactForm() {
     // Simulate API call
     setTimeout(() => {
       setIsSubmitting(false);
-      alert("Mensagem enviada com sucesso!");
+      alert(t.contact.successMessage);
     }, 1500);
   };
 
