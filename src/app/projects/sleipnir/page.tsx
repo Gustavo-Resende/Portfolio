@@ -495,21 +495,21 @@ function CodeCarousel({ snippets, color = "lime" }: { snippets: { title: string,
           <div className="w-2.5 h-2.5 rounded-full bg-amber-500/40" />
           <div className="w-2.5 h-2.5 rounded-full bg-lime-primary/40" />
         </div>
-        <span className={`text-[10px] font-mono uppercase tracking-widest opacity-50 ${colorClass}`}>
+        <span className={`text-xs md:text-sm font-mono uppercase tracking-widest opacity-70 ${colorClass}`}>
           {snippets[index].title}
         </span>
         <div className="flex gap-2">
           <button onClick={prev} className="p-1 hover:bg-white/5 rounded transition-colors opacity-50 hover:opacity-100">
-            <ChevronLeft className="w-4 h-4" />
+            <ChevronLeft className="w-5 h-5" />
           </button>
           <button onClick={next} className="p-1 hover:bg-white/5 rounded transition-colors opacity-50 hover:opacity-100">
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight className="w-5 h-5" />
           </button>
         </div>
       </div>
 
       {/* Code Area */}
-      <div className="flex-1 p-6 relative overflow-hidden flex flex-col justify-center">
+      <div className="flex-1 p-6 md:p-8 relative overflow-hidden flex flex-col justify-center">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
@@ -517,10 +517,10 @@ function CodeCarousel({ snippets, color = "lime" }: { snippets: { title: string,
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.3 }}
-            className="font-mono text-[13px] leading-relaxed text-white/80 whitespace-pre-wrap flex flex-col gap-4"
+            className="font-mono text-sm md:text-base leading-relaxed whitespace-pre-wrap"
           >
-            <code className="block">
-              {snippets[index].code}
+            <code className="block text-white/90">
+              {highlightCSharp(snippets[index].code)}
             </code>
           </motion.div>
         </AnimatePresence>
@@ -537,5 +537,32 @@ function CodeCarousel({ snippets, color = "lime" }: { snippets: { title: string,
       </div>
     </div>
   );
+}
+
+function highlightCSharp(code: string) {
+  const parts = code.split(/(\/\/.*|"[^"]*"|\b(?:public|private|protected|internal|class|interface|enum|struct|void|string|int|decimal|DateTimeOffset|DateTime|TimeSpan|async|await|task|Task|foreach|in|var|new|throw|if|else|return|using|namespace|static|typeof|base|where|params|readonly)\b|\b[A-Z][a-zA-Z0-9_]*\b)/g);
+
+  return parts.map((part, i) => {
+    if (!part) return null;
+
+    // Comments
+    if (part.startsWith("//")) {
+      return <span key={i} className="text-white/30 italic">{part}</span>;
+    }
+    // Strings
+    if (part.startsWith("\"")) {
+      return <span key={i} className="text-amber-200/90">{part}</span>;
+    }
+    // Keywords
+    if (/^(public|private|protected|internal|class|interface|enum|struct|void|string|int|decimal|DateTimeOffset|DateTime|TimeSpan|async|await|task|Task|foreach|in|var|new|throw|if|else|return|using|namespace|static|typeof|base|where|params|readonly)$/.test(part)) {
+      return <span key={i} className="text-pink-400">{part}</span>;
+    }
+    // Types / Classes (Simple heuristic: starts with Uppercase)
+    if (/^[A-Z][a-zA-Z0-9_]*$/.test(part)) {
+      return <span key={i} className="text-sky-300">{part}</span>;
+    }
+
+    return part;
+  });
 }
 
