@@ -27,7 +27,14 @@ export const en = {
       sql: "SQL"
     },
     code: "Code",
-    live: "Live"
+    live: "Live",
+    descriptions: {
+      sleipnir: "High-performance logistics engine with DDD, real-time tracking, and .NET 9.",
+      muninn: "Automotive lead capture and resale platform for the Canadian market.",
+      frigg: "Complex real estate management system with automations and API integrations.",
+      botfatura: "End-to-end invoice and billing automation via WhatsApp integrated with the Frigg ecosystem.",
+      resumax: "AI-powered intelligent content summarization platform (In Development)."
+    }
   },
   skills: {
     eyebrow: "SKILLS",
@@ -72,7 +79,24 @@ export const en = {
   },
   testimonials: {
     eyebrow: "TESTIMONIALS",
-    title: "What Clients Say's About Me",
+    title: "What Clients Say About Me",
+    items: [
+      {
+        name: "Alexandre Freitas",
+        role: "Tech Lead",
+        content: "Gustavo is an excellent engineer. His application of Clean Architecture in our .NET projects exponentially improved code maintainability. A focused professional who always delivers with outstanding quality."
+      },
+      {
+        name: "Mariana Silva",
+        role: "Product Manager",
+        content: "Having Gustavo on the team means peace of mind. He understands business requirements very well (thanks to his DDD skills) and translates them into fast, scalable technical solutions."
+      },
+      {
+        name: "Carlos Eduardo",
+        role: "Entrepreneur",
+        content: "The automation he built with BotFatura saved dozens of hours of manual work at my company every month. Incredible service, delivered very quickly."
+      }
+    ]
   },
   contact: {
     eyebrow: "CONTACT",
@@ -83,6 +107,273 @@ export const en = {
     budgetPlaceholder: "Your Budget",
     messagePlaceholder: "Tell me something about your project",
     submitText: "Submit Now",
-    submittingText: "Submitting..."
-  }
+    submittingText: "Submitting...",
+    successMessage: "Message sent successfully!"
+  },
+  footer: {
+    builtWith: "Built with Next.js & Tailwind CSS."
+  },
+  projectPages: {
+    common: {
+      sections: {
+        overview: "Overview",
+        journey: "Journey",
+        architecture: "Architecture",
+        results: "Results",
+        contact: "Contact",
+      },
+      contactButton: "Get in Touch",
+      metadata: {
+        duration: "Duration",
+        stack: "Tech Stack",
+        model: "Commercial Model",
+      },
+      journey: {
+        eyebrow: "The Scenario",
+        title: "The Project Journey",
+        problem: "1. The Problem",
+        objective: "2. The Objective",
+        solution: "3. The Solution",
+      },
+      architecture: {
+        eyebrow: "CORE Architecture",
+        title: "How the system was designed",
+      },
+      results: {
+        eyebrow: "Metrics & Deliveries",
+        title: "Implementation Success",
+      },
+      cta: {
+        title: "Liked this architectural approach?",
+        description: "Cutting-edge software demands robust foundations and clean code. Let's build your next Success Story together.",
+        button: "Talk About My Project",
+      },
+      footer: "Built with Next.js & Tailwind CSS.",
+      zeroDowntime: "Zero Downtime",
+      online: "Online",
+    },
+    sleipnir: {
+      hero: "A scalable logistics tracking ecosystem that ensures <accent>total fleet and route visibility</accent> in real time.",
+      metadata: {
+        duration: { title: "Continuous Cycle", description: "From MVP to industrial scale, with active maintenance and constant architecture evolution." },
+        stack: { title: ".NET 9, PostgreSQL, Docker", description: "Using EF Core for persistence and MediatR for event decoupling." },
+        model: { title: "Corporate Delivery", description: "Custom software licensing with critical engineering support." },
+      },
+      journey: {
+        problem: "Inefficient traceability and lack of standards in fleet management, generating inconsistent data and critical operational delays.",
+        objective: "Architect a resilient monitoring system, focused on Domain-Driven Design to ensure unbreakable and auditable business rules.",
+        solution: "A scalable .NET 9 API with PostgreSQL, implementing tracking queues and domain events for full route automation.",
+      },
+      features: {
+        f1: {
+          eyebrow: "DATA INTEGRITY",
+          title: "Rich Domain with",
+          highlight: "{ DDD & Validations }",
+          description: "All business logic is centered in the `Core`, where Aggregates like `Route` manage their own state through strict Guard Clauses, ensuring the system never enters an invalid state.",
+          checks: ["Entities protected against inconsistencies.", "Historical tracking of every event (Audit Log)."],
+        },
+        f2: {
+          eyebrow: "HIGH AVAILABILITY",
+          title: "High-Performance Persistence with",
+          highlight: "{ PostgreSQL & EF Core }",
+          description: "Using a modern .NET 9-based infrastructure, the data layer was optimized with Npgsql and connection Retry policies, ensuring resilience in high-concurrency environments.",
+          checks: ["Resilient connection with Retry Policy.", "Optimized persistence with PostgreSQL."],
+        },
+        f3: {
+          eyebrow: "MAXIMUM SCALABILITY",
+          title: "Decoupling via",
+          highlight: "{ MediatR & Event Bus }",
+          description: "The application uses internal messaging patterns to process domain events asynchronously, allowing new features (like notifications or webhooks) to be added without changing the core route logic.",
+          checks: ["Asynchronous processing via MediatR.", "Fully decoupled events."],
+        },
+      },
+      results: {
+        m1: { value: "-85%", label: "Manual Operation Time" },
+        m2: { value: "Zero", label: "Downtime Registered" },
+        m3: { value: "10k+", label: "Reqs/min No Bottleneck" },
+        m4: { value: "+30%", label: "Capacity Increase" },
+      },
+    },
+    frigg: {
+      hero: "A real estate management ecosystem that automates the complete cycle of <accent>contracts, billing, and service orders</accent> with digital integration.",
+      metadata: {
+        duration: { title: "Continuous Cycle", description: "From MVP to SaaS platform, with constant evolution and new integrations every sprint." },
+        stack: { title: ".NET 9, PostgreSQL, Docker", description: "Clean Architecture with EF Core, MediatR, Clicksign API and Evolution API (WhatsApp)." },
+        model: { title: "PropTech Platform", description: "Corporate solution for real estate agencies with contract, billing, and maintenance management." },
+      },
+      journey: {
+        problem: "Manual management of contracts and properties creates immense bottlenecks, lack of sync between owner and tenant, and cash flow delays.",
+        objective: "Automate the \"Lead to Lease\" cycle, ensuring digitally signed contracts integrated with finances without manual intervention.",
+        solution: "A .NET 9 platform with DDD, Clicksign integration for digital signatures and Evolution API for automatic WhatsApp communication.",
+      },
+      features: {
+        f1: {
+          eyebrow: "DATA INTEGRITY",
+          title: "Rich Domain with",
+          highlight: "{ DDD & Validations }",
+          description: "Frigg's business logic is centered on Aggregates like `Residence` and `Contract`, which manage their own state through Guard Clauses, ensuring a property never has two active contracts simultaneously.",
+          checks: ["Strict contract validity validation.", "Protected aggregates (Residence/Contract)."],
+        },
+        f2: {
+          eyebrow: "DIGITAL SIGNATURE",
+          title: "Integration with",
+          highlight: "{ Clicksign API }",
+          description: "Frigg automates contract draft generation via Clicksign, reducing the rental closing cycle from days to minutes. Dynamic templates automatically fill in tenant data.",
+          checks: ["Automatic PDF generation via Templates.", "Complete flow: Document → Signer → URL."],
+        },
+        f3: {
+          eyebrow: "MAINTENANCE MANAGEMENT",
+          title: "Service Orders with",
+          highlight: "{ State Machine }",
+          description: "The Service Orders module uses a strict State Machine to control status transitions, ensuring only valid flows are executed (Open → InProgress → Resolved).",
+          checks: ["Controlled state transitions.", "Message history per order."],
+        },
+      },
+      results: {
+        m1: { value: "-90%", label: "Signing Time" },
+        m2: { value: "Zero", label: "Downtime Registered" },
+        m3: { value: "100+", label: "Contracts Managed" },
+        m4: { value: "+40%", label: "Operational Efficiency" },
+      },
+    },
+    botFatura: {
+      hero: "An intelligent solution to end delinquency. Automate the <accent>billing cycle via WhatsApp</accent> with personalized rules and direct ERP integration.",
+      metadata: {
+        duration: { title: "Continuous Cycle", description: "From MVP to SaaS platform, with constant evolution and new integrations every sprint." },
+        stack: { title: ".NET 9, PostgreSQL, Docker", description: "Clean Architecture with Evolution API (WhatsApp), AI reconciliation and ERP integration." },
+        model: { title: "FinTech SaaS", description: "Billing automation platform for companies with high volumes of recurring invoices." },
+      },
+      architecture: {
+        eyebrow: "Billing Intelligence",
+        title: "Billing Architecture",
+      },
+      journey: {
+        problem: "Companies lose millions annually trying to collect from clients manually. Emails are ignored and calls are invasive, generating slow bureaucratic processes.",
+        objective: "Transform billing into a friendly, frictionless experience, ensuring the boleto or PIX is always at hand for the client via WhatsApp.",
+        solution: "A .NET 9 platform with automated billing rules, WhatsApp integration via Evolution API, and intelligent receipt reconciliation.",
+      },
+      features: {
+        f1: {
+          eyebrow: "DATA LOGISTICS",
+          title: "Billing Rules",
+          highlight: "{ Automated }",
+          description: "Bot-Fatura proactively monitors invoices and triggers time-based notifications, ensuring the client feels reminded, not harassed. The rules control 3 days before, due date, and post-due.",
+          checks: ["State control: Pending, Sent, Paid.", "Guaranteed no-duplicate sends."],
+        },
+        f2: {
+          eyebrow: "WHATSAPP CONNECTIVITY",
+          title: "Engagement",
+          highlight: "{ Humanized }",
+          description: "Integrated with Evolution API, the system simulates human presence (`composing`) and introduces variable delays to ensure WhatsApp account integrity and increase read rates.",
+          checks: ["Multi-instance support.", "Batch PDF and receipt delivery."],
+        },
+        f3: {
+          eyebrow: "INTELLIGENT RECONCILIATION",
+          title: "Payment Verification with",
+          highlight: "{ AI & ERP }",
+          description: "The reconciliation module automatically cross-references receipts received via WhatsApp with ERP records, eliminating manual checking and reducing operational errors.",
+          checks: ["Automatic receipt validation.", "Bidirectional ERP integration."],
+        },
+      },
+      results: {
+        m1: { value: "-70%", label: "Delinquency" },
+        m2: { value: "Zero", label: "Downtime Registered" },
+        m3: { value: "5k+", label: "Messages/Month" },
+        m4: { value: "+95%", label: "Read Rate" },
+      },
+    },
+    muninn: {
+      heroBadge: "International Project — Canada",
+      hero: "A platform for <accent>automotive lead capture and resale</accent> for the Canadian market, with multi-step forms, Meta Pixel for paid traffic, and backend integration via OpenAPI.",
+      metadata: {
+        operation: { label: "Operation", title: "🇨🇦 Active Production", description: "System operating in Canada with active paid traffic, integrated Meta Pixel, and leads being captured and resold to dealerships." },
+        stack: { title: "Next.js 15, .NET 9, Docker", description: "Frontend with React 19, Tailwind CSS 4 and Meta Pixel. Backend with Clean Architecture, DDD and generated OpenAPI clients." },
+        model: { title: "Lead Resale B2B", description: "Captures leads via paid traffic (Meta Ads) and resells to Canadian dealerships — where cost per lead is high." },
+      },
+      journey: {
+        problem: "In Canada, automotive lead cost is extremely high. Managing captures manually without conversion tracking and without Meta Pixel results in wasted ad spend.",
+        objective: "Create a lead capture platform with Meta Pixel, conversion-optimized forms, and JWT authentication for secure resale to dealerships.",
+        solution: "Full-stack application with Next.js 15, .NET 9 and integrated Meta Pixel, multi-step forms with validation, NextAuth.js and B2B resale pipeline.",
+      },
+      features: {
+        f1: {
+          eyebrow: "DOMAIN PROTECTION",
+          title: "Guard Clauses with",
+          highlight: "{ IDomainGuard }",
+          description: "Muninn implements a custom Guard Clauses pattern that goes beyond simple validations: the `IDomainGuard` allows creating semantic extensions that protect domain invariants in a fluent and reusable way.",
+          checks: ["Extensible Guard Clauses via interface.", "DomainException for business failures."],
+        },
+        f2: {
+          eyebrow: "RICH AGGREGATES",
+          title: "Entities with",
+          highlight: "{ Value Objects & Events }",
+          description: "The `Account` Aggregate demonstrates the power of DDD: typed Value Objects (Email, Password, FullName), token generation with controlled lifecycle, and automatic Domain Event emission in the constructor.",
+          checks: ["Value Objects for strong typing.", "Automatically dispatched Domain Events."],
+        },
+        f3: {
+          eyebrow: "EVENT-DRIVEN ARCHITECTURE",
+          title: "Messaging via",
+          highlight: "{ Channels & Event Bus }",
+          description: "Muninn uses `System.Threading.Channels` to process domain events asynchronously and decoupled. A `BackgroundService` consumes events in real time, resolving handlers via DI.",
+          checks: ["In-memory Event Bus via Channels.", "Async consumer as BackgroundService."],
+        },
+      },
+      results: {
+        title: "The Impact on the Canadian Market",
+        m1: { value: "High Conversion", label: "Canadian Market" },
+        m2: { value: "Meta", label: "Pixel Integrated" },
+        m2status: "Tracking",
+        m3: { value: "B2B", label: "Lead Resale" },
+        m4: { value: "Ads", label: "Optimized Paid Traffic" },
+      },
+    },
+    resumax: {
+      heroBadge: "In Development",
+      hero: "An intelligent resume adaptation platform that uses <accent>generative AI and NLP</accent> to maximize ATS approval and recruiter impact.",
+      comingSoon: "Coming Soon",
+      metadata: {
+        status: { label: "Status", title: "In Development", description: "Active construction phase with defined architecture, modeled domain, and functional Gemini AI integration." },
+        stack: { title: ".NET 9, Gemini AI, Docker", description: "Clean Architecture with DDD, Google Gemini for NLP and ATS-optimized resume generation." },
+        model: { title: "SaaS HRTech", description: "Platform for candidates and recruiters to optimize the match between talent and opportunity." },
+      },
+      journey: {
+        problem: "Generic resumes are filtered by ATS systems before reaching a human. Exceptional candidates lose opportunities by not adapting key terms and structure.",
+        objective: "Create an intelligent bridge between resumes and job postings, using generative AI to ethically adapt content, maximizing the ATS Score.",
+        solution: "A .NET 9 API with Google Gemini, Prompt Engineering with ethical guardrails, and categorized SkillSet for semantic gap analysis.",
+      },
+      features: {
+        f1: {
+          eyebrow: "DOMAIN MODELING",
+          title: "Resume as",
+          highlight: "{ Aggregate Root }",
+          description: "Resumax models the resume as a rich Domain Aggregate with typed Value Objects (SkillSet, ContactInfo, WorkExperience), allowing AI to manipulate specific sections without losing original data integrity.",
+          checks: ["Factory Method with invariant validation.", "Semantic Value Objects for categorization."],
+        },
+        f2: {
+          eyebrow: "GENERATIVE INTELLIGENCE",
+          title: "Adaptation via",
+          highlight: "{ Google Gemini }",
+          description: "Resumax's AI engine uses Google Gemini to analyze the job context and semantically adapt the resume, generating an ATS Score and identifying gaps ethically — without inventing experiences or metrics.",
+          checks: ["Structured response in typed JSON.", "ATS Score with adherence label."],
+        },
+        f3: {
+          eyebrow: "PROMPT ENGINEERING",
+          title: "Winner Template with",
+          highlight: "{ Ethical Guardrails }",
+          description: "The PromptBuilder uses a \"Winner Template\" pattern — a top 1% reference resume — as a quality anchor for the AI, with inviolable rules that prevent data fabrication and ensure total truthfulness.",
+          checks: ["Inviolable rules against fabrication.", "XYZ Method for impact bullets."],
+        },
+      },
+      results: {
+        eyebrow: "Impact Vision",
+        title: "What Resumax Will Deliver",
+        subtitle: "Projected metrics — system under development",
+        m1: { value: "+80%", label: "ATS Approval Rate" },
+        m2: { value: "Gemini", label: "AI Engine" },
+        m2status: "Integrated",
+        m3: { value: "100%", label: "Guaranteed Truthfulness" },
+        m4: { value: "-90%", label: "Adaptation Time" },
+      },
+    },
+  },
 };
