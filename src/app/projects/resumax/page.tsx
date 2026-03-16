@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { ProjectHeader } from "@/components/ProjectHeader";
 import { BackToTop } from "@/components/BackToTop";
+import { ContactCTA } from "@/components/ContactCTA";
 
 export default function ResumaxProject() {
   const { t } = useLanguage();
@@ -146,7 +147,7 @@ export default function ResumaxProject() {
       </section>
 
       {/* 3. FUNCIONALIDADES CORE (Doc-Style Zig-Zag) */}
-      <section id="architecture" className="py-24 px-4 relative z-10 w-full bg-[#050505]/50 backdrop-blur-sm border-b border-white/5">
+      <section id="architecture" className="py-24 px-4 relative z-10 w-full">
         <div className="max-w-6xl mx-auto space-y-32">
           
           <div className="text-center mb-16">
@@ -424,8 +425,10 @@ if (adaptedResume.FabricationCheck is { Count: > 0 })
         </div>
       </section>
 
+      <ContactCTA variant="inline" />
+
       {/* 4. RESULTADOS (High Impacto Visual) */}
-      <section id="results" className="pt-32 pb-16 px-4 relative overflow-hidden z-10 bg-black">
+      <section id="results" className="pt-32 pb-16 px-4 relative overflow-hidden z-10">
         <div className="absolute inset-0 pointer-events-none z-0 flex items-center justify-center">
           <div className="w-[400px] h-[400px] bg-blue-500 rounded-full blur-[180px] opacity-[0.08]" />
         </div>
