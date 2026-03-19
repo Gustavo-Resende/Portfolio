@@ -80,9 +80,9 @@ export function ContactCTA({ variant = "inline", accentColor = "lime-primary" }:
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="w-full max-w-5xl mx-auto px-4 pt-8 pb-4 relative z-10"
+      className="w-full max-w-5xl mx-auto px-4 pt-6 pb-3 relative z-10"
     >
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 py-6 px-6 md:px-8 rounded-xl border border-white/5 bg-white/[0.02]">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 py-5 px-6 md:px-8 rounded-xl border border-white/5 bg-white/[0.02]">
         <div className="text-center sm:text-left">
           <h4 className={`text-base md:text-lg font-bold text-white`}>
             {t.cta.inline.title}

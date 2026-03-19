@@ -9,7 +9,7 @@ export function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section className="flex flex-col items-center justify-center pt-32 pb-16 text-center space-y-6 relative z-10 px-4 min-h-[85vh]" id="hero">
+    <section className="flex flex-col items-center justify-center pt-24 pb-10 lg:pt-32 lg:pb-16 text-center space-y-4 lg:space-y-6 relative z-10 px-4 min-h-[60vh] lg:min-h-[85vh]" id="hero">
       {/* Local Background Effects for Hero to maintain the 'esverdeado' color requested, but isolated to the hero */}
       <div className="absolute inset-0 pointer-events-none z-[-1] flex items-center justify-center">
         <div className="absolute w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-[#A3E635] rounded-full blur-[150px] opacity-[0.25]" />
@@ -58,7 +58,7 @@ export function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
-        className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-6 pt-10 w-full"
+        className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-6 pt-6 lg:pt-10 w-full"
       >
         <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto px-6 sm:px-0">
           <a

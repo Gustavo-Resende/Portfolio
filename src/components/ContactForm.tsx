@@ -31,7 +31,7 @@ export function ContactForm() {
   };
 
   return (
-    <section className="py-24 relative z-10 w-full max-w-6xl mx-auto px-4" id="contact">
+    <section className="py-16 lg:py-24 relative z-10 w-full max-w-6xl mx-auto px-4" id="contact">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

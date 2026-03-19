@@ -59,7 +59,7 @@ export default function MuninnProject() {
       </div>
 
       {/* 1. PROJECT HERO */}
-      <section id="hero" className="relative w-full pt-32 pb-20 px-4 min-h-[70vh] flex items-center border-b border-white/5 overflow-hidden z-10">
+      <section id="hero" className="relative w-full pt-24 pb-12 lg:pt-32 lg:pb-20 px-4 min-h-[60vh] lg:min-h-[70vh] flex items-center border-b border-white/5 overflow-hidden z-10">
         <div className="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           
           {/* Lado Esquerdo: Textos e CTAs */}
@@ -108,8 +108,8 @@ export default function MuninnProject() {
       </section>
 
       {/* 2. METADATA E JORNADA DO PROJETO */}
-      <section id="metadata" className="py-24 px-4 relative z-10 w-full border-b border-white/5">
-        <div className="max-w-7xl mx-auto space-y-32">
+      <section id="metadata" className="py-16 lg:py-24 px-4 relative z-10 w-full border-b border-white/5">
+        <div className="max-w-7xl mx-auto space-y-24 lg:space-y-32">
           
           {/* Metadata Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -149,7 +149,7 @@ export default function MuninnProject() {
 
           {/* A Jornada: Problema -> Objetivo -> Solução */}
           <div className="w-full relative pt-10">
-            <div className="text-center mb-24">
+            <div className="text-center mb-16 lg:mb-24">
                <span className="text-amber-500 text-xs font-bold tracking-widest uppercase mb-2 block">{t.projectPages.common.journey.eyebrow}</span>
                <h2 className="text-4xl font-bold text-white">{t.projectPages.common.journey.title}</h2>
             </div>
@@ -169,16 +169,16 @@ export default function MuninnProject() {
       </div>
 
       {/* 3. FUNCIONALIDADES CORE (Doc-Style Zig-Zag) */}
-      <section id="architecture" className="py-24 px-4 relative z-10 w-full">
-        <div className="max-w-6xl mx-auto space-y-32">
+      <section id="architecture" className="py-16 lg:py-24 px-4 relative z-10 w-full">
+        <div className="max-w-6xl mx-auto space-y-24 lg:space-y-32">
           
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 lg:mb-16">
             <span className="text-amber-500 text-xs font-bold tracking-widest uppercase mb-2 block">{t.projectPages.common.architecture.eyebrow}</span>
             <h2 className="text-4xl font-bold text-white">{t.projectPages.common.architecture.title}</h2>
           </div>
 
           {/* Feature 1: Domain Guard Pattern (Texto Esquerda, Code Direita) */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-6 order-1 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-amber-500 pl-3">{t.projectPages.muninn.features.f1.eyebrow}</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
@@ -246,7 +246,7 @@ Domain.Against.When(
           </div>
 
           {/* Feature 2: Rich Aggregate (Code Esquerda, Texto Direita) */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
              <div className="relative w-full aspect-square md:aspect-[4/3] order-2 lg:order-1">
                 <CodeCarousel 
                   color="red"
@@ -324,7 +324,7 @@ public void SetPassword(Password password) => Password = password;`
           </div>
 
           {/* Feature 3: Event Bus (Texto Esquerda, Code Direita) */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-6 order-1 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-amber-500 pl-3">{t.projectPages.muninn.features.f3.eyebrow}</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
@@ -412,12 +412,12 @@ public class SendWelcomeEmailHandler : IEventHandler<AccountCreatedSendEmailEven
       <ContactCTA variant="inline" accentColor="amber-500" />
 
       {/* 4. RESULTADOS (High Impacto Visual) */}
-      <section id="results" className="pt-32 pb-16 px-4 relative overflow-hidden z-10">
+      <section id="results" className="pt-20 pb-8 lg:pt-32 lg:pb-16 px-4 relative overflow-hidden z-10">
         <div className="absolute inset-0 pointer-events-none z-0 flex items-center justify-center">
           <div className="w-[400px] h-[400px] bg-amber-500 rounded-full blur-[180px] opacity-[0.08]" />
         </div>
 
-        <div className="max-w-6xl mx-auto relative z-10 space-y-16">
+        <div className="max-w-6xl mx-auto relative z-10 space-y-12 lg:space-y-16">
           <div className="text-center">
             <span className="text-amber-500 text-xs font-bold tracking-widest uppercase block mb-2">{t.projectPages.common.results.eyebrow}</span>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">
@@ -497,7 +497,7 @@ public class SendWelcomeEmailHandler : IEventHandler<AccountCreatedSendEmailEven
              </motion.div>
           </div>
           
-          <div id="cta" className="pt-24 flex flex-col items-center gap-6 text-center">
+          <div id="cta" className="pt-16 flex flex-col items-center gap-6 text-center">
             <h3 className="text-3xl font-bold text-white">{t.projectPages.common.cta.title}</h3>
             <p className="text-white/60 mb-4 max-w-xl">{t.projectPages.common.cta.description}</p>
             <Link href="/#contact" className="bg-amber-500 hover:bg-amber-400 text-black px-10 py-4 rounded-full font-bold transition-all text-lg shadow-[0_0_40px_rgba(245,158,11,0.4)] hover:shadow-[0_0_60px_rgba(245,158,11,0.6)] hover:scale-105">
@@ -549,9 +549,9 @@ function JourneyAnimatedSection() {
         <div className="flex flex-col items-center text-center gap-6 relative">
           <motion.div 
             initial={{ scale: 0, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once:true, margin: "-100px" }}
-            className="w-16 h-16 md:w-20 md:h-20 shrink-0 rounded-full bg-black border-2 border-red-500/80 flex items-center justify-center shadow-[0_0_30px_rgba(239,68,68,0.3)]"
+            className="w-[90px] h-[90px] md:w-28 md:h-28 shrink-0 rounded-full bg-black border-2 border-red-500/80 flex items-center justify-center shadow-[0_0_30px_rgba(239,68,68,0.3)]"
           >
-             <AlertTriangle className="w-6 h-6 md:w-8 md:h-8 text-red-500" />
+             <AlertTriangle className="w-9 h-9 md:w-11 md:h-11 text-red-500" />
           </motion.div>
           <div>
             <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{t.projectPages.common.journey.problem}</h3>
@@ -565,9 +565,9 @@ function JourneyAnimatedSection() {
         <div className="flex flex-col items-center text-center gap-6 relative">
           <motion.div 
             initial={{ scale: 0, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once:true, margin: "-100px" }}
-            className="w-16 h-16 md:w-20 md:h-20 shrink-0 rounded-full bg-black border-2 border-amber-500/80 flex items-center justify-center shadow-[0_0_30px_rgba(245,158,11,0.3)]"
+            className="w-[90px] h-[90px] md:w-28 md:h-28 shrink-0 rounded-full bg-black border-2 border-amber-500/80 flex items-center justify-center shadow-[0_0_30px_rgba(245,158,11,0.3)]"
           >
-             <Target className="w-6 h-6 md:w-8 md:h-8 text-amber-500" />
+             <Target className="w-9 h-9 md:w-11 md:h-11 text-amber-500" />
           </motion.div>
           <div>
             <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{t.projectPages.common.journey.objective}</h3>
@@ -581,9 +581,9 @@ function JourneyAnimatedSection() {
         <div className="flex flex-col items-center text-center gap-6 relative">
           <motion.div 
             initial={{ scale: 0, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once:true, margin: "-100px" }}
-            className="w-16 h-16 md:w-20 md:h-20 shrink-0 rounded-full bg-black border-2 border-lime-primary/80 flex items-center justify-center shadow-[0_0_30px_rgba(163,230,53,0.3)]"
+            className="w-[90px] h-[90px] md:w-28 md:h-28 shrink-0 rounded-full bg-black border-2 border-lime-primary/80 flex items-center justify-center shadow-[0_0_30px_rgba(163,230,53,0.3)]"
           >
-             <Lightbulb className="w-6 h-6 md:w-8 md:h-8 text-lime-primary" />
+             <Lightbulb className="w-9 h-9 md:w-11 md:h-11 text-lime-primary" />
           </motion.div>
           <div>
             <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{t.projectPages.common.journey.solution}</h3>

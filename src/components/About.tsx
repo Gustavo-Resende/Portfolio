@@ -8,8 +8,8 @@ export function About() {
   const { t } = useLanguage();
 
   return (
-    <section className="py-16 relative z-10 w-full max-w-5xl mx-auto px-4" id="about">
-      <div className="mb-12 flex flex-col items-center text-center">
+    <section className="py-10 lg:py-16 relative z-10 w-full max-w-5xl mx-auto px-4" id="about">
+      <div className="mb-8 lg:mb-12 flex flex-col items-center text-center">
         <span className="text-lime-primary text-xs font-bold tracking-widest uppercase mb-2 block">
           {t.about.eyebrow}
         </span>
