@@ -27,7 +27,7 @@ export function Hero() {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ type: "spring", stiffness: 260, damping: 20 }}
           >
-            <div className="w-20 h-20 md:w-24 md:h-24 rounded-full border border-lime-primary/30 p-[3px] overflow-hidden relative shadow-[0_0_20px_rgba(163,230,53,0.15)] bg-black/50">
+            <div className="w-[100px] h-[100px] md:w-[120px] md:h-[120px] rounded-full border border-lime-primary/30 p-[3px] overflow-hidden relative shadow-[0_0_20px_rgba(163,230,53,0.15)] bg-black/50">
               <Image
                 src="/avatar.jpg"
                 alt="Gustavo Resende"
@@ -38,9 +38,9 @@ export function Hero() {
             </div>
           </motion.div>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight flex flex-col items-center text-center gap-2">
-            <span className="text-white tracking-tight flex items-center justify-center gap-2 lg:whitespace-nowrap">
-              {t.hero.greeting} <span className="text-3xl lg:text-4xl"></span>
+          <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight flex flex-col items-center text-center gap-2">
+            <span className="text-white tracking-tight flex items-center justify-center gap-2 whitespace-nowrap">
+              {t.hero.greeting} <span className="text-2xl sm:text-3xl lg:text-4xl"></span>
             </span>
             <span className="text-lime-primary drop-shadow-[0_0_15px_rgba(163,230,53,0.3)]">
               {t.hero.role}

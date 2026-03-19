@@ -8,9 +8,9 @@ export const en = {
     contact: "Contact",
   },
   hero: {
-    greeting: "Hi, I'm Gustavo Resende",
+    greeting: "Hi, I'm Gustavo",
     role: "Backend Developer",
-    description: "A <strong class=\"text-white font-semibold\">backend developer</strong> with solid foundations in <strong class=\"text-white font-semibold\">software architecture</strong>.<br/>Passionate about crafting scalable APIs, I thrive at the intersection<br/>of performance and clean code.",
+    description: "A <strong class=\"text-white font-semibold\">backend developer</strong> with solid foundations in <strong class=\"text-white font-semibold\">software architecture</strong>. Passionate about crafting scalable APIs, I thrive at the intersection of performance and clean code.",
     github: "Github",
     email: "Email",
     linkedin: "LinkedIn",
@@ -187,7 +187,7 @@ export const en = {
           title: "Rich Domain with",
           highlight: "{ DDD & Validations }",
           description: "All business logic is centered in the `Core`, where Aggregates like `Route` manage their own state through strict Guard Clauses, ensuring the system never enters an invalid state.",
-          checks: ["Entities protected against inconsistencies.", "Historical tracking of every event (Audit Log)."],
+          checks: ["Entities protected against inconsistencies.", "Historical tracking of every event (Audit\u00A0Log)."],
         },
         f2: {
           eyebrow: "HIGH AVAILABILITY",

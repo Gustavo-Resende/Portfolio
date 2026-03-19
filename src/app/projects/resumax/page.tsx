@@ -55,7 +55,7 @@ export default function ResumaxProject() {
 
 
             <div className="space-y-4">
-              <div className="flex items-center gap-3 flex-wrap">
+              <div className="flex items-center justify-center lg:justify-start gap-3 flex-wrap">
                 <motion.span 
                   animate={{ opacity: [1, 0.6, 1] }} 
                   transition={{ repeat: Infinity, duration: 2.5 }}
@@ -174,14 +174,14 @@ export default function ResumaxProject() {
             <div className="space-y-6 order-1 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-blue-500 pl-3">{t.projectPages.resumax.features.f1.eyebrow}</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                {t.projectPages.resumax.features.f1.title} <span className="text-blue-400">{t.projectPages.resumax.features.f1.highlight}</span>
+                {t.projectPages.resumax.features.f1.title} <span className="inline-block whitespace-nowrap text-blue-400">{t.projectPages.resumax.features.f1.highlight}</span>
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
                 {t.projectPages.resumax.features.f1.description}
               </p>
-              <ul className="space-y-3 pt-4 font-mono text-sm flex flex-col items-center lg:items-start">
-                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-blue-400 w-4 h-4 shrink-0" /> {t.projectPages.resumax.features.f1.checks[0]}</li>
-                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-blue-400 w-4 h-4 shrink-0" /> {t.projectPages.resumax.features.f1.checks[1]}</li>
+              <ul className="space-y-3 pt-4 font-mono text-sm md:text-base flex flex-col items-center lg:items-start px-2 max-w-[26rem]">
+                <li className="flex items-start gap-3 text-white/80 text-left break-words leading-relaxed"><CheckCircle2 className="text-blue-400 w-4 h-4 shrink-0" /> {t.projectPages.resumax.features.f1.checks[0]}</li>
+                <li className="flex items-start gap-3 text-white/80 text-left break-words leading-relaxed"><CheckCircle2 className="text-blue-400 w-4 h-4 shrink-0" /> {t.projectPages.resumax.features.f1.checks[1]}</li>
               </ul>
             </div>
             <div className="relative w-full aspect-square md:aspect-[4/3] order-2 lg:order-2">
@@ -334,14 +334,14 @@ var clampedScore = Math.Clamp(adaptedResume.AtsScore.Score, 0, 100);`
             <div className="space-y-6 order-1 lg:order-2 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-blue-500 pl-3">{t.projectPages.resumax.features.f2.eyebrow}</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                {t.projectPages.resumax.features.f2.title} <span className="text-blue-400">{t.projectPages.resumax.features.f2.highlight}</span>
+                {t.projectPages.resumax.features.f2.title} <span className="inline-block whitespace-nowrap text-blue-400">{t.projectPages.resumax.features.f2.highlight}</span>
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
                 {t.projectPages.resumax.features.f2.description}
               </p>
-              <ul className="space-y-3 pt-4 font-mono text-sm flex flex-col items-center lg:items-start">
-                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-cyan-400 w-4 h-4 shrink-0" /> {t.projectPages.resumax.features.f2.checks[0]}</li>
-                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-cyan-400 w-4 h-4 shrink-0" /> {t.projectPages.resumax.features.f2.checks[1]}</li>
+              <ul className="space-y-3 pt-4 font-mono text-sm md:text-base flex flex-col items-center lg:items-start px-2 max-w-[26rem]">
+                <li className="flex items-start gap-3 text-white/80 text-left break-words leading-relaxed"><CheckCircle2 className="text-cyan-400 w-4 h-4 shrink-0" /> {t.projectPages.resumax.features.f2.checks[0]}</li>
+                <li className="flex items-start gap-3 text-white/80 text-left break-words leading-relaxed"><CheckCircle2 className="text-cyan-400 w-4 h-4 shrink-0" /> {t.projectPages.resumax.features.f2.checks[1]}</li>
               </ul>
             </div>
           </div>
@@ -351,14 +351,14 @@ var clampedScore = Math.Clamp(adaptedResume.AtsScore.Score, 0, 100);`
             <div className="space-y-6 order-1 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-blue-500 pl-3">{t.projectPages.resumax.features.f3.eyebrow}</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                {t.projectPages.resumax.features.f3.title} <span className="text-blue-400">{t.projectPages.resumax.features.f3.highlight}</span>
+                {t.projectPages.resumax.features.f3.title} <span className="inline-block whitespace-nowrap text-blue-400">{t.projectPages.resumax.features.f3.highlight}</span>
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
                 {t.projectPages.resumax.features.f3.description}
               </p>
-              <ul className="space-y-3 pt-4 font-mono text-sm flex flex-col items-center lg:items-start">
-                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-blue-400 w-4 h-4 shrink-0" /> {t.projectPages.resumax.features.f3.checks[0]}</li>
-                <li className="flex items-center gap-3 text-white/70 text-left"><CheckCircle2 className="text-blue-400 w-4 h-4 shrink-0" /> {t.projectPages.resumax.features.f3.checks[1]}</li>
+              <ul className="space-y-3 pt-4 font-mono text-sm md:text-base flex flex-col items-center lg:items-start px-2 max-w-[26rem]">
+                <li className="flex items-start gap-3 text-white/80 text-left break-words leading-relaxed"><CheckCircle2 className="text-blue-400 w-4 h-4 shrink-0" /> {t.projectPages.resumax.features.f3.checks[0]}</li>
+                <li className="flex items-start gap-3 text-white/80 text-left break-words leading-relaxed"><CheckCircle2 className="text-blue-400 w-4 h-4 shrink-0" /> {t.projectPages.resumax.features.f3.checks[1]}</li>
               </ul>
             </div>
             <div className="relative w-full aspect-square md:aspect-[4/3] order-2 lg:order-2">

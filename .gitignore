@@ -43,3 +43,6 @@ tsc_errors.txt
 
 # temp assets
 assets/
+
+# cursor
+.cursor/

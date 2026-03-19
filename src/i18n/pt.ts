@@ -2,15 +2,15 @@ export const pt = {
   header: {
     home: "Início",
     projects: "Projetos",
-    skills: "Skills",
+    skills: "Habilidades",
     about: "Sobre",
     testimonials: "Avaliações",
     contact: "Contato",
   },
   hero: {
-    greeting: "Olá, sou o Gustavo Resende",
+    greeting: "Olá, sou o Gustavo",
     role: "Desenvolvedor Backend",
-    description: "Um <strong class=\"text-white font-semibold\">desenvolvedor backend</strong> com base sólida em <strong class=\"text-white font-semibold\">arquitetura</strong>.<br/>Apaixonado por criar APIs escaláveis, eu prospero na interseção<br/>da performance com o código limpo.",
+    description: "Um <strong class=\"text-white font-semibold\">desenvolvedor backend</strong> com base sólida em <strong class=\"text-white font-semibold\">arquitetura</strong>. Apaixonado por criar APIs escaláveis, eu prospero na interseção da performance com o código limpo.",
     github: "Github",
     email: "Email",
     linkedin: "LinkedIn",
@@ -37,7 +37,7 @@ export const pt = {
     }
   },
   skills: {
-    eyebrow: "SKILLS",
+    eyebrow: "HABILIDADES",
     title: "Construindo Experiências Digitais",
     subtitle: "Sou especialista em criar arquiteturas robustas e desenvolver aplicações de alta qualidade que escalam.",
     whatICanDo: {
@@ -187,7 +187,7 @@ export const pt = {
           title: "Domínio Rico com",
           highlight: "{ DDD & Validações }",
           description: "Toda a lógica de negócios está centrada no `Core`, onde Agregados como `Route` gerenciam seu próprio estado através de Guard Clauses rigorosas, garantindo que o sistema nunca entre em um estado inválido.",
-          checks: ["Entidades protegidas contra inconsistências.", "Rastreamento histórico de cada evento (Audit Log)."],
+          checks: ["Entidades protegidas contra inconsistências.", "Rastreamento histórico de cada evento (Audit\u00A0Log)."],
         },
         f2: {
           eyebrow: "ALTA DISPONIBILIDADE",
