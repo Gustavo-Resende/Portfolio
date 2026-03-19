@@ -14,7 +14,7 @@ export const pt = {
     github: "Github",
     email: "Email",
     linkedin: "LinkedIn",
-    contactMe: "@ Fale Comigo",
+    contactMe: "Fale Comigo",
     viewProjects: "Ver Projetos",
   },
   projects: {
@@ -29,11 +29,11 @@ export const pt = {
     code: "Código",
     live: "Visualizar",
     descriptions: {
-      sleipnir: "Motor de logística de alta performance com DDD, Rastreamento em tempo real e .NET 9.",
-      muninn: "Plataforma de captura e revenda de leads automotivos para o mercado canadense.",
-      frigg: "Sistema de gestão imobiliária complexo com automações e integrações de API.",
-      botfatura: "Automação completa de faturas e cobranças via WhatsApp integrado ao ecossistema Frigg.",
-      resumax: "Plataforma inteligente de resumos de conteúdos impulsionada por IA (Em Desenvolvimento)."
+      sleipnir: "Motor de logística de alta performance para a Transportar Veículos, com DDD, rastreamento em tempo real e .NET 9.",
+      muninn: "Plataforma internacional de captura e revenda de leads para a Nova Auto Drive (Canadá), com tráfego pago e IA.",
+      frigg: "Ecossistema de gestão imobiliária complexo para o Assistente Frigg, com automações e integrações de API.",
+      botfatura: "Solução autônoma de automação de cobranças via WhatsApp, reduzindo a inadimplência com réguas inteligentes.",
+      resumax: "Plataforma inteligente de adaptação de currículos impulsionada por IA (Em Desenvolvimento)."
     }
   },
   skills: {
@@ -82,19 +82,22 @@ export const pt = {
     title: "O que dizem sobre mim",
     items: [
       {
-        name: "Alexandre Freitas",
-        role: "Tech Lead",
-        content: "O Gustavo é um excelente engenheiro. Sua aplicação de Clean Architecture nos nossos projetos .NET elevou exponencialmente a manutenibilidade do código. Profissional focado e que sempre entrega com extrema qualidade."
+        name: "Transportar Veículos",
+        role: "Logística Nacional",
+        content: "O Gustavo conseguiu organizar uma parte crítica da nossa operação de um jeito que ficou simples de acompanhar no dia a dia. Hoje temos mais visibilidade, menos retrabalho e um backend muito mais confiável. Foi uma entrega muito acima do que a gente esperava.",
+        avatar: "/avatars/transportar-veiculos.webp"
       },
       {
-        name: "Mariana Silva",
-        role: "Product Manager",
-        content: "Ter o Gustavo na equipe significa tranquilidade. Ele compreende muito bem os requisitos de negócio (graças a sua skill em DDD) e traduz isso em soluções técnicas rápidas e escaláveis."
+        name: "Nova Auto Drive",
+        role: "Canadá",
+        content: "Antes, a operação de leads era bem mais manual e a gente perdia tempo com coisa que deveria ser automática. O Muninn ajudou bastante nisso. Além de funcionar bem, o Gustavo teve muito cuidado em entender nossa realidade antes de desenvolver, e isso fez diferença no resultado final.",
+        avatar: "/avatars/nova-auto-drive.webp"
       },
       {
-        name: "Carlos Eduardo",
-        role: "Empreendedor",
-        content: "A automação que ele criou com o BotFatura salvou dezenas de horas de trabalho manual na minha empresa por mês. Serviço incrível, entregue muito rápido."
+        name: "BotFatura",
+        role: "Fintech SaaS",
+        content: "A automação de cobrança entrou na rotina da empresa muito rápido. O processo ficou mais estável, reduziu falhas e praticamente parou de depender de intervenção manual. O que mais gostei foi que não foi só 'colocar pra funcionar', foi pensado para escalar sem virar dor de cabeça depois.",
+        avatar: "/avatars/botfatura.webp"
       }
     ]
   },
@@ -131,6 +134,7 @@ export const pt = {
       sections: {
         overview: "Visão Geral",
         journey: "Jornada",
+        techStack: "Tecnologias",
         architecture: "Arquitetura",
         results: "Resultados",
         contact: "Contato",
@@ -206,9 +210,20 @@ export const pt = {
         m3: { value: "10k+", label: "Reqs/min Sem Gargalo" },
         m4: { value: "+30%", label: "Aumento de Capacidade" },
       },
+      techStack: {
+        title: "Tecnologias Utilizadas",
+        description: "Uma arquitetura moderna e robusta focada em escalabilidade horizontal e integridade de dados.",
+        items: [
+          { name: ".NET 9", description: "Engine de processamento de alto rendimento.", type: "Backend" },
+          { name: "Next.js 15", description: "Frontend rápido e otimizado para SEO.", type: "Frontend" },
+          { name: "PostgreSQL", description: "Banco de dados relacional para dados críticos.", type: "Database" },
+          { name: "Docker", description: "Containerização para deploys consistentes.", type: "Infrastructure" },
+          { name: "MediatR", description: "Padrão Mediator para eventos de domínio.", type: "Architecture" },
+        ]
+      },
     },
     frigg: {
-      hero: "Um ecossistema de gestão imobiliária que automatiza o ciclo completo de <accent>contratos, cobranças e ordens de serviço</accent> com integração digital.",
+      hero: "Um ecossistema de <accent>faturamento e gestão imobiliária autônoma</accent> que automatiza o ciclo completo de contratos, cobranças e ordens de serviço.",
       metadata: {
         duration: { title: "Ciclo Contínuo", description: "Do MVP à plataforma SaaS, com evolução constante e novas integrações a cada sprint." },
         stack: { title: ".NET 9, PostgreSQL, Docker", description: "Clean Architecture com EF Core, MediatR, Clicksign API e Evolution API (WhatsApp)." },
@@ -247,6 +262,17 @@ export const pt = {
         m2: { value: "Zero", label: "Downtime Registrado" },
         m3: { value: "100+", label: "Contratos Gerenciados" },
         m4: { value: "+40%", label: "Eficiência Operacional" },
+      },
+      techStack: {
+        title: "Tecnologias Utilizadas",
+        description: "Integrações de ponta para automação completa do ciclo imobiliário.",
+        items: [
+          { name: ".NET 9", description: "Backend robusto com Clean Architecture.", type: "Backend" },
+          { name: "Next.js 15", description: "Interface administrativa de alta performance.", type: "Frontend" },
+          { name: "IA Integration", description: "Inteligência Artificial para análise e automação.", type: "AI" },
+          { name: "Clicksign API", description: "Assinatura digital com validade jurídica.", type: "Integration" },
+          { name: "Evolution API", description: "Comunicação WhatsApp automatizada.", type: "Messaging" },
+        ]
       },
     },
     botFatura: {
@@ -294,10 +320,21 @@ export const pt = {
         m3: { value: "5k+", label: "Mensagens/Mês" },
         m4: { value: "+95%", label: "Taxa de Leitura" },
       },
+      techStack: {
+        title: "Tecnologias Utilizadas",
+        description: "Automação financeira focada em engajamento e conciliação bancária.",
+        items: [
+          { name: ".NET 9", description: "Processamento de réguas de cobrança.", type: "Backend" },
+          { name: "Vite", description: "Frontend ultra-rápido e responsivo.", type: "Frontend" },
+          { name: "IA Integration", description: "Conciliação inteligente e análise de dados.", type: "AI" },
+          { name: "Evolution API", description: "Gateway de mensagens via WhatsApp.", type: "Messaging" },
+          { name: "ERP Sync", description: "Integração bidirecional com sistemas legados.", type: "Integration" },
+        ]
+      },
     },
     muninn: {
       heroBadge: "Projeto Internacional — Canadá",
-      hero: "Plataforma de <accent>captura e revenda de leads automotivos</accent> para o mercado canadense, com formulários multi-etapas, Meta Pixel para tráfego pago e integração backend via OpenAPI.",
+      hero: "Plataforma de <accent>captura de leads e sistema de autenticação</accent> para o mercado canadense, com formulários multi-etapas e integração via OpenAPI.",
       metadata: {
         operation: { label: "Operação", title: "🇨🇦 Produção Ativa", description: "Sistema operando no Canadá com tráfego pago ativo, Meta Pixel integrado e leads sendo capturados e revendidos para concessionárias." },
         stack: { title: "Next.js 15, .NET 9, Docker", description: "Frontend com React 19, Tailwind CSS 4 e Meta Pixel. Backend com Clean Architecture, DDD e clientes OpenAPI gerados." },
@@ -338,6 +375,17 @@ export const pt = {
         m2status: "Rastreando",
         m3: { value: "B2B", label: "Revenda de Leads" },
         m4: { value: "Ads", label: "Tráfego Pago Otimizado" },
+      },
+      techStack: {
+        title: "Tecnologias Utilizadas",
+        description: "Full-stack de alta performance otimizado para conversão e rastreamento de anúncios.",
+        items: [
+          { name: "Next.js 15", description: "Frontend rápido com App Router 15.", type: "Frontend" },
+          { name: ".NET 9", description: "Backend robusto para processamento de leads.", type: "Backend" },
+          { name: "Amazon SES", description: "Envio de e-mails em alta escala.", type: "Email" },
+          { name: "Azure Service Bus", description: "Sistema de filas para processamento assíncrono.", type: "Queuing" },
+          { name: "Meta Pixel", description: "Rastreamento avançado de conversões.", type: "Analytics/Ads" },
+        ]
       },
     },
     resumax: {
@@ -386,6 +434,17 @@ export const pt = {
         m2status: "Integrado",
         m3: { value: "100%", label: "Veracidade Garantida" },
         m4: { value: "-90%", label: "Tempo de Adaptação" },
+      },
+      techStack: {
+        title: "Tecnologias Utilizadas",
+        description: "Inteligência Artificial aplicada à carreira com foco em resultados reais.",
+        items: [
+          { name: "Google Gemini", description: "Engine de IA para adaptação de conteúdo.", type: "AI" },
+          { name: ".NET 9", description: "Lógica de domínio e processamento de dados.", type: "Backend" },
+          { name: "React", description: "Interface intuitiva para edição de currículos.", type: "Frontend" },
+          { name: "Markdown", description: "Formato padrão para interoperabilidade.", type: "Format" },
+          { name: "PDF Gen", description: "Conversão fiel para envios de candidaturas.", type: "Output" },
+        ]
       },
     },
   },

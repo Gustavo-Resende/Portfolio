@@ -4,18 +4,42 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, MessageCircle } from "lucide-react";
 
 interface ProjectHeaderProps {
   projectName: string;
-  accentColor?: string; // tailwind color class like "lime-primary", "amber-500", "blue-500"
+  accentColor?: "lime-primary" | "amber-500" | "purple-500" | "blue-500";
   sections: { name: string; href: string }[];
 }
 
+const headerColorMap = {
+  "lime-primary": {
+    text: "text-lime-primary",
+    bg: "bg-lime-primary",
+    hoverBorder: "hover:border-lime-primary/50",
+  },
+  "amber-500": {
+    text: "text-amber-500",
+    bg: "bg-amber-500",
+    hoverBorder: "hover:border-amber-500/50",
+  },
+  "purple-500": {
+    text: "text-purple-500",
+    bg: "bg-purple-500",
+    hoverBorder: "hover:border-purple-500/50",
+  },
+  "blue-500": {
+    text: "text-blue-500",
+    bg: "bg-blue-500",
+    hoverBorder: "hover:border-blue-500/50",
+  },
+};
+
 export function ProjectHeader({ projectName, accentColor = "lime-primary", sections }: ProjectHeaderProps) {
-  const { language, toggleLanguage } = useLanguage();
+  const { language, t, toggleLanguage } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
+  const colors = headerColorMap[accentColor];
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 50);
@@ -28,8 +52,6 @@ export function ProjectHeader({ projectName, accentColor = "lime-primary", secti
       elem.scrollIntoView({ behavior: "smooth" });
     }
   };
-
-  const accentText = `text-${accentColor}`;
 
   return (
     <motion.header
@@ -46,7 +68,7 @@ export function ProjectHeader({ projectName, accentColor = "lime-primary", secti
             <ArrowLeft className="w-4 h-4" />
           </Link>
           <span className="text-lg font-bold tracking-tight text-white">
-            {projectName}<span className={accentText}>.</span>
+            {projectName}<span className={colors.text}>.</span>
           </span>
         </div>
 
@@ -72,11 +94,11 @@ export function ProjectHeader({ projectName, accentColor = "lime-primary", secti
 
           <button
             onClick={toggleLanguage}
-            className={`relative w-12 h-6 rounded-full bg-dark-bg border border-white/10 flex items-center p-1 cursor-pointer transition-colors hover:border-${accentColor}/50`}
+            className={`relative w-12 h-6 rounded-full bg-dark-bg border border-white/10 flex items-center p-1 cursor-pointer transition-colors ${colors.hoverBorder}`}
             aria-label="Toggle Language"
           >
             <motion.div
-              className={`w-4 h-4 rounded-full bg-${accentColor} shadow-sm`}
+              className={`w-4 h-4 rounded-full ${colors.bg} shadow-sm`}
               transition={{ type: "spring", stiffness: 500, damping: 30 }}
               initial={false}
               animate={{
@@ -90,10 +112,11 @@ export function ProjectHeader({ projectName, accentColor = "lime-primary", secti
           </span>
 
           <a
-            href="#contact"
-            className={`hidden sm:flex ml-4 bg-${accentColor} hover:opacity-90 text-black text-xs font-bold py-2 px-4 rounded-full transition-all`}
+            href="/#contact"
+            className={`hidden sm:flex items-center gap-2 ml-4 ${colors.bg} hover:opacity-90 text-black text-xs font-bold py-2 px-4 rounded-full transition-all shadow-sm hover:scale-105 active:scale-95`}
           >
-            Contatos
+            <MessageCircle className="w-3.5 h-3.5" />
+            {t.hero.contactMe}
           </a>
         </div>
       </div>

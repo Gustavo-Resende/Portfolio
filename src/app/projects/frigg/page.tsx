@@ -2,15 +2,24 @@
 
 import { useState, useRef } from "react";
 import { motion, useScroll, AnimatePresence } from "framer-motion";
-import { CheckCircle2, Calendar, Code2, Briefcase, Target, Lightbulb, AlertTriangle, Server, Activity, TrendingUp, ChevronLeft, ChevronRight, Home, FileSignature, MessageCircle } from "lucide-react";
+import { CheckCircle2, Calendar, Code2, Briefcase, Target, Lightbulb, AlertTriangle, Server, Activity, TrendingUp, ChevronLeft, ChevronRight, FileSignature, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { ProjectHeader } from "@/components/ProjectHeader";
 import { BackToTop } from "@/components/BackToTop";
 import { ContactCTA } from "@/components/ContactCTA";
+import { TechStack } from "@/components/TechStack";
+import { ImageCarousel } from "@/components/ImageCarousel";
 
 export default function FriggProject() {
   const { t } = useLanguage();
+
+  const friggImages = [
+    { src: "/images/projects/frigg/screenshot1.png", alt: "Frigg - Dashboard" },
+    { src: "/images/projects/frigg/screenshot2.png", alt: "Frigg - Financeiro" },
+    { src: "/images/projects/frigg/screenshot3.png", alt: "Frigg - Imóveis" },
+    { src: "/images/projects/frigg/screenshot4.png", alt: "Frigg - Login" },
+  ];
 
   return (
     <main className="flex min-h-screen flex-col font-sans bg-black text-white relative selection:bg-purple-500/30 selection:text-white">
@@ -20,6 +29,7 @@ export default function FriggProject() {
         sections={[
           { name: t.projectPages.common.sections.overview, href: "#hero" },
           { name: t.projectPages.common.sections.journey, href: "#metadata" },
+          { name: t.projectPages.common.sections.techStack, href: "#tech-stack" },
           { name: t.projectPages.common.sections.architecture, href: "#architecture" },
           { name: t.projectPages.common.sections.results, href: "#results" },
           { name: t.projectPages.common.sections.contact, href: "#cta" },
@@ -29,7 +39,7 @@ export default function FriggProject() {
       {/* Background com tom roxo */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#150d25_0%,_#050505_100%)] opacity-80 mix-blend-screen"></div>
-        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+        <div className="absolute inset-0 opacity-[0.03] bg-[url('/noise.svg')]"></div>
       </div>
 
       {/* 1. PROJECT HERO */}
@@ -40,7 +50,7 @@ export default function FriggProject() {
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            className="flex flex-col items-start space-y-8"
+            className="flex flex-col items-center text-center space-y-8 lg:items-start lg:text-left"
           >
 
 
@@ -70,13 +80,7 @@ export default function FriggProject() {
             transition={{ delay: 0.2 }}
             className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(168,85,247,0.1)] bg-[#050505]/50 group flex items-center justify-center"
           >
-            {/* Minimalist Placeholder for real screenshots later */}
-            <div className="flex flex-col items-center gap-4 text-white/5 opacity-20 group-hover:opacity-40 transition-opacity duration-700">
-               <div className="w-16 h-16 rounded-2xl border-2 border-dashed border-current flex items-center justify-center">
-                  <Home className="w-8 h-8" />
-               </div>
-               <span className="text-xs font-mono tracking-widest uppercase">Placeholder for Hero Screenshot</span>
-            </div>
+            <ImageCarousel images={friggImages} accentColor="purple" />
           </motion.div>
 
         </div>
@@ -133,6 +137,15 @@ export default function FriggProject() {
           </div>
         </div>
       </section>
+
+      <div id="tech-stack">
+        <TechStack 
+          title={t.projectPages.frigg.techStack.title}
+          description={t.projectPages.frigg.techStack.description}
+          items={t.projectPages.frigg.techStack.items}
+          accentColor="purple"
+        />
+      </div>
 
       {/* 3. FUNCIONALIDADES CORE (Doc-Style Zig-Zag) */}
       <section id="architecture" className="py-24 px-4 relative z-10 w-full">

@@ -8,9 +8,18 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { ProjectHeader } from "@/components/ProjectHeader";
 import { BackToTop } from "@/components/BackToTop";
 import { ContactCTA } from "@/components/ContactCTA";
+import { TechStack } from "@/components/TechStack";
+import { ImageCarousel } from "@/components/ImageCarousel";
 
 export default function ResumaxProject() {
   const { t } = useLanguage();
+
+  const resumaxImages = [
+    {
+      src: "/images/projects/resumax/screenshot1.png",
+      alt: "Resumax - Preview",
+    },
+  ];
 
   return (
     <main className="flex min-h-screen flex-col font-sans bg-black text-white relative selection:bg-blue-500/30 selection:text-white">
@@ -20,6 +29,7 @@ export default function ResumaxProject() {
         sections={[
           { name: t.projectPages.common.sections.overview, href: "#hero" },
           { name: t.projectPages.common.sections.journey, href: "#metadata" },
+          { name: t.projectPages.common.sections.techStack, href: "#tech-stack" },
           { name: t.projectPages.common.sections.architecture, href: "#architecture" },
           { name: t.projectPages.common.sections.results, href: "#results" },
           { name: t.projectPages.common.sections.contact, href: "#cta" },
@@ -29,7 +39,7 @@ export default function ResumaxProject() {
       {/* Background com tonalidade azul */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#0a1628_0%,_#050505_100%)] opacity-80 mix-blend-screen"></div>
-        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+        <div className="absolute inset-0 opacity-[0.03] bg-[url('/noise.svg')]"></div>
       </div>
 
       {/* 1. PROJECT HERO */}
@@ -40,7 +50,7 @@ export default function ResumaxProject() {
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            className="flex flex-col items-start space-y-8"
+            className="flex flex-col items-center text-center space-y-8 lg:items-start lg:text-left"
           >
 
 
@@ -83,12 +93,7 @@ export default function ResumaxProject() {
             transition={{ delay: 0.2 }}
             className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(59,130,246,0.1)] bg-[#050505]/50 group flex items-center justify-center"
           >
-            <div className="flex flex-col items-center gap-4 text-white/5 opacity-20 group-hover:opacity-40 transition-opacity duration-700">
-               <div className="w-16 h-16 rounded-2xl border-2 border-dashed border-current flex items-center justify-center">
-                  <Brain className="w-8 h-8" />
-               </div>
-               <span className="text-xs font-mono tracking-widest uppercase">Placeholder for Hero Screenshot</span>
-            </div>
+            <ImageCarousel images={resumaxImages} accentColor="blue" />
           </motion.div>
 
         </div>
@@ -145,6 +150,15 @@ export default function ResumaxProject() {
           </div>
         </div>
       </section>
+
+      <div id="tech-stack">
+        <TechStack 
+          title={t.projectPages.resumax.techStack.title}
+          description={t.projectPages.resumax.techStack.description}
+          items={t.projectPages.resumax.techStack.items}
+          accentColor="blue"
+        />
+      </div>
 
       {/* 3. FUNCIONALIDADES CORE (Doc-Style Zig-Zag) */}
       <section id="architecture" className="py-24 px-4 relative z-10 w-full">
@@ -555,7 +569,7 @@ function JourneyAnimatedSection() {
           .anim-progress-resumax { transform-origin: left; transform: scaleX(var(--progress)); width: 100%; height: 100%; }
         `}</style>
         <motion.div 
-          className="anim-progress-resumax bg-blue-500 shadow-[0_0_15px_#3b82f6]"
+          className="anim-progress-resumax bg-gradient-to-r from-red-500 via-amber-500 to-lime-primary shadow-[0_0_15px_rgba(163,230,53,0.3)]"
           style={{ "--progress": scrollYProgress } as React.CSSProperties}
         />
       </div>

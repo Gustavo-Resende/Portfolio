@@ -62,7 +62,7 @@ export function ContactCTA({ variant = "inline", accentColor = "lime-primary" }:
               {t.cta.prominent.subtitle}
             </p>
             <a
-              href="#contact"
+              href="/#contact"
               className={`inline-flex items-center gap-2 ${buttonBg} text-black font-bold px-8 py-3.5 rounded-full transition-all text-sm md:text-base shadow-lg hover:scale-105`}
             >
               <MessageCircle className="w-4 h-4" />
@@ -92,7 +92,7 @@ export function ContactCTA({ variant = "inline", accentColor = "lime-primary" }:
           </p>
         </div>
         <a
-          href="#contact"
+          href="/#contact"
           className={`shrink-0 inline-flex items-center gap-2 ${buttonBg} text-black font-semibold px-6 py-2.5 rounded-md transition-all text-sm hover:scale-105`}
         >
           {t.cta.inline.button}

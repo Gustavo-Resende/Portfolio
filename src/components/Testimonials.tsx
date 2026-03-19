@@ -17,7 +17,7 @@ export function Testimonials() {
       </div>
 
       <div className="flex max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory max-md:pb-8 md:grid md:grid-cols-3 gap-6 hide-scrollbar">
-        {t.testimonials.items.map((testimonial, index) => (
+        {(t.testimonials.items as Array<{ name: string; role: string; content: string; avatar?: string }>).map((testimonial, index) => (
           <motion.div
             key={testimonial.name}
             initial={{ opacity: 0, scale: 0.95 }}
@@ -34,7 +34,7 @@ export function Testimonials() {
 
             <div className="mt-auto flex items-center gap-4">
               <div className="w-10 h-10 rounded-full overflow-hidden relative border border-white/10">
-                <Image src="/avatar.jpg" alt={testimonial.name} fill className="object-cover" />
+                <Image src={testimonial.avatar || "/avatar.jpg"} alt={testimonial.name} fill className="object-cover" />
               </div>
               <div className="flex flex-col">
                 <h4 className="font-semibold text-white text-sm">{testimonial.name}</h4>

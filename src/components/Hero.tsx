@@ -83,7 +83,7 @@ export function Hero() {
           <a href="https://github.com/Gustavo-Resende" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
             <Github className="w-7 h-7 sm:w-5 sm:h-5" />
           </a>
-          <a href="https://www.linkedin.com/in/gustavo-resende-90a110231" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+          <a href="https://www.linkedin.com/in/guresendec" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
             <Linkedin className="w-7 h-7 sm:w-5 sm:h-5" />
           </a>
         </div>

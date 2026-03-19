@@ -2,15 +2,35 @@
 
 import { useState, useRef } from "react";
 import { motion, useScroll, AnimatePresence } from "framer-motion";
-import { CheckCircle2, Calendar, Code2, Briefcase, Target, Lightbulb, AlertTriangle, Server, TrendingUp, ChevronLeft, ChevronRight, CreditCard, MessageSquare, Bell, MessageCircle } from "lucide-react";
+import { CheckCircle2, Calendar, Code2, Briefcase, Target, Lightbulb, AlertTriangle, Server, TrendingUp, ChevronLeft, ChevronRight, MessageSquare, Bell, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { BackToTop } from "@/components/BackToTop";
 import { ProjectHeader } from "@/components/ProjectHeader";
+import { BackToTop } from "@/components/BackToTop";
 import { ContactCTA } from "@/components/ContactCTA";
+import { TechStack } from "@/components/TechStack";
+import { ImageCarousel } from "@/components/ImageCarousel";
 
 export default function BotFaturaPage() {
   const { t } = useLanguage();
+  const botFaturaImages = [
+    {
+      src: "/images/projects/bot-fatura/screenshot1.png",
+      alt: "BotFatura - Dashboard",
+    },
+    {
+      src: "/images/projects/bot-fatura/screenshot2.png",
+      alt: "BotFatura - WhatsApp",
+    },
+    {
+      src: "/images/projects/bot-fatura/screenshot3.png",
+      alt: "BotFatura - Configurações",
+    },
+    {
+      src: "/images/projects/bot-fatura/screenshot4.png",
+      alt: "BotFatura - Clientes",
+    },
+  ];
 
   return (
     <main className="flex min-h-screen flex-col font-sans bg-black text-white relative selection:bg-lime-primary/30 selection:text-white">
@@ -20,6 +40,7 @@ export default function BotFaturaPage() {
         sections={[
           { name: t.projectPages.common.sections.overview, href: "#hero" },
           { name: t.projectPages.common.sections.journey, href: "#metadata" },
+          { name: t.projectPages.common.sections.techStack, href: "#tech-stack" },
           { name: t.projectPages.common.sections.architecture, href: "#architecture" },
           { name: t.projectPages.common.sections.results, href: "#results" },
           { name: t.projectPages.common.sections.contact, href: "#cta" },
@@ -29,7 +50,7 @@ export default function BotFaturaPage() {
       {/* Background preto puro */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#0a0a0a_0%,_#030303_100%)] opacity-80 mix-blend-screen"></div>
-        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+        <div className="absolute inset-0 opacity-[0.03] bg-[url('/noise.svg')]"></div>
       </div>
 
       {/* 1. PROJECT HERO */}
@@ -39,7 +60,7 @@ export default function BotFaturaPage() {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            className="flex flex-col items-start space-y-8"
+            className="flex flex-col items-center text-center space-y-8 lg:items-start lg:text-left"
           >
 
 
@@ -68,12 +89,7 @@ export default function BotFaturaPage() {
             transition={{ delay: 0.2 }}
             className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-white/10 bg-[#0A0A0A] group flex items-center justify-center"
           >
-            <div className="flex flex-col items-center gap-4 text-white/5 opacity-20 group-hover:opacity-40 transition-opacity duration-700">
-               <div className="w-16 h-16 rounded-2xl border-2 border-dashed border-current flex items-center justify-center">
-                  <CreditCard className="w-8 h-8" />
-               </div>
-               <span className="text-xs font-mono tracking-widest uppercase">Placeholder for Bot-Fatura Screenshot</span>
-            </div>
+            <ImageCarousel images={botFaturaImages} accentColor="lime" />
           </motion.div>
 
         </div>
@@ -130,6 +146,15 @@ export default function BotFaturaPage() {
           </div>
         </div>
       </section>
+
+      <div id="tech-stack">
+        <TechStack 
+          title={t.projectPages.botFatura.techStack.title}
+          description={t.projectPages.botFatura.techStack.description}
+          items={t.projectPages.botFatura.techStack.items}
+          accentColor="lime"
+        />
+      </div>
 
       {/* 3. FUNCIONALIDADES CORE (Zig-Zag) */}
       <section id="architecture" className="py-24 px-4 relative z-10 w-full">

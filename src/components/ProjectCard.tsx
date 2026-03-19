@@ -2,61 +2,64 @@
 
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
-import { useState } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/i18n/LanguageContext";
 
-const projects = [
+const projects: {
+  title: string;
+  descriptionKey: "sleipnir" | "muninn" | "frigg" | "botfatura" | "resumax";
+  tags: string[];
+  live: string;
+  category: string;
+  image: string;
+  imagePosition?: string;
+}[] = [
   {
     title: "Sleipnir",
     descriptionKey: "sleipnir" as const,
-    tags: [".NET 9", "DDD", "PostgreSQL"],
+    tags: [".NET", "PostgreSQL", "Logistics API"],
     live: "/projects/sleipnir",
-    category: "net"
+    category: "net",
+    image: "/images/projects/sleipnir/screenshot3.png"
   },
   {
     title: "Muninn",
     descriptionKey: "muninn" as const,
-    tags: [".NET 9", "Clean Arch", "Serilog"],
+    tags: [".NET", "Next.js", "Meta Ads"],
     live: "/projects/muninn",
-    category: "net"
+    category: "net",
+    image: "/images/projects/muninn/screenshot1.png"
   },
   {
     title: "Frigg",
     descriptionKey: "frigg" as const,
-    tags: ["React", "Cloud Code", "System Design"],
+    tags: [".NET", "React", "WhatsApp Integration"],
     live: "/projects/frigg",
-    category: "react"
+    category: "react",
+    image: "/images/projects/frigg/frigg-cover.png",
+    imagePosition: "left top"
   },
   {
     title: "BotFatura",
     descriptionKey: "botfatura" as const,
-    tags: ["WhatsApp API", "Automation", ".NET"],
+    tags: [".NET", "WhatsApp Integration", "ERP Integration"],
     live: "/projects/bot-fatura",
-    category: "net"
+    category: "net",
+    image: "/images/projects/bot-fatura/botfatura-cover.png",
+    imagePosition: "left top"
   },
   {
     title: "Resumax",
     descriptionKey: "resumax" as const,
-    tags: ["AI", "OpenAI", "Next.js"],
+    tags: [".NET", "AI", "AI Integration"],
     live: "/projects/resumax",
-    category: "react"
+    category: "react",
+    image: "/images/projects/resumax/screenshot1.png"
   }
 ];
 
 export function ProjectCard() {
   const { t } = useLanguage();
-  const [activeFilter, setActiveFilter] = useState("all");
-
-  const filters = [
-    { id: "all", label: t.projects.filters.all },
-    { id: "net", label: t.projects.filters.net },
-    { id: "react", label: t.projects.filters.react },
-  ];
-
-  const filteredProjects = projects.filter(project => 
-    activeFilter === "all" || project.category === activeFilter
-  );
-
   return (
     <section className="py-16 relative z-10 w-full max-w-5xl mx-auto px-4" id="projects">
       <div className="mb-12 flex flex-col items-center text-center">
@@ -65,26 +68,10 @@ export function ProjectCard() {
         </span>
         <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">{t.projects.title}</h2>
         <div className="h-1 w-20 bg-lime-primary mt-4 rounded-full"></div>
-        
-        <div className="flex flex-wrap gap-3 justify-center mt-8">
-          {filters.map(filter => (
-            <button
-              key={filter.id}
-              onClick={() => setActiveFilter(filter.id)}
-              className={`px-6 py-2 rounded-md text-sm font-semibold transition-all ${
-                activeFilter === filter.id
-                  ? "bg-lime-primary text-black border border-lime-primary"
-                  : "bg-transparent text-text-body border border-white/20 hover:border-white/40 hover:text-white"
-              }`}
-            >
-              {filter.label}
-            </button>
-          ))}
-        </div>
       </div>
 
-      <div className="flex max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory max-md:pb-8 md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 hide-scrollbar">
-        {filteredProjects.map((project) => (
+      <div className="flex max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory max-md:pb-8 md:flex-wrap md:justify-center gap-6 hide-scrollbar">
+        {projects.map((project) => (
           <motion.div
             key={project.title}
             layout
@@ -93,19 +80,31 @@ export function ProjectCard() {
             exit={{ opacity: 0, scale: 0.9 }}
             whileHover={{ y: -5 }}
             transition={{ duration: 0.3 }}
-            className="max-md:snap-center max-md:shrink-0 max-md:w-[85vw] glass-card overflow-hidden flex flex-col h-full bg-[#18181B] border-white/10 rounded-2xl border"
+            className="max-md:snap-center max-md:shrink-0 max-md:w-[85vw] md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] glass-card overflow-hidden flex flex-col bg-[#18181B] border-white/10 rounded-2xl border"
           >
-            {/* Image placeholder */}
-            <div className="w-full aspect-video bg-[#222] border-b border-white/5 p-4 flex items-center justify-center">
-               <span className="text-text-muted font-mono">{project.title} Preview</span>
+            {/* Image placeholder or real image */}
+            <div className="w-full aspect-video bg-[#222] border-b border-white/5 relative overflow-hidden flex items-center justify-center">
+              {project.image ? (
+                <Image 
+                  src={project.image} 
+                  alt={project.title} 
+                  fill 
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  style={{
+                    objectPosition: project.imagePosition ?? "center",
+                  }}
+                />
+              ) : (
+                <span className="text-text-muted font-mono">{project.title} Preview</span>
+              )}
             </div>
             
             <div className="p-6 flex flex-col flex-grow">
               <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-              <p className="text-text-body text-sm mb-4 flex-grow">{t.projects.descriptions[project.descriptionKey]}</p>
+              <p className="text-text-body text-sm mb-4 flex-grow">{t.projects.descriptions[project.descriptionKey as keyof typeof t.projects.descriptions]}</p>
               
               <div className="flex flex-wrap gap-2 mb-6">
-                {project.tags.map(tag => (
+                {project.tags.map((tag: string) => (
                   <span key={tag} className="px-3 py-1 bg-white/5 text-gray-300 font-semibold text-xs rounded-full border border-white/10">
                     {tag}
                   </span>

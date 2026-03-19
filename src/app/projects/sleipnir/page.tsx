@@ -8,9 +8,19 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { ProjectHeader } from "@/components/ProjectHeader";
 import { BackToTop } from "@/components/BackToTop";
 import { ContactCTA } from "@/components/ContactCTA";
+import { TechStack } from "@/components/TechStack";
+import { ImageCarousel } from "@/components/ImageCarousel";
 
 export default function SleipnirProject() {
   const { t } = useLanguage();
+
+  const sleipnirImages = [
+    { src: "/images/projects/sleipnir/screenshot3.png", alt: "Sleipnir Dashboard - Detalhes da Cotação" },
+    { src: "/images/projects/sleipnir/screenshot1.png", alt: "Sleipnir Dashboard - Gerenciar Cotações" },
+    { src: "/images/projects/sleipnir/screenshot4.png", alt: "Sleipnir Dashboard - Adicionar Veículo" },
+    { src: "/images/projects/sleipnir/screenshot2.png", alt: "Sleipnir Dashboard - Informações do Transporte" },
+    { src: "/images/projects/sleipnir/screenshot5.png", alt: "Sleipnir Dashboard - Menu de Rastreamento" },
+  ];
 
   return (
     <main className="flex min-h-screen flex-col font-sans bg-black text-white relative selection:bg-lime-primary/30 selection:text-white">
@@ -20,6 +30,7 @@ export default function SleipnirProject() {
         sections={[
           { name: t.projectPages.common.sections.overview, href: "#hero" },
           { name: t.projectPages.common.sections.journey, href: "#metadata" },
+          { name: t.projectPages.common.sections.techStack, href: "#tech-stack" },
           { name: t.projectPages.common.sections.architecture, href: "#architecture" },
           { name: t.projectPages.common.sections.results, href: "#results" },
           { name: t.projectPages.common.sections.contact, href: "#cta" },
@@ -29,7 +40,7 @@ export default function SleipnirProject() {
       {/* Background idêntico à página principal */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#122010_0%,_#050505_100%)] opacity-80 mix-blend-screen"></div>
-        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+        <div className="absolute inset-0 opacity-[0.03] bg-[url('/noise.svg')]"></div>
       </div>
 
       {/* 1. PROJECT HERO */}
@@ -40,7 +51,7 @@ export default function SleipnirProject() {
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            className="flex flex-col items-start space-y-8"
+            className="flex flex-col items-center text-center space-y-8 lg:items-start lg:text-left"
           >
 
             <div className="space-y-4">
@@ -67,15 +78,9 @@ export default function SleipnirProject() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(163,230,53,0.1)] bg-[#050505]/50 group flex items-center justify-center"
+            className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(163,230,53,0.1)] bg-[#050505]/50 group"
           >
-            {/* Minimalist Placeholder for real screenshots later */}
-            <div className="flex flex-col items-center gap-4 text-white/5 opacity-20 group-hover:opacity-40 transition-opacity duration-700">
-               <div className="w-16 h-16 rounded-2xl border-2 border-dashed border-current flex items-center justify-center">
-                  <Activity className="w-8 h-8" />
-               </div>
-               <span className="text-xs font-mono tracking-widest uppercase">Placeholder for Hero Screenshot</span>
-            </div>
+            <ImageCarousel images={sleipnirImages} accentColor="lime" />
           </motion.div>
 
         </div>
@@ -132,6 +137,15 @@ export default function SleipnirProject() {
           </div>
         </div>
       </section>
+
+      <div id="tech-stack">
+        <TechStack 
+          title={t.projectPages.sleipnir.techStack.title}
+          description={t.projectPages.sleipnir.techStack.description}
+          items={t.projectPages.sleipnir.techStack.items}
+          accentColor="lime"
+        />
+      </div>
 
       {/* 3. FUNCIONALIDADES CORE (Doc-Style Zig-Zag) */}
       <section id="architecture" className="py-24 px-4 relative z-10 w-full">

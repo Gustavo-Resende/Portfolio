@@ -14,7 +14,7 @@ export const en = {
     github: "Github",
     email: "Email",
     linkedin: "LinkedIn",
-    contactMe: "@ Contact Me",
+    contactMe: "Contact Me",
     viewProjects: "View Projects",
   },
   projects: {
@@ -29,11 +29,11 @@ export const en = {
     code: "Code",
     live: "Live",
     descriptions: {
-      sleipnir: "High-performance logistics engine with DDD, real-time tracking, and .NET 9.",
-      muninn: "Automotive lead capture and resale platform for the Canadian market.",
-      frigg: "Complex real estate management system with automations and API integrations.",
-      botfatura: "End-to-end invoice and billing automation via WhatsApp integrated with the Frigg ecosystem.",
-      resumax: "AI-powered intelligent content summarization platform (In Development)."
+      sleipnir: "High-performance logistics engine for Transportar Veículos, with DDD, real-time tracking, and .NET 9.",
+      muninn: "International lead capture and resale platform for Nova Auto Drive (Canada), with paid traffic and AI.",
+      frigg: "Complex real estate management ecosystem for Assistente Frigg, with automations and API integrations.",
+      botfatura: "Autonomous WhatsApp billing automation solution, reducing delinquency with intelligent rules.",
+      resumax: "AI-powered intelligent resume adaptation platform (In Development)."
     }
   },
   skills: {
@@ -82,19 +82,22 @@ export const en = {
     title: "What Clients Say About Me",
     items: [
       {
-        name: "Alexandre Freitas",
-        role: "Tech Lead",
-        content: "Gustavo is an excellent engineer. His application of Clean Architecture in our .NET projects exponentially improved code maintainability. A focused professional who always delivers with outstanding quality."
+        name: "Transportar Veículos",
+        role: "National Logistics",
+        content: "Gustavo managed to organize a critical part of our operation in a way that became simple to follow daily. Today we have more visibility, less rework, and a much more reliable backend. It was a delivery far beyond what we expected.",
+        avatar: "/avatars/transportar-veiculos.webp"
       },
       {
-        name: "Mariana Silva",
-        role: "Product Manager",
-        content: "Having Gustavo on the team means peace of mind. He understands business requirements very well (thanks to his DDD skills) and translates them into fast, scalable technical solutions."
+        name: "Nova Auto Drive",
+        role: "Canada",
+        content: "Before, the lead operation was much more manual and we wasted time on things that should be automatic. Muninn helped a lot with that. Besides working well, Gustavo took great care to understand our reality before developing, and that made a difference in the final result.",
+        avatar: "/avatars/nova-auto-drive.webp"
       },
       {
-        name: "Carlos Eduardo",
-        role: "Entrepreneur",
-        content: "The automation he built with BotFatura saved dozens of hours of manual work at my company every month. Incredible service, delivered very quickly."
+        name: "BotFatura",
+        role: "Fintech SaaS",
+        content: "Billing automation entered the company's routine very quickly. The process became more stable, reduced failures, and practically stopped depending on manual intervention. What I liked most was that it wasn't just about 'making it work,' it was designed to scale without becoming a headache later.",
+        avatar: "/avatars/botfatura.webp"
       }
     ]
   },
@@ -131,6 +134,7 @@ export const en = {
       sections: {
         overview: "Overview",
         journey: "Journey",
+        techStack: "Technologies",
         architecture: "Architecture",
         results: "Results",
         contact: "Contact",
@@ -206,9 +210,20 @@ export const en = {
         m3: { value: "10k+", label: "Reqs/min No Bottleneck" },
         m4: { value: "+30%", label: "Capacity Increase" },
       },
+      techStack: {
+        title: "Technologies Used",
+        description: "A modern and robust architecture focused on horizontal scalability and data integrity.",
+        items: [
+          { name: ".NET 9", description: "High-throughput processing engine.", type: "Backend" },
+          { name: "Next.js 15", description: "Fast and SEO-optimized frontend.", type: "Frontend" },
+          { name: "PostgreSQL", description: "Relational database for critical data.", type: "Database" },
+          { name: "Docker", description: "Containerization for consistent deploys.", type: "Infrastructure" },
+          { name: "MediatR", description: "Mediator pattern for domain events.", type: "Architecture" },
+        ]
+      },
     },
     frigg: {
-      hero: "A real estate management ecosystem that automates the complete cycle of <accent>contracts, billing, and service orders</accent> with digital integration.",
+      hero: "An <accent>autonomous billing and real estate management</accent> ecosystem that automates the complete cycle of contracts, billing, and service orders.",
       metadata: {
         duration: { title: "Continuous Cycle", description: "From MVP to SaaS platform, with constant evolution and new integrations every sprint." },
         stack: { title: ".NET 9, PostgreSQL, Docker", description: "Clean Architecture with EF Core, MediatR, Clicksign API and Evolution API (WhatsApp)." },
@@ -247,6 +262,17 @@ export const en = {
         m2: { value: "Zero", label: "Downtime Registered" },
         m3: { value: "100+", label: "Contracts Managed" },
         m4: { value: "+40%", label: "Operational Efficiency" },
+      },
+      techStack: {
+        title: "Technologies Used",
+        description: "Cutting-edge integrations for full real estate cycle automation.",
+        items: [
+          { name: ".NET 9", description: "Robust backend with Clean Architecture.", type: "Backend" },
+          { name: "Next.js 15", description: "High-performance administrative interface.", type: "Frontend" },
+          { name: "AI Integration", description: "Artificial Intelligence for analysis and automation.", type: "AI" },
+          { name: "Clicksign API", description: "Digital signature with legal validity.", type: "Integration" },
+          { name: "Evolution API", description: "Automated WhatsApp communication.", type: "Messaging" },
+        ]
       },
     },
     botFatura: {
@@ -294,10 +320,21 @@ export const en = {
         m3: { value: "5k+", label: "Messages/Month" },
         m4: { value: "+95%", label: "Read Rate" },
       },
+      techStack: {
+        title: "Technologies Used",
+        description: "Financial automation focused on engagement and bank reconciliation.",
+        items: [
+          { name: ".NET 9", description: "Billing rules processing.", type: "Backend" },
+          { name: "Vite", description: "Ultra-fast and responsive frontend.", type: "Frontend" },
+          { name: "AI Integration", description: "Intelligent reconciliation and data analysis.", type: "AI" },
+          { name: "Evolution API", description: "WhatsApp messaging gateway.", type: "Messaging" },
+          { name: "ERP Sync", description: "Bidirectional integration with legacy systems.", type: "Integration" },
+        ]
+      },
     },
     muninn: {
       heroBadge: "International Project — Canada",
-      hero: "A platform for <accent>automotive lead capture and resale</accent> for the Canadian market, with multi-step forms, Meta Pixel for paid traffic, and backend integration via OpenAPI.",
+      hero: "A platform for <accent>lead capture and authentication system</accent> for the Canadian market, with multi-step forms and backend integration via OpenAPI.",
       metadata: {
         operation: { label: "Operation", title: "🇨🇦 Active Production", description: "System operating in Canada with active paid traffic, integrated Meta Pixel, and leads being captured and resold to dealerships." },
         stack: { title: "Next.js 15, .NET 9, Docker", description: "Frontend with React 19, Tailwind CSS 4 and Meta Pixel. Backend with Clean Architecture, DDD and generated OpenAPI clients." },
@@ -338,6 +375,17 @@ export const en = {
         m2status: "Tracking",
         m3: { value: "B2B", label: "Lead Resale" },
         m4: { value: "Ads", label: "Optimized Paid Traffic" },
+      },
+      techStack: {
+        title: "Technologies Used",
+        description: "High-performance full-stack optimized for conversion and ad tracking.",
+        items: [
+          { name: "Next.js 15", description: "Fast frontend with App Router 15.", type: "Frontend" },
+          { name: ".NET 9", description: "Robust backend for lead processing.", type: "Backend" },
+          { name: "Amazon SES", description: "High-scale email delivery.", type: "Email" },
+          { name: "Queue System", description: "Async processing for high data volume.", type: "Queuing" },
+          { name: "Meta Pixel", description: "Advanced conversion tracking.", type: "Analytics/Ads" },
+        ]
       },
     },
     resumax: {
@@ -386,6 +434,17 @@ export const en = {
         m2status: "Integrated",
         m3: { value: "100%", label: "Guaranteed Truthfulness" },
         m4: { value: "-90%", label: "Adaptation Time" },
+      },
+      techStack: {
+        title: "Technologies Used",
+        description: "AI applied to career with a focus on real results.",
+        items: [
+          { name: "Google Gemini", description: "AI engine for content adaptation.", type: "AI" },
+          { name: ".NET 9", description: "Domain logic and data processing.", type: "Backend" },
+          { name: "Next.js 15", description: "Intuitive interface for resume editing.", type: "Frontend" },
+          { name: "Markdown", description: "Standard format for interoperability.", type: "Format" },
+          { name: "PDF Gen", description: "Faithful conversion for applications.", type: "Output" },
+        ]
       },
     },
   },

@@ -34,3 +34,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# build/debug logs
+build_error.log
+build_output.txt
+lint_output.txt
+tsc_errors.txt
+
+# temp assets
+assets/

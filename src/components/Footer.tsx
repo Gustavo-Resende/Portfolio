@@ -10,7 +10,7 @@ export function Footer() {
       <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
         <p>&copy; {new Date().getFullYear()} Gustavo Resende. {t.footer.builtWith}</p>
         <span className="hidden sm:inline text-white/10">|</span>
-        <a href="#contact" className="text-lime-primary hover:text-white transition-colors font-medium">
+        <a href="/#contact" className="text-lime-primary hover:text-white transition-colors font-medium">
           {t.footer.contact} →
         </a>
       </div>

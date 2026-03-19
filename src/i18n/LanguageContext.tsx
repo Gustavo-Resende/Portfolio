@@ -26,6 +26,11 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
+  // Sync html lang attribute with selected language
+  useEffect(() => {
+    document.documentElement.lang = language === "pt" ? "pt-BR" : "en";
+  }, [language]);
+
   const toggleLanguage = () => {
     const nextLang = language === "pt" ? "en" : "pt";
     setLanguage(nextLang);

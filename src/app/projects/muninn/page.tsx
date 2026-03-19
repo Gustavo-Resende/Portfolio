@@ -2,12 +2,14 @@
 
 import { useState, useRef } from "react";
 import { motion, useScroll, AnimatePresence } from "framer-motion";
-import { CheckCircle2, Calendar, Code2, Briefcase, Target, Lightbulb, AlertTriangle, Zap, Server, Activity, TrendingUp, ChevronLeft, ChevronRight, Layers, Globe, MessageCircle } from "lucide-react";
+import { CheckCircle2, Calendar, Code2, Briefcase, Target, Lightbulb, AlertTriangle, Zap, Server, Activity, TrendingUp, ChevronLeft, ChevronRight, Globe, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { ProjectHeader } from "@/components/ProjectHeader";
 import { BackToTop } from "@/components/BackToTop";
 import { ContactCTA } from "@/components/ContactCTA";
+import { TechStack } from "@/components/TechStack";
+import { ImageCarousel } from "@/components/ImageCarousel";
 
 const ACCENT = {
   text: "text-amber-500",
@@ -27,6 +29,13 @@ const ACCENT = {
 
 export default function MuninnProject() {
   const { t } = useLanguage();
+  
+  const muninnImages = [
+    { src: "/images/projects/muninn/screenshot1.png", alt: "Muninn - Landing Page" },
+    { src: "/images/projects/muninn/screenshot2.png", alt: "Muninn - Como Funciona" },
+    { src: "/images/projects/muninn/screenshot3.png", alt: "Muninn - Formulário de Lead" },
+    { src: "/images/projects/muninn/screenshot4.png", alt: "Muninn - Dashboard Administrativo" },
+  ];
 
   return (
     <main className={`flex min-h-screen flex-col font-sans bg-black text-white relative ${ACCENT.selection}`}>
@@ -36,6 +45,7 @@ export default function MuninnProject() {
         sections={[
           { name: t.projectPages.common.sections.overview, href: "#hero" },
           { name: t.projectPages.common.sections.journey, href: "#metadata" },
+          { name: t.projectPages.common.sections.techStack, href: "#tech-stack" },
           { name: t.projectPages.common.sections.architecture, href: "#architecture" },
           { name: t.projectPages.common.sections.results, href: "#results" },
           { name: t.projectPages.common.sections.contact, href: "#cta" },
@@ -45,7 +55,7 @@ export default function MuninnProject() {
       {/* Background com tonalidade laranja */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_#1a1200_0%,_#050505_100%)] opacity-80 mix-blend-screen"></div>
-        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+        <div className="absolute inset-0 opacity-[0.03] bg-[url('/noise.svg')]"></div>
       </div>
 
       {/* 1. PROJECT HERO */}
@@ -56,12 +66,12 @@ export default function MuninnProject() {
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            className="flex flex-col items-start space-y-8"
+            className="flex flex-col items-center text-center space-y-8 lg:items-start lg:text-left"
           >
 
 
-            <div className="space-y-4">
-              <div className="flex items-center gap-3 flex-wrap">
+              <div className="space-y-4">
+              <div className="flex items-center justify-center gap-3 flex-wrap">
                 <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[10px] font-bold tracking-widest uppercase">
                   <Globe className="w-3 h-3" />
                   {t.projectPages.muninn.heroBadge}
@@ -85,19 +95,13 @@ export default function MuninnProject() {
             </div>
           </motion.div>
 
-          {/* Lado Direito: Placeholder */}
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(245,158,11,0.1)] bg-[#050505]/50 group flex items-center justify-center"
+            className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(245,158,11,0.1)] bg-[#050505]/50 group"
           >
-            <div className="flex flex-col items-center gap-4 text-white/5 opacity-20 group-hover:opacity-40 transition-opacity duration-700">
-               <div className="w-16 h-16 rounded-2xl border-2 border-dashed border-current flex items-center justify-center">
-                  <Layers className="w-8 h-8" />
-               </div>
-               <span className="text-xs font-mono tracking-widest uppercase">Placeholder for Hero Screenshot</span>
-            </div>
+            <ImageCarousel images={muninnImages} accentColor="amber" />
           </motion.div>
 
         </div>
@@ -154,6 +158,15 @@ export default function MuninnProject() {
           </div>
         </div>
       </section>
+
+      <div id="tech-stack">
+        <TechStack 
+          title={t.projectPages.muninn.techStack.title}
+          description={t.projectPages.muninn.techStack.description}
+          items={t.projectPages.muninn.techStack.items}
+          accentColor="amber"
+        />
+      </div>
 
       {/* 3. FUNCIONALIDADES CORE (Doc-Style Zig-Zag) */}
       <section id="architecture" className="py-24 px-4 relative z-10 w-full">
@@ -525,7 +538,7 @@ function JourneyAnimatedSection() {
           .anim-progress-muninn { transform-origin: left; transform: scaleX(var(--progress)); width: 100%; height: 100%; }
         `}</style>
         <motion.div 
-          className="anim-progress-muninn bg-amber-500 shadow-[0_0_15px_#f59e0b]"
+          className="anim-progress-muninn bg-gradient-to-r from-red-500 via-amber-500 to-lime-primary shadow-[0_0_15px_rgba(163,230,53,0.3)]"
           style={{ "--progress": scrollYProgress } as React.CSSProperties}
         />
       </div>

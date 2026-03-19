@@ -3,6 +3,7 @@
 import { useLanguage } from "@/i18n/LanguageContext";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useState } from "react";
+import { MessageCircle } from "lucide-react";
 
 export function Header() {
   const { language, t, toggleLanguage } = useLanguage();
@@ -86,8 +87,9 @@ export function Header() {
           <a
             href="#contact"
             onClick={(e) => handleScroll(e, "#contact")}
-            className="hidden sm:flex ml-4 bg-lime-primary hover:bg-[#b4f04b] text-black text-xs font-bold py-2 px-4 rounded-full transition-all"
+            className="hidden sm:flex items-center gap-2 ml-4 bg-lime-primary hover:bg-[#b4f04b] text-black text-xs font-bold py-2 px-4 rounded-full transition-all shadow-sm hover:scale-105 active:scale-95"
           >
+            <MessageCircle className="w-3.5 h-3.5" />
             {t.hero.contactMe}
           </a>
         </div>

@@ -9,6 +9,20 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Gustavo Resende | Full-Stack .NET Developer",
   description: "Portfólio de Gustavo Resende, Desenvolvedor .NET Especialista em Clean Architecture & DDD.",
+  metadataBase: new URL("https://gustavo-resende.dev"),
+  openGraph: {
+    title: "Gustavo Resende | Full-Stack .NET Developer",
+    description: "Backend developer specializing in .NET, Clean Architecture & DDD. Building scalable APIs and high-performance systems.",
+    url: "https://gustavo-resende.dev",
+    siteName: "Gustavo Resende Portfolio",
+    locale: "pt_BR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gustavo Resende | Full-Stack .NET Developer",
+    description: "Backend developer specializing in .NET, Clean Architecture & DDD.",
+  },
 };
 
 export default function RootLayout({

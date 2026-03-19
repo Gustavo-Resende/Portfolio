@@ -18,7 +18,7 @@ export default function Home() {
         <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_center,_#122010_0%,_#050505_100%)] opacity-80 mix-blend-screen"></div>
 
         {/* Texture Layer (Noise pattern) */}
-        <div className="fixed inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+        <div className="fixed inset-0 opacity-[0.05] bg-[url('/noise.svg')]"></div>
 
         {/* Elements focused on Hero have been moved to the Hero component to constrain the glow */}
       </div>
