@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { ContactCTA } from "./ContactCTA";
 
 export function About() {
   const { t } = useLanguage();
@@ -27,13 +26,11 @@ export function About() {
           viewport={{ once: true }}
           className="space-y-6 text-text-body leading-relaxed md:text-lg"
         >
-          <p dangerouslySetInnerHTML={{ __html: t.about.p1 }} />
-          <p dangerouslySetInnerHTML={{ __html: t.about.p2 }} />
-          <p dangerouslySetInnerHTML={{ __html: t.about.p3 }} />
+          <p>{t.about.p1}</p>
+          <p>{t.about.p2}</p>
+          <p>{t.about.p3}</p>
         </motion.div>
       </div>
-
-      <ContactCTA variant="inline" />
     </section>
   );
 }

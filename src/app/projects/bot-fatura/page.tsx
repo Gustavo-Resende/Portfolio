@@ -2,7 +2,22 @@
 
 import { useState, useRef } from "react";
 import { motion, useScroll, AnimatePresence } from "framer-motion";
-import { CheckCircle2, Calendar, Code2, Briefcase, Target, Lightbulb, AlertTriangle, Server, TrendingUp, ChevronLeft, ChevronRight, MessageSquare, Bell, MessageCircle } from "lucide-react";
+import {
+  CheckCircle2,
+  Calendar,
+  Code2,
+  Briefcase,
+  Target,
+  Lightbulb,
+  AlertTriangle,
+  ChevronLeft,
+  ChevronRight,
+  MessageCircle,
+  ListOrdered,
+  Zap,
+  LayoutTemplate,
+  Rocket,
+} from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { ProjectHeader } from "@/components/ProjectHeader";
@@ -10,6 +25,21 @@ import { BackToTop } from "@/components/BackToTop";
 import { ContactCTA } from "@/components/ContactCTA";
 import { TechStack } from "@/components/TechStack";
 import { ImageCarousel } from "@/components/ImageCarousel";
+import { FeatureHighlight } from "@/components/FeatureHighlight";
+
+const botFaturaResultCardIcons = [ListOrdered, Zap, LayoutTemplate, Rocket] as const;
+
+function renderHeroWithAccent(text: string) {
+  const parts = text.split(/<\/?accent>/);
+  if (parts.length < 3) return text;
+  return (
+    <>
+      {parts[0]}
+      <span className="text-lime-primary font-semibold">{parts[1]}</span>
+      {parts[2]}
+    </>
+  );
+}
 
 export default function BotFaturaPage() {
   const { t } = useLanguage();
@@ -69,10 +99,7 @@ export default function BotFaturaPage() {
                 Bot-Fatura
               </h1>
               <p className="text-xl md:text-2xl text-white/70 font-light max-w-xl leading-relaxed">
-                {(() => {
-                  const parts = t.projectPages.botFatura.hero.split(/<\/?accent>/);
-                  return <>{parts[0]}<span className="text-lime-primary font-semibold">{parts[1]}</span>{parts[2]}</>;
-                })()}
+                {renderHeroWithAccent(t.projectPages.botFatura.hero)}
               </p>
             </div>
 
@@ -106,7 +133,7 @@ export default function BotFaturaPage() {
                 <Calendar className="w-6 h-6 text-lime-primary" />
               </div>
               <div>
-                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.common.metadata.duration}</span>
+                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.botFatura.metadata.contextLabel}</span>
                 <h3 className="text-2xl font-bold text-white">{t.projectPages.botFatura.metadata.duration.title}</h3>
                 <p className="text-text-muted text-sm mt-2">{t.projectPages.botFatura.metadata.duration.description}</p>
               </div>
@@ -117,7 +144,7 @@ export default function BotFaturaPage() {
                 <Code2 className="w-6 h-6 text-lime-primary" />
               </div>
               <div>
-                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.common.metadata.stack}</span>
+                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.botFatura.metadata.stackLabel}</span>
                 <h3 className="text-xl font-bold text-white">{t.projectPages.botFatura.metadata.stack.title}</h3>
                 <p className="text-text-muted text-sm mt-2">{t.projectPages.botFatura.metadata.stack.description}</p>
               </div>
@@ -128,7 +155,7 @@ export default function BotFaturaPage() {
                 <Briefcase className="w-6 h-6 text-lime-primary" />
               </div>
               <div>
-                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.common.metadata.model}</span>
+                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.botFatura.metadata.modelLabel}</span>
                 <h3 className="text-2xl font-bold text-white">{t.projectPages.botFatura.metadata.model.title}</h3>
                 <p className="text-text-muted text-sm mt-2">{t.projectPages.botFatura.metadata.model.description}</p>
               </div>
@@ -137,9 +164,9 @@ export default function BotFaturaPage() {
 
           {/* A Jornada: Problema -> Objetivo -> Solução */}
           <div className="w-full relative pt-10">
-            <div className="text-center mb-16 lg:mb-24">
-               <span className="text-lime-primary text-xs font-bold tracking-widest uppercase mb-2 block">{t.projectPages.common.journey.eyebrow}</span>
-               <h2 className="text-4xl font-bold text-white">{t.projectPages.common.journey.title}</h2>
+            <div className="text-center mb-16 lg:mb-24 max-w-3xl mx-auto">
+               <span className="text-lime-primary text-xs font-bold tracking-widest uppercase mb-2 block">{t.projectPages.botFatura.journeySection.eyebrow}</span>
+               <h2 className="text-4xl font-bold text-white">{t.projectPages.botFatura.journeySection.title}</h2>
             </div>
 
             <JourneyAnimatedSection />
@@ -160,9 +187,10 @@ export default function BotFaturaPage() {
       <section id="architecture" className="py-16 lg:py-24 px-4 relative z-10 w-full">
         <div className="max-w-6xl mx-auto space-y-24 lg:space-y-32">
 
-          <div className="text-center mb-10 lg:mb-16">
-            <span className="text-lime-primary text-xs font-bold tracking-widest uppercase mb-2 block">{t.projectPages.botFatura.architecture.eyebrow}</span>
-            <h2 className="text-4xl font-bold text-white">{t.projectPages.botFatura.architecture.title}</h2>
+          <div className="text-center mb-10 lg:mb-16 max-w-3xl mx-auto">
+            <span className="text-lime-primary text-xs font-bold tracking-widest uppercase mb-2 block">{t.projectPages.common.architecture.eyebrow}</span>
+            <h2 className="text-4xl font-bold text-white">{t.projectPages.common.architecture.title}</h2>
+            <p className="mt-4 text-text-body text-base md:text-lg leading-relaxed">{t.projectPages.botFatura.architectureIntro}</p>
           </div>
 
           {/* Feature 1 (Texto Esquerda, Imagem Direita) */}
@@ -170,7 +198,8 @@ export default function BotFaturaPage() {
             <div className="space-y-6 order-1 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">{t.projectPages.botFatura.features.f1.eyebrow}</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                {t.projectPages.botFatura.features.f1.title} <span className="inline-block whitespace-nowrap text-lime-primary">{t.projectPages.botFatura.features.f1.highlight}</span>
+                {t.projectPages.botFatura.features.f1.title}{" "}
+                <FeatureHighlight text={t.projectPages.botFatura.features.f1.highlight} className="text-lime-primary" />
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
                 {t.projectPages.botFatura.features.f1.description}
@@ -184,14 +213,31 @@ export default function BotFaturaPage() {
                <CodeCarousel
                  snippets={[
                    {
-                     title: "Fatura Core Domain",
+                     title: "Recorrência — vigência",
+                     code: `public class CobrancaRecorrente : Entity<Guid>
+{
+    public DateOnly InicioVigencia { get; private set; }
+    public DateOnly? FimVigencia { get; private set; }
+    public RecurrenceRule Recorrencia { get; private set; }
+    public DateOnly ProximaCobranca { get; private set; }
+
+    public bool EstaAtivaEm(DateOnly data)
+    {
+        if (data < InicioVigencia) return false;
+        if (FimVigencia.HasValue && data > FimVigencia.Value)
+            return false;
+        return true;
+    }
+}`
+                   },
+                   {
+                     title: "Fatura + flags da régua",
                      code: `public class Fatura : Entity
 {
     public decimal Valor { get; private set; }
     public DateTime DataVencimento { get; private set; }
     public StatusFatura Status { get; private set; }
 
-    // Controle de Régua de Cobrança
     public bool Lembrete3DiasEnviado { get; private set; }
     public bool CobrancaDiaEnviada { get; private set; }
     public bool CobrancaAposVencimentoEnviada { get; private set; }
@@ -199,30 +245,28 @@ export default function BotFaturaPage() {
     public Result MarcarComoPaga()
     {
         if (Status == StatusFatura.Paga)
-            return Result.Error("Esta fatura já está paga.");
-
+            return Result.Error("Fatura já paga.");
         Status = StatusFatura.Paga;
         return Result.Success();
     }
 }`
                    },
                    {
-                     title: "Régua de Cobrança Service",
+                     title: "Processar régua",
                      code: `public async Task ProcessarReguaAsync(CancellationToken ct)
 {
     var faturas = await _repo.GetFaturasPendentesAsync(ct);
     var hoje = DateTime.UtcNow.Date;
 
-    foreach (var fatura in faturas)
+    foreach (var f in faturas)
     {
-        var diasParaVencimento = (fatura.DataVencimento - hoje).Days;
-
-        if (diasParaVencimento == 3 && !fatura.Lembrete3DiasEnviado)
-            await EnviarLembreteAsync(fatura, TipoMensagem.Lembrete, ct);
-        else if (diasParaVencimento == 0 && !fatura.CobrancaDiaEnviada)
-            await EnviarLembreteAsync(fatura, TipoMensagem.Vencimento, ct);
-        else if (diasParaVencimento < 0 && !fatura.CobrancaAposVencimentoEnviada)
-            await EnviarLembreteAsync(fatura, TipoMensagem.Atraso, ct);
+        var dias = (f.DataVencimento - hoje).Days;
+        if (dias == 3 && !f.Lembrete3DiasEnviado)
+            await EnviarAsync(f, TipoMensagem.Lembrete, ct);
+        else if (dias == 0 && !f.CobrancaDiaEnviada)
+            await EnviarAsync(f, TipoMensagem.Vencimento, ct);
+        else if (dias < 0 && !f.CobrancaAposVencimentoEnviada)
+            await EnviarAsync(f, TipoMensagem.Atraso, ct);
     }
 }`
                    }
@@ -262,6 +306,22 @@ export default function BotFaturaPage() {
         .Replace("{vencimento}", data.DataVencimento.ToString("dd/MM"))
         .Replace("{link_pix}", data.LinkPagamento);
 }`
+                    },
+                    {
+                      title: "Etapas da régua",
+                      code: `public enum EtapaRegua
+{
+    TresDiasAntes,
+    DiaDoVencimento,
+    PosVencimento,
+    Inadimplencia
+}
+
+public record ReguaConfig(
+    EtapaRegua Etapa,
+    string TemplateId,
+    int? DiasOffset
+);`
                     }
                   ]}
                 />
@@ -269,7 +329,8 @@ export default function BotFaturaPage() {
             <div className="space-y-6 order-1 lg:order-2 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-amber-500 pl-3">{t.projectPages.botFatura.features.f2.eyebrow}</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                {t.projectPages.botFatura.features.f2.title} <span className="inline-block whitespace-nowrap text-amber-500">{t.projectPages.botFatura.features.f2.highlight}</span>
+                {t.projectPages.botFatura.features.f2.title}{" "}
+                <FeatureHighlight text={t.projectPages.botFatura.features.f2.highlight} className="text-amber-500" />
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
                 {t.projectPages.botFatura.features.f2.description}
@@ -286,7 +347,8 @@ export default function BotFaturaPage() {
             <div className="space-y-6 order-1 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">{t.projectPages.botFatura.features.f3.eyebrow}</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                {t.projectPages.botFatura.features.f3.title} <span className="inline-block whitespace-nowrap text-lime-primary">{t.projectPages.botFatura.features.f3.highlight}</span>
+                {t.projectPages.botFatura.features.f3.title}{" "}
+                <FeatureHighlight text={t.projectPages.botFatura.features.f3.highlight} className="text-lime-primary" />
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
                 {t.projectPages.botFatura.features.f3.description}
@@ -301,43 +363,34 @@ export default function BotFaturaPage() {
                  color="lime"
                  snippets={[
                    {
-                     title: "Receipt Verification Service",
-                     code: `public async Task<ConciliacaoResult> VerificarComprovanteAsync(
-    Guid faturaId, Stream comprovanteStream, CancellationToken ct)
+                     title: "Polly no HttpClient",
+                     code: `services.AddHttpClient<IEvolutionClient, EvolutionClient>()
+    .AddTransientHttpErrorPolicy(p => p
+        .WaitAndRetryAsync(4, n => TimeSpan.FromSeconds(Math.Pow(2, n))))
+    .AddTransientHttpErrorPolicy(p => p
+        .CircuitBreakerAsync(6, TimeSpan.FromSeconds(45)));`
+                   },
+                   {
+                     title: "Contexto multi-tenant",
+                     code: `public interface ITenantContext
 {
-    var fatura = await _repo.GetByIdAsync(faturaId, ct);
-    Guard.Against.Null(fatura, nameof(fatura));
+    string? TenantId { get; }
+}
 
-    var dadosExtraidos = await _ocrService.ExtrairDadosAsync(comprovanteStream, ct);
-
-    var match = dadosExtraidos.Valor == fatura.Valor
-        && dadosExtraidos.Data >= fatura.DataVencimento.AddDays(-1);
-
-    if (match)
-    {
-        fatura.MarcarComoPaga();
-        await _erpClient.SincronizarPagamentoAsync(fatura, ct);
-    }
-
-    return new ConciliacaoResult(match, dadosExtraidos);
+public class TenantContext : ITenantContext
+{
+    public string? TenantId { get; set; }
 }`
                    },
                    {
-                     title: "ERP Sync Client",
-                     code: `public async Task SincronizarPagamentoAsync(Fatura fatura, CancellationToken ct)
+                     title: "Pipeline — tenant na requisição",
+                     code: `app.Use(async (ctx, next) =>
 {
-    var payload = new {
-        invoice_id = fatura.CodigoExterno,
-        amount_paid = fatura.Valor,
-        paid_at = DateTime.UtcNow,
-        source = "bot-fatura-whatsapp"
-    };
-
-    var response = await _httpClient.PostAsJsonAsync(
-        $"{_options.BaseUrl}/api/payments/confirm", payload, ct);
-
-    response.EnsureSuccessStatusCode();
-}`
+    var tenant = ctx.Request.Headers["X-Tenant-Id"].FirstOrDefault();
+    ctx.RequestServices.GetRequiredService<TenantContext>()
+        .TenantId = tenant;
+    await next();
+});`
                    }
                  ]}
                />
@@ -356,101 +409,46 @@ export default function BotFaturaPage() {
         </div>
 
         <div className="max-w-6xl mx-auto relative z-10 space-y-12 lg:space-y-16">
-          <div className="text-center">
-            <span className="text-lime-primary text-xs font-bold tracking-widest uppercase block mb-2">{t.projectPages.common.results.eyebrow}</span>
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="text-lime-primary text-xs font-bold tracking-widest uppercase block mb-2">{t.projectPages.botFatura.results.eyebrow}</span>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">
-              {t.projectPages.common.results.title}
+              {t.projectPages.botFatura.results.title}
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-             {/* Metric 1 */}
-             <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} className="bg-[#111] border border-white/10 p-8 rounded-3xl text-center relative overflow-hidden flex flex-col items-center justify-center min-h-[250px]">
-               <Bell className="w-8 h-8 text-lime-primary mb-4" />
-               <h4 className="text-5xl font-extrabold text-white mb-2">{t.projectPages.botFatura.results.m1.value}</h4>
-               <p className="text-white/60 font-medium text-sm">{t.projectPages.botFatura.results.m1.label}</p>
-
-               <div className="w-full h-1 bg-white/10 rounded-full mt-6 overflow-hidden">
-                 <motion.div
-                   initial={{ width: "100%" }}
-                   whileInView={{ width: "30%" }}
-                   viewport={{ once: true }}
-                   transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
-                   className="h-full bg-lime-primary"
-                 />
-               </div>
-             </motion.div>
-
-             {/* Metric 2 */}
-             <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} transition={{ delay: 0.1 }} className="bg-[#111] border border-white/10 p-8 rounded-3xl text-center relative overflow-hidden flex flex-col items-center justify-center min-h-[250px]">
-               <motion.div
-                 animate={{ scale: [1, 1.2, 1] }}
-                 transition={{ repeat: Infinity, duration: 2 }}
-               >
-                 <Server className="w-8 h-8 text-lime-primary mb-4" />
-               </motion.div>
-               <h4 className="text-5xl font-extrabold text-white mb-2 drop-shadow-[0_0_15px_rgba(163,230,53,0.2)]">{t.projectPages.botFatura.results.m2.value}</h4>
-               <p className="text-white/60 font-medium text-sm">{t.projectPages.botFatura.results.m2.label}</p>
-               <span className="mt-4 px-3 py-1 bg-lime-primary/10 text-lime-primary text-xs rounded-full border border-lime-primary/20 flex items-center gap-2">
-                 <div className="w-1.5 h-1.5 rounded-full bg-lime-primary animate-pulse" /> {t.projectPages.common.online}
-               </span>
-             </motion.div>
-
-             {/* Metric 3 */}
-             <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} transition={{ delay: 0.2 }} className="bg-[#111] border border-white/10 p-8 rounded-3xl text-center relative overflow-hidden flex flex-col items-center justify-center min-h-[250px]">
-               <MessageSquare className="w-8 h-8 text-lime-primary mb-4" />
-               <h4 className="text-5xl font-extrabold text-white mb-2">{t.projectPages.botFatura.results.m3.value}</h4>
-               <p className="text-white/60 font-medium text-sm">{t.projectPages.botFatura.results.m3.label}</p>
-
-               <div className="flex gap-2 mt-6 overflow-hidden w-full justify-center opacity-50">
-                 {[1,2,3,4].map((i) => (
-                   <motion.div
-                     key={i}
-                     animate={{ x: [20, -20], opacity: [0, 1, 0] }}
-                     transition={{ repeat: Infinity, duration: 1.5, delay: i * 0.2 }}
-                     className="w-2 h-2 rounded-full bg-lime-primary"
-                   />
-                 ))}
-               </div>
-             </motion.div>
-
-             {/* Metric 4 */}
-             <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} transition={{ delay: 0.3 }} className="bg-[#111] border border-white/10 p-8 rounded-3xl text-center relative overflow-hidden flex flex-col items-center justify-center min-h-[250px]">
-               <TrendingUp className="w-8 h-8 text-lime-primary mb-4" />
-               <h4 className="text-5xl font-extrabold text-white mb-2">{t.projectPages.botFatura.results.m4.value}</h4>
-               <p className="text-white/60 font-medium text-sm">{t.projectPages.botFatura.results.m4.label}</p>
-
-               <div className="flex items-end gap-1.5 mt-6 h-8 justify-center">
-                 {[40, 60, 50, 80, 100].map((height, i) => (
-                   <motion.div
-                     key={i}
-                     initial={{ height: 0 }}
-                     whileInView={{ height: `${height}%` }}
-                     viewport={{ once: true }}
-                     transition={{ duration: 0.8, delay: 0.5 + (i * 0.1), ease: "easeOut" }}
-                     className="w-3 bg-lime-primary rounded-t-sm opacity-80"
-                   />
-                 ))}
-               </div>
-             </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {(["m1", "m2", "m3", "m4"] as const).map((key, i) => {
+              const card = t.projectPages.botFatura.results[key];
+              const Icon = botFaturaResultCardIcons[i];
+              return (
+                <motion.div
+                  key={key}
+                  initial={{ y: 40, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  whileHover={{ y: -4, borderColor: "rgba(163, 230, 53, 0.45)" }}
+                  className="group bg-[#111111]/90 border border-lime-primary/25 p-8 rounded-2xl text-left shadow-[0_0_24px_rgba(163,230,53,0.06)] flex flex-col justify-center min-h-[180px] transition-colors"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-lime-primary/10 border border-lime-primary/20 flex items-center justify-center text-lime-primary mb-4 shrink-0 transition-transform group-hover:scale-110">
+                    <Icon className="w-6 h-6" strokeWidth={2} aria-hidden />
+                  </div>
+                  <h4 className="text-lg md:text-xl font-bold text-white mb-3 leading-snug">{card.value}</h4>
+                  <p className="text-white/60 text-sm leading-relaxed">{card.label}</p>
+                </motion.div>
+              );
+            })}
           </div>
 
           <div id="cta" className="pt-16 flex flex-col items-center gap-6 text-center">
-            <h3 className="text-3xl font-bold text-white">{t.projectPages.common.cta.title}</h3>
-            <p className="text-white/60 mb-4 max-w-xl">{t.projectPages.common.cta.description}</p>
+            <h3 className="text-3xl font-bold text-white max-w-xl">{t.projectPages.botFatura.cta.title}</h3>
+            <p className="text-white/60 mb-4 max-w-xl">{t.projectPages.botFatura.cta.description}</p>
             <Link href="/#contact" className="bg-lime-primary hover:bg-[#b4f04b] text-black px-10 py-4 rounded-full font-bold transition-all text-lg shadow-[0_0_30px_rgba(163,230,53,0.15)] hover:shadow-[0_0_40px_rgba(163,230,53,0.3)] hover:scale-105">
-              {t.projectPages.common.cta.button}
+              {t.projectPages.botFatura.cta.button}
             </Link>
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="w-full text-center py-6 text-text-muted text-sm relative z-10 border-t border-white/5 mt-auto bg-black">
-        <div className="max-w-5xl mx-auto px-4">
-          <p>&copy; {new Date().getFullYear()} Gustavo Resende. {t.projectPages.common.footer}</p>
-        </div>
-      </footer>
 
       <BackToTop />
     </main>
@@ -492,6 +490,7 @@ function JourneyAnimatedSection() {
           </motion.div>
           <div>
             <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{t.projectPages.common.journey.problem}</h3>
+            <p className="text-lg font-semibold text-white mb-2">{t.projectPages.botFatura.journey.problemHeadline}</p>
             <p className="text-text-muted leading-relaxed text-sm md:text-base">
               {t.projectPages.botFatura.journey.problem}
             </p>
@@ -508,6 +507,7 @@ function JourneyAnimatedSection() {
           </motion.div>
           <div>
             <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{t.projectPages.common.journey.objective}</h3>
+            <p className="text-lg font-semibold text-white mb-2">{t.projectPages.botFatura.journey.objectiveHeadline}</p>
             <p className="text-text-muted leading-relaxed text-sm md:text-base">
               {t.projectPages.botFatura.journey.objective}
             </p>
@@ -524,6 +524,7 @@ function JourneyAnimatedSection() {
           </motion.div>
           <div>
             <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{t.projectPages.common.journey.solution}</h3>
+            <p className="text-lg font-semibold text-white mb-2">{t.projectPages.botFatura.journey.solutionHeadline}</p>
             <p className="text-text-muted leading-relaxed text-sm md:text-base">
               {t.projectPages.botFatura.journey.solution}
             </p>

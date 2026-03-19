@@ -2,7 +2,21 @@
 
 import { useState, useRef } from "react";
 import { motion, useScroll, AnimatePresence } from "framer-motion";
-import { CheckCircle2, Calendar, Code2, Briefcase, Target, Lightbulb, AlertTriangle, Server, Activity, TrendingUp, ChevronLeft, ChevronRight, FileSignature, MessageCircle } from "lucide-react";
+import {
+  CheckCircle2,
+  Calendar,
+  Code2,
+  Briefcase,
+  Target,
+  Lightbulb,
+  AlertTriangle,
+  ChevronLeft,
+  ChevronRight,
+  MessageCircle,
+  Building2,
+  ShieldCheck,
+  Rocket,
+} from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { ProjectHeader } from "@/components/ProjectHeader";
@@ -10,6 +24,21 @@ import { BackToTop } from "@/components/BackToTop";
 import { ContactCTA } from "@/components/ContactCTA";
 import { TechStack } from "@/components/TechStack";
 import { ImageCarousel } from "@/components/ImageCarousel";
+import { FeatureHighlight } from "@/components/FeatureHighlight";
+
+const friggResultCardIcons = [Building2, MessageCircle, ShieldCheck, Rocket] as const;
+
+function renderHeroWithAccent(text: string) {
+  const parts = text.split(/<\/?accent>/);
+  if (parts.length < 3) return text;
+  return (
+    <>
+      {parts[0]}
+      <span className="text-purple-400 font-semibold">{parts[1]}</span>
+      {parts[2]}
+    </>
+  );
+}
 
 export default function FriggProject() {
   const { t } = useLanguage();
@@ -59,10 +88,7 @@ export default function FriggProject() {
                 Frigg
               </h1>
               <p className="text-xl md:text-2xl text-white/70 font-light max-w-xl leading-relaxed">
-                {(() => {
-                  const parts = t.projectPages.frigg.hero.split(/<\/?accent>/);
-                  return <>{parts[0]}<span className="text-purple-400 font-semibold">{parts[1]}</span>{parts[2]}</>;
-                })()}
+                {renderHeroWithAccent(t.projectPages.frigg.hero)}
               </p>
             </div>
 
@@ -97,7 +123,7 @@ export default function FriggProject() {
                 <Calendar className="w-6 h-6 text-purple-400" />
               </div>
               <div>
-                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.common.metadata.duration}</span>
+                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.frigg.metadata.contextLabel}</span>
                 <h3 className="text-2xl font-bold text-white">{t.projectPages.frigg.metadata.duration.title}</h3>
                 <p className="text-text-muted text-sm mt-2">{t.projectPages.frigg.metadata.duration.description}</p>
               </div>
@@ -108,7 +134,7 @@ export default function FriggProject() {
                 <Code2 className="w-6 h-6 text-purple-400" />
               </div>
               <div>
-                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.common.metadata.stack}</span>
+                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.frigg.metadata.stackLabel}</span>
                 <h3 className="text-xl font-bold text-white">{t.projectPages.frigg.metadata.stack.title}</h3>
                 <p className="text-text-muted text-sm mt-2">{t.projectPages.frigg.metadata.stack.description}</p>
               </div>
@@ -119,7 +145,7 @@ export default function FriggProject() {
                 <Briefcase className="w-6 h-6 text-purple-400" />
               </div>
               <div>
-                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.common.metadata.model}</span>
+                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.frigg.metadata.modelLabel}</span>
                 <h3 className="text-2xl font-bold text-white">{t.projectPages.frigg.metadata.model.title}</h3>
                 <p className="text-text-muted text-sm mt-2">{t.projectPages.frigg.metadata.model.description}</p>
               </div>
@@ -128,9 +154,9 @@ export default function FriggProject() {
 
           {/* A Jornada: Problema -> Objetivo -> Solução (Animada) */}
           <div className="w-full relative pt-10">
-            <div className="text-center mb-16 lg:mb-24">
-               <span className="text-purple-400 text-xs font-bold tracking-widest uppercase mb-2 block">{t.projectPages.common.journey.eyebrow}</span>
-               <h2 className="text-4xl font-bold text-white">{t.projectPages.common.journey.title}</h2>
+            <div className="text-center mb-16 lg:mb-24 max-w-3xl mx-auto">
+               <span className="text-purple-400 text-xs font-bold tracking-widest uppercase mb-2 block">{t.projectPages.frigg.journeySection.eyebrow}</span>
+               <h2 className="text-4xl font-bold text-white">{t.projectPages.frigg.journeySection.title}</h2>
             </div>
             
             <JourneyAnimatedSection />
@@ -151,9 +177,10 @@ export default function FriggProject() {
       <section id="architecture" className="py-16 lg:py-24 px-4 relative z-10 w-full">
         <div className="max-w-6xl mx-auto space-y-24 lg:space-y-32">
           
-          <div className="text-center mb-10 lg:mb-16">
+          <div className="text-center mb-10 lg:mb-16 max-w-3xl mx-auto">
             <span className="text-purple-400 text-xs font-bold tracking-widest uppercase mb-2 block">{t.projectPages.common.architecture.eyebrow}</span>
             <h2 className="text-4xl font-bold text-white">{t.projectPages.common.architecture.title}</h2>
+            <p className="mt-4 text-text-body text-base md:text-lg leading-relaxed">{t.projectPages.frigg.architectureIntro}</p>
           </div>
 
           {/* Feature 1 (Texto Esquerda, Imagem Direita) */}
@@ -161,7 +188,8 @@ export default function FriggProject() {
             <div className="space-y-6 order-1 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-purple-500 pl-3">{t.projectPages.frigg.features.f1.eyebrow}</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                {t.projectPages.frigg.features.f1.title} <span className="inline-block whitespace-nowrap text-purple-400">{t.projectPages.frigg.features.f1.highlight}</span>
+                {t.projectPages.frigg.features.f1.title}{" "}
+                <FeatureHighlight text={t.projectPages.frigg.features.f1.highlight} className="text-purple-400" />
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
                 {t.projectPages.frigg.features.f1.description}
@@ -175,54 +203,45 @@ export default function FriggProject() {
                <CodeCarousel 
                  snippets={[
                    {
-                     title: "Residence Contract Guard",
-                     code: `public void AddContract(Contract contract)
+                     title: "Webhook Evolution (WhatsApp)",
+                     code: `[HttpPost("webhook")]
+public async Task<IActionResult> ReceiveMessage(
+    [FromBody] EvolutionWebhookDto payload, CancellationToken ct)
 {
-    Guard.Against.Null(contract, nameof(contract), "Contrato inválido.");
+    var text = payload.Data?.Message?.Conversation;
+    if (string.IsNullOrWhiteSpace(text))
+        return Ok();
 
-    // Regra: Não pode haver dois contratos ativos
-    DomainGuard.Against.When(_contracts.Any(c =>
-        !c.IsDeleted && (c.EndDate == null || c.EndDate > DateTime.UtcNow)),
-        "Essa residencia ja possui um contrato ativo.");
-
-    UpdatedAt = DateTimeOffset.UtcNow;
-    _contracts.Add(contract);
-
-    AddDomainEvent(new ResidenceContractAddedEvent(Id, contract.Id));
+    await _orchestrator.HandleUserMessageAsync(
+        payload.Data!.Key!.RemoteJid!, text, ct);
+    return Ok();
 }`
                    },
                    {
-                     title: "Safe Deletion Logic",
-                     code: `public void MarkAsDeleted()
-{
-    DomainGuard.Against.When(IsDeleted, "Esta residência já foi removida.");
+                     title: "OpenAI — consulta assistida",
+                     code: `var completion = await _openAI.GetChatCompletionsAsync(
+    new ChatCompletionsOptions
+    {
+        DeploymentName = _options.Deployment,
+        Messages =
+        {
+            new ChatRequestSystemMessage(_systemPromptFrigg),
+            new ChatRequestUserMessage(userText)
+        },
+        Temperature = 0.2f,
+        MaxTokens = 500
+    }, ct);
 
-    var hasActiveContract = _contracts.Any(c =>
-        !c.IsDeleted
-        && c.StartDate <= now
-        && (c.EndDate == null || c.EndDate > now));
-
-    DomainGuard.Against.When(hasActiveContract,
-        "Você não pode remover um imóvel com contrato ativo.");
-
-    DeletedAt = DateTimeOffset.UtcNow;
-}`
+var answer = completion.Value.Choices[0].Message.Content;`
                    },
                    {
-                     title: "Contract Date Validation",
-                     code: `public Contract(DateTime startDate, DateTime? endDate, int monthlyRent)
-{
-    StartDate = Guard.Against.Default(startDate, nameof(StartDate));
-    MonthlyRent = Guard.Against.NegativeOrZero(monthlyRent, nameof(MonthlyRent));
-
-    StartDate = Guard.Against.InvalidInput(startDate, nameof(StartDate),
-        x => (x > DateTime.UtcNow.AddYears(-1) && x < DateTime.UtcNow.AddMonths(3)),
-        "Data de início deve estar entre 1 ano atrás e 3 meses.");
-
-    if (EndDate.HasValue)
-        Guard.Against.InvalidInput(EndDate, nameof(EndDate),
-            x => x > StartDate, "Fim deve ser posterior ao início.");
-}`
+                     title: "Contexto do assistente",
+                     code: `private const string _systemPromptFrigg = """
+Você é o assistente do Frigg. Ajude o locatário com:
+- saldo e vencimentos em linguagem simples
+- status de contrato e documentos pendentes
+Não invente valores: use apenas dados retornados pelas tools/API.
+""";`
                    }
                  ]}
                />
@@ -236,48 +255,44 @@ export default function FriggProject() {
                   color="purple"
                   snippets={[
                     {
-                      title: "Clicksign Document Generation",
-                      code: `public async Task<string> GenerateDocumentAsync(ContractData data, CancellationToken ct)
+                      title: "Publicar evento no SQS",
+                      code: `await _sqs.SendMessageAsync(new SendMessageRequest
 {
-    var documentKey = await CreateDocumentAsync(data, ct);
-    var signerKey = await CreateSignerAsync(data, ct);
-    var signingUrl = await AddSignerToDocumentAsync(documentKey, signerKey, ct);
-    return signingUrl;
-}`
+    QueueUrl = _options.ContractsQueueUrl,
+    MessageBody = JsonSerializer.Serialize(new ContractSignedEvent
+    {
+        ContractId = contract.Id,
+        ResidenceId = contract.ResidenceId,
+        SignedAt = DateTimeOffset.UtcNow
+    }),
+    MessageGroupId = contract.ResidenceId.ToString()
+}, ct);`
                     },
                     {
-                      title: "Template-Based Contract Creation",
-                      code: `var body = new {
-    document = new {
-        template = new { documentTemplateKey = _options.ContractTemplateKey },
-        auto_close = true,
-        locale = "pt-BR",
-        template_data = new Dictionary<string, string>
+                      title: "Polly — retry no HttpClient",
+                      code: `services.AddHttpClient<IClicksignClient, ClicksignClient>()
+    .AddTransientHttpErrorPolicy(p => p
+        .WaitAndRetryAsync(3, attempt =>
+            TimeSpan.FromSeconds(Math.Pow(2, attempt))))
+    .AddTransientHttpErrorPolicy(p => p
+        .CircuitBreakerAsync(5, TimeSpan.FromSeconds(30)));`
+                    },
+                    {
+                      title: "Consumer assíncrono (fila)",
+                      code: `public class ContractEventsWorker : BackgroundService
+{
+    protected override async Task ExecuteAsync(CancellationToken ct)
+    {
+        while (!ct.IsCancellationRequested)
         {
-            ["NomeLocatario"] = data.NomeLocatario,
-            ["CpfLocatario"] = data.CpfLocatario,
-            ["ValorAluguel"] = data.ValorAluguel.ToString("F2"),
-            ["DiaVencimento"] = data.DiaVencimento.ToString()
+            var messages = await _sqs.ReceiveMessagesAsync(ct);
+            foreach (var msg in messages)
+            {
+                await _handler.HandleAsync(msg.Body, ct);
+                await _sqs.DeleteMessageAsync(msg.ReceiptHandle, ct);
+            }
         }
     }
-};`
-                    },
-                    {
-                      title: "Signer Management via API",
-                      code: `private async Task<string> CreateSignerAsync(ContractData data, CancellationToken ct)
-{
-    var url = $"{_options.BaseUrl}/api/v1/signers?access_token={_options.AccessToken}";
-
-    var body = new {
-        signer = new {
-            name = data.NomeLocatario,
-            phone_number = data.TelefoneLocatario,
-            sign_as = "sign"
-        }
-    };
-
-    var response = await httpClient.PostAsJsonAsync(url, body, ct);
-    response.EnsureSuccessStatusCode();
 }`
                     }
                   ]}
@@ -286,7 +301,8 @@ export default function FriggProject() {
             <div className="space-y-6 order-1 lg:order-2 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-purple-500 pl-3">{t.projectPages.frigg.features.f2.eyebrow}</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                {t.projectPages.frigg.features.f2.title} <span className="inline-block whitespace-nowrap text-purple-400">{t.projectPages.frigg.features.f2.highlight}</span>
+                {t.projectPages.frigg.features.f2.title}{" "}
+                <FeatureHighlight text={t.projectPages.frigg.features.f2.highlight} className="text-purple-400" />
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
                 {t.projectPages.frigg.features.f2.description}
@@ -303,7 +319,8 @@ export default function FriggProject() {
             <div className="space-y-6 order-1 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-purple-500 pl-3">{t.projectPages.frigg.features.f3.eyebrow}</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                {t.projectPages.frigg.features.f3.title} <span className="inline-block whitespace-nowrap text-purple-400">{t.projectPages.frigg.features.f3.highlight}</span>
+                {t.projectPages.frigg.features.f3.title}{" "}
+                <FeatureHighlight text={t.projectPages.frigg.features.f3.highlight} className="text-purple-400" />
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
                 {t.projectPages.frigg.features.f3.description}
@@ -318,48 +335,45 @@ export default function FriggProject() {
                  color="purple"
                  snippets={[
                    {
-                     title: "Status Transition Matrix",
-                     code: `private static readonly IReadOnlyDictionary<ServiceOrderStatus, ServiceOrderStatus[]>
-    AllowedTransitions = new Dictionary<ServiceOrderStatus, ServiceOrderStatus[]>
-{
-    { ServiceOrderStatus.Open, new[] { ServiceOrderStatus.InProgress, ServiceOrderStatus.Cancelled } },
-    { ServiceOrderStatus.InProgress, new[] { ServiceOrderStatus.Resolved, ServiceOrderStatus.Cancelled } },
-    { ServiceOrderStatus.Resolved, Array.Empty<ServiceOrderStatus>() },
-    { ServiceOrderStatus.Cancelled, Array.Empty<ServiceOrderStatus>() }
-};`
+                     title: "Clicksign — criar documento",
+                     code: `var response = await _http.PostAsJsonAsync(
+    $"{_options.BaseUrl}/api/v1/documents?access_token={token}",
+    new {
+        document = new {
+            path = "/templates/contrato_locacao.pdf",
+            template_data = templateData,
+            auto_close = true,
+            locale = "pt-BR"
+        }
+    }, ct);
+response.EnsureSuccessStatusCode();`
                    },
                    {
-                     title: "Guarded State Update",
-                     code: `public void UpdateStatus(ServiceOrderStatus newStatus)
+                     title: "AWS SES — notificação",
+                     code: `await _ses.SendEmailAsync(new SendEmailRequest
 {
-    if (Status == newStatus)
-        return;
-
-    var allowed = AllowedTransitions.TryGetValue(Status, out var targets)
-        ? targets
-        : Array.Empty<ServiceOrderStatus>();
-
-    DomainGuard.Against.When(!allowed.Contains(newStatus),
-        $"Transição de status inválida: {Status} -> {newStatus}.");
-
-    Status = newStatus;
-    UpdatedAt = DateTimeOffset.UtcNow;
-}`
+    Source = _options.FromAddress,
+    Destination = new Destination { ToAddresses = { to } },
+    Message = new Message
+    {
+        Subject = new Content("Contrato assinado — Frigg"),
+        Body = new Body
+        {
+            Html = new Content(htmlBody)
+        }
+    }
+}, ct);`
                    },
                    {
-                     title: "ServiceOrder Constructor",
-                     code: `public ServiceOrder(Guid residenceId, string title, string description)
+                     title: "S3 — contrato arquivado",
+                     code: `await _s3.PutObjectAsync(new PutObjectRequest
 {
-    Guard.Against.Default(residenceId, nameof(residenceId), "ResidenceId inválido.");
-    Guard.Against.NullOrWhiteSpace(title, nameof(title), "Título não pode ser vazio.");
-    Guard.Against.NullOrWhiteSpace(description, nameof(description));
-
-    Id = Guid.NewGuid();
-    ResidenceId = residenceId;
-    Title = title;
-    Description = description;
-    Status = ServiceOrderStatus.Open;
-}`
+    BucketName = _options.ContractsBucket,
+    Key = $"{tenantId}/{contractId}/contrato-assinado.pdf",
+    InputStream = pdfStream,
+    ContentType = "application/pdf",
+    ServerSideEncryptionMethod = ServerSideEncryptionMethod.AES256
+}, ct);`
                    }
                  ]}
                />
@@ -379,102 +393,47 @@ export default function FriggProject() {
         </div>
 
         <div className="max-w-6xl mx-auto relative z-10 space-y-12 lg:space-y-16">
-          <div className="text-center">
-            <span className="text-purple-400 text-xs font-bold tracking-widest uppercase block mb-2">{t.projectPages.common.results.eyebrow}</span>
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="text-purple-400 text-xs font-bold tracking-widest uppercase block mb-2">{t.projectPages.frigg.results.eyebrow}</span>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">
-              {t.projectPages.common.results.title}
+              {t.projectPages.frigg.results.title}
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-             {/* Metric 1: Contract Automation */}
-             <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} className="bg-[#111] border border-purple-500/30 p-8 rounded-3xl text-center shadow-[0_0_30px_rgba(168,85,247,0.05)] relative overflow-hidden flex flex-col items-center justify-center min-h-[250px]">
-               <FileSignature className="w-8 h-8 text-purple-400 mb-4" />
-               <h4 className="text-5xl font-extrabold text-white mb-2">{t.projectPages.frigg.results.m1.value}</h4>
-               <p className="text-white/60 font-medium text-sm">{t.projectPages.frigg.results.m1.label}</p>
-               
-               <div className="w-full h-1 bg-white/10 rounded-full mt-6 overflow-hidden">
-                 <motion.div 
-                   initial={{ width: "100%" }} 
-                   whileInView={{ width: "10%" }} 
-                   viewport={{ once: true }}
-                   transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
-                   className="h-full bg-purple-500 shadow-[0_0_10px_#a855f7]" 
-                 />
-               </div>
-             </motion.div>
-             
-             {/* Metric 2: Zero inadimplência */}
-             <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} transition={{ delay: 0.1 }} className="bg-[#111] border border-purple-500/30 p-8 rounded-3xl text-center shadow-[0_0_30px_rgba(168,85,247,0.05)] relative overflow-hidden flex flex-col items-center justify-center min-h-[250px]">
-               <motion.div
-                 animate={{ scale: [1, 1.2, 1] }}
-                 transition={{ repeat: Infinity, duration: 2 }}
-               >
-                 <Server className="w-8 h-8 text-purple-400 mb-4" />
-               </motion.div>
-               <h4 className="text-5xl font-extrabold text-white mb-2 drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]">{t.projectPages.frigg.results.m2.value}</h4>
-               <p className="text-white/60 font-medium text-sm">{t.projectPages.frigg.results.m2.label}</p>
-               <span className="mt-4 px-3 py-1 bg-purple-500/10 text-purple-400 text-xs rounded-full border border-purple-500/20 flex items-center gap-2">
-                 <div className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse" /> {t.projectPages.common.online}
-               </span>
-             </motion.div>
-
-             {/* Metric 3: Contracts managed */}
-             <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} transition={{ delay: 0.2 }} className="bg-[#111] border border-purple-500/30 p-8 rounded-3xl text-center shadow-[0_0_30px_rgba(168,85,247,0.05)] relative overflow-hidden flex flex-col items-center justify-center min-h-[250px]">
-               <Activity className="w-8 h-8 text-purple-400 mb-4" />
-               <h4 className="text-5xl font-extrabold text-white mb-2">{t.projectPages.frigg.results.m3.value}</h4>
-               <p className="text-white/60 font-medium text-sm">{t.projectPages.frigg.results.m3.label}</p>
-               
-               <div className="flex gap-2 mt-6 overflow-hidden w-full justify-center opacity-50">
-                 {[1,2,3,4].map((i) => (
-                   <motion.div 
-                     key={i}
-                     animate={{ x: [20, -20], opacity: [0, 1, 0] }}
-                     transition={{ repeat: Infinity, duration: 1.5, delay: i * 0.2 }}
-                     className="w-2 h-2 rounded-full bg-purple-500"
-                   />
-                 ))}
-               </div>
-             </motion.div>
-
-             {/* Metric 4: Efficiency */}
-             <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} transition={{ delay: 0.3 }} className="bg-[#111] border border-purple-500/30 p-8 rounded-3xl text-center shadow-[0_0_30px_rgba(168,85,247,0.05)] relative overflow-hidden flex flex-col items-center justify-center min-h-[250px]">
-               <TrendingUp className="w-8 h-8 text-purple-400 mb-4" />
-               <h4 className="text-5xl font-extrabold text-white mb-2">{t.projectPages.frigg.results.m4.value}</h4>
-               <p className="text-white/60 font-medium text-sm">{t.projectPages.frigg.results.m4.label}</p>
-               
-               <div className="flex items-end gap-1.5 mt-6 h-8 justify-center">
-                 {[40, 60, 50, 80, 100].map((height, i) => (
-                   <motion.div 
-                     key={i}
-                     initial={{ height: 0 }}
-                     whileInView={{ height: `${height}%` }}
-                     viewport={{ once: true }}
-                     transition={{ duration: 0.8, delay: 0.5 + (i * 0.1), ease: "easeOut" }}
-                     className="w-3 bg-purple-500 rounded-t-sm opacity-80"
-                   />
-                 ))}
-               </div>
-             </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {(["m1", "m2", "m3", "m4"] as const).map((key, i) => {
+              const card = t.projectPages.frigg.results[key];
+              const Icon = friggResultCardIcons[i];
+              return (
+                <motion.div
+                  key={key}
+                  initial={{ y: 40, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  whileHover={{ y: -4, borderColor: "rgba(168, 85, 247, 0.45)" }}
+                  className="group bg-[#111111]/90 border border-purple-500/25 p-8 rounded-2xl text-left shadow-[0_0_24px_rgba(168,85,247,0.06)] flex flex-col justify-center min-h-[180px] transition-colors"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-4 shrink-0 transition-transform group-hover:scale-110">
+                    <Icon className="w-6 h-6" strokeWidth={2} aria-hidden />
+                  </div>
+                  <h4 className="text-lg md:text-xl font-bold text-white mb-3 leading-snug">{card.value}</h4>
+                  <p className="text-white/60 text-sm leading-relaxed">{card.label}</p>
+                </motion.div>
+              );
+            })}
           </div>
-          
+
           <div id="cta" className="pt-16 flex flex-col items-center gap-6 text-center">
-            <h3 className="text-3xl font-bold text-white">{t.projectPages.common.cta.title}</h3>
-            <p className="text-white/60 mb-4 max-w-xl">{t.projectPages.common.cta.description}</p>
+            <h3 className="text-3xl font-bold text-white max-w-xl">{t.projectPages.frigg.cta.title}</h3>
+            <p className="text-white/60 mb-4 max-w-xl">{t.projectPages.frigg.cta.description}</p>
             <Link href="/#contact" className="bg-purple-500 hover:bg-purple-400 text-white px-10 py-4 rounded-full font-bold transition-all text-lg shadow-[0_0_40px_rgba(168,85,247,0.4)] hover:shadow-[0_0_60px_rgba(168,85,247,0.6)] hover:scale-105">
-              {t.projectPages.common.cta.button}
+              {t.projectPages.frigg.cta.button}
             </Link>
           </div>
         </div>
       </section>
       
-      {/* Footer idêntico ao da Home */}
-      <footer className="w-full text-center py-6 text-text-muted text-sm relative z-10 border-t border-white/5 mt-auto bg-black">
-        <div className="max-w-5xl mx-auto px-4">
-          <p>&copy; {new Date().getFullYear()} Gustavo Resende. {t.projectPages.common.footer}</p>
-        </div>
-      </footer>
-
       <BackToTop />
 
     </main>
@@ -516,6 +475,7 @@ function JourneyAnimatedSection() {
           </motion.div>
           <div>
             <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{t.projectPages.common.journey.problem}</h3>
+            <p className="text-lg font-semibold text-white mb-2">{t.projectPages.frigg.journey.problemHeadline}</p>
             <p className="text-text-muted leading-relaxed text-sm md:text-base">
               {t.projectPages.frigg.journey.problem}
             </p>
@@ -532,6 +492,7 @@ function JourneyAnimatedSection() {
           </motion.div>
           <div>
             <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{t.projectPages.common.journey.objective}</h3>
+            <p className="text-lg font-semibold text-white mb-2">{t.projectPages.frigg.journey.objectiveHeadline}</p>
             <p className="text-text-muted leading-relaxed text-sm md:text-base">
               {t.projectPages.frigg.journey.objective}
             </p>
@@ -548,6 +509,7 @@ function JourneyAnimatedSection() {
           </motion.div>
           <div>
             <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{t.projectPages.common.journey.solution}</h3>
+            <p className="text-lg font-semibold text-white mb-2">{t.projectPages.frigg.journey.solutionHeadline}</p>
             <p className="text-text-muted leading-relaxed text-sm md:text-base">
               {t.projectPages.frigg.journey.solution}
             </p>

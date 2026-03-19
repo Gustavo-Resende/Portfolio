@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { MouseGlow } from "@/components/MouseGlow";
+import { Footer } from "@/components/Footer";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -32,10 +33,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className="scroll-smooth">
-      <body className={`${inter.className} min-h-screen selection:bg-lime-primary/30 selection:text-lime-primary`}>
+      <body
+        className={`${inter.className} min-h-screen flex flex-col selection:bg-lime-primary/30 selection:text-lime-primary`}
+      >
         <LanguageProvider>
           <MouseGlow />
-          {children}
+          <div className="flex-1 flex flex-col min-h-0">{children}</div>
+          <Footer />
         </LanguageProvider>
       </body>
     </html>

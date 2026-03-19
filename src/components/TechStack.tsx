@@ -1,12 +1,57 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Layers, Server, Globe, Cpu, Database, MessageSquare, Mail, Zap, Bot, FileText, Layout } from "lucide-react";
+import {
+  Layers,
+  Server,
+  Globe,
+  Cpu,
+  Database,
+  MessageSquare,
+  Mail,
+  Zap,
+  Bot,
+  FileText,
+  Layout,
+  Github,
+  Shield,
+  Telescope,
+  Inbox,
+  HardDrive,
+  RefreshCw,
+  Link2,
+} from "lucide-react";
 
 interface TechItem {
   name: string;
   description: string;
   type: string;
+}
+
+/** Baleia + contêineres no estilo Docker (SVG próprio, stroke alinhado ao Lucide). */
+function DockerMarkIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <rect x="3" y="3" width="4" height="4" rx="0.5" />
+      <rect x="8.5" y="3" width="4" height="4" rx="0.5" />
+      <rect x="14" y="3" width="4" height="4" rx="0.5" />
+      <rect x="3" y="8.5" width="4" height="4" rx="0.5" />
+      <rect x="8.5" y="8.5" width="4" height="4" rx="0.5" />
+      <path d="M2 17h15.5c0 2.5-2 4.5-4.5 4.5H6.5C4 21.5 2 19.5 2 17z" />
+      <path d="M17.5 17V14c1.5 0 2.5 1 2.5 2.5v0.5c0 1-0.8 1.8-1.8 1.8h-0.7" />
+      <circle cx="19.5" cy="12" r="0.9" fill="currentColor" stroke="none" />
+    </svg>
+  );
 }
 
 const getIcon = (type: string) => {
@@ -15,6 +60,7 @@ const getIcon = (type: string) => {
   if (t === "frontend") return <Layout className="w-5 h-5" />;
   if (t === "database") return <Database className="w-5 h-5" />;
   if (t === "ai") return <Bot className="w-5 h-5" />;
+  if (t === "architecture") return <Layers className="w-5 h-5" />;
   if (t === "integration") return <Cpu className="w-5 h-5" />;
   if (t === "messaging") return <MessageSquare className="w-5 h-5" />;
   if (t === "email") return <Mail className="w-5 h-5" />;
@@ -23,6 +69,59 @@ const getIcon = (type: string) => {
   if (t === "format" || t === "output") return <FileText className="w-5 h-5" />;
   return <Layers className="w-5 h-5" />;
 };
+
+/** Ícones específicos por tecnologia (nome do card), com fallback por `type`. */
+function getIconForItem(item: TechItem) {
+  const n = item.name.trim().toLowerCase();
+
+  if (n.includes("github")) {
+    return <Github className="w-5 h-5" />;
+  }
+  if (n.includes("docker")) {
+    return <DockerMarkIcon className="w-5 h-5" />;
+  }
+  if (n.includes("aspire")) {
+    return <Telescope className="w-5 h-5" />;
+  }
+  if (n.includes("outbox")) {
+    return <Inbox className="w-5 h-5" />;
+  }
+  if (n.includes("sqs")) {
+    return <Zap className="w-5 h-5" />;
+  }
+  if (n.includes("s3")) {
+    return <HardDrive className="w-5 h-5" />;
+  }
+  if (n.includes("minimal api")) {
+    return <Zap className="w-5 h-5" />;
+  }
+  if (n.includes("carter")) {
+    return <Link2 className="w-5 h-5" />;
+  }
+  if (n.includes("clean architecture")) {
+    return <Layers className="w-5 h-5" />;
+  }
+  if (n.includes("openai")) {
+    return <Bot className="w-5 h-5" />;
+  }
+  if (n.includes("whatsapp") || n.includes("evolution")) {
+    return <MessageSquare className="w-5 h-5" />;
+  }
+  if (n.includes("polly")) {
+    return <RefreshCw className="w-5 h-5" />;
+  }
+  if (n.includes("clicksign")) {
+    return <FileText className="w-5 h-5" />;
+  }
+  if (n === "jwt" || n.includes("jwt")) {
+    return <Shield className="w-5 h-5" />;
+  }
+  if (n.startsWith(".net") && !n.includes("aspire")) {
+    return <Cpu className="w-5 h-5" />;
+  }
+
+  return getIcon(item.type);
+}
 
 interface TechStackProps {
   title: string;
@@ -107,7 +206,7 @@ export function TechStack({ title, description, items, accentColor = "lime" }: T
             >
               <div className="flex items-start gap-4">
                 <div className={`w-12 h-12 shrink-0 rounded-xl ${theme.bg} flex items-center justify-center ${theme.text} group-hover:scale-110 transition-transform`}>
-                  {getIcon(item.type)}
+                  {getIconForItem(item)}
                 </div>
                 <div>
                   <div className="flex items-center gap-2 mb-1">

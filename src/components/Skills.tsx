@@ -64,23 +64,13 @@ export function Skills() {
           <p className="text-text-body text-sm mb-8 leading-relaxed">
             {t.skills.toolsIUse.description}
           </p>
-          <ul className="space-y-5">
-            <li className="flex flex-col gap-1 text-sm">
-               <span className="text-white font-bold flex items-center gap-2">• Backend:</span>
-               <span className="text-gray-400 pl-4">{t.skills.toolsIUse.backend}</span>
-            </li>
-            <li className="flex flex-col gap-1 text-sm">
-               <span className="text-white font-bold flex items-center gap-2">• Database:</span>
-               <span className="text-gray-400 pl-4">{t.skills.toolsIUse.database}</span>
-            </li>
-            <li className="flex flex-col gap-1 text-sm">
-               <span className="text-white font-bold flex items-center gap-2">• DevOps:</span>
-               <span className="text-gray-400 pl-4">{t.skills.toolsIUse.devops}</span>
-            </li>
-            <li className="flex flex-col gap-1 text-sm">
-               <span className="text-white font-bold flex items-center gap-2">• Frontend:</span>
-               <span className="text-gray-400 pl-4">{t.skills.toolsIUse.frontend}</span>
-            </li>
+          <ul className="space-y-4">
+            {t.skills.toolsIUse.lines.map((line: string, i: number) => (
+              <li key={i} className="flex items-start gap-3 text-sm text-gray-300 font-medium">
+                <span className="text-white text-lg leading-none mt-0.5 shrink-0">•</span>
+                <span className="leading-relaxed">{line}</span>
+              </li>
+            ))}
           </ul>
         </motion.div>
 

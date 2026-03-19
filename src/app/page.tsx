@@ -6,8 +6,6 @@ import { About } from "@/components/About";
 import { Testimonials } from "@/components/Testimonials";
 import { ContactForm } from "@/components/ContactForm";
 import { BackToTop } from "@/components/BackToTop";
-import { Footer } from "@/components/Footer";
-
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between pb-8 relative overflow-hidden">
@@ -31,8 +29,6 @@ export default function Home() {
       <About />
       <Testimonials />
       <ContactForm />
-
-      <Footer />
 
       <BackToTop />
     </main>

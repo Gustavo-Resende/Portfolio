@@ -10,6 +10,7 @@ import { BackToTop } from "@/components/BackToTop";
 import { ContactCTA } from "@/components/ContactCTA";
 import { TechStack } from "@/components/TechStack";
 import { ImageCarousel } from "@/components/ImageCarousel";
+import { FeatureHighlight } from "@/components/FeatureHighlight";
 
 export default function ResumaxProject() {
   const { t } = useLanguage();
@@ -174,7 +175,8 @@ export default function ResumaxProject() {
             <div className="space-y-6 order-1 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-blue-500 pl-3">{t.projectPages.resumax.features.f1.eyebrow}</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                {t.projectPages.resumax.features.f1.title} <span className="inline-block whitespace-nowrap text-blue-400">{t.projectPages.resumax.features.f1.highlight}</span>
+                {t.projectPages.resumax.features.f1.title}{" "}
+                <FeatureHighlight text={t.projectPages.resumax.features.f1.highlight} className="text-blue-400" />
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
                 {t.projectPages.resumax.features.f1.description}
@@ -334,7 +336,8 @@ var clampedScore = Math.Clamp(adaptedResume.AtsScore.Score, 0, 100);`
             <div className="space-y-6 order-1 lg:order-2 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-blue-500 pl-3">{t.projectPages.resumax.features.f2.eyebrow}</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                {t.projectPages.resumax.features.f2.title} <span className="inline-block whitespace-nowrap text-blue-400">{t.projectPages.resumax.features.f2.highlight}</span>
+                {t.projectPages.resumax.features.f2.title}{" "}
+                <FeatureHighlight text={t.projectPages.resumax.features.f2.highlight} className="text-blue-400" />
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
                 {t.projectPages.resumax.features.f2.description}
@@ -351,7 +354,8 @@ var clampedScore = Math.Clamp(adaptedResume.AtsScore.Score, 0, 100);`
             <div className="space-y-6 order-1 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-blue-500 pl-3">{t.projectPages.resumax.features.f3.eyebrow}</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                {t.projectPages.resumax.features.f3.title} <span className="inline-block whitespace-nowrap text-blue-400">{t.projectPages.resumax.features.f3.highlight}</span>
+                {t.projectPages.resumax.features.f3.title}{" "}
+                <FeatureHighlight text={t.projectPages.resumax.features.f3.highlight} className="text-blue-400" />
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
                 {t.projectPages.resumax.features.f3.description}
@@ -538,13 +542,6 @@ if (adaptedResume.FabricationCheck is { Count: > 0 })
         </div>
       </section>
       
-      {/* Footer */}
-      <footer className="w-full text-center py-6 text-text-muted text-sm relative z-10 border-t border-white/5 mt-auto bg-black">
-        <div className="max-w-5xl mx-auto px-4">
-          <p>&copy; {new Date().getFullYear()} Gustavo Resende. {t.projectPages.common.footer}</p>
-        </div>
-      </footer>
-
       <BackToTop />
 
     </main>

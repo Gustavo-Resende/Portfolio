@@ -2,7 +2,22 @@
 
 import { useState, useRef } from "react";
 import { motion, useScroll, AnimatePresence } from "framer-motion";
-import { CheckCircle2, Calendar, Code2, Briefcase, Target, Lightbulb, AlertTriangle, Zap, Server, Activity, TrendingUp, ChevronLeft, ChevronRight, MessageCircle } from "lucide-react";
+import {
+  CheckCircle2,
+  Calendar,
+  Code2,
+  Briefcase,
+  Target,
+  Lightbulb,
+  AlertTriangle,
+  ChevronLeft,
+  ChevronRight,
+  MessageCircle,
+  Search,
+  LayoutDashboard,
+  Cpu,
+  Shield,
+} from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { ProjectHeader } from "@/components/ProjectHeader";
@@ -10,6 +25,26 @@ import { BackToTop } from "@/components/BackToTop";
 import { ContactCTA } from "@/components/ContactCTA";
 import { TechStack } from "@/components/TechStack";
 import { ImageCarousel } from "@/components/ImageCarousel";
+import { FeatureHighlight } from "@/components/FeatureHighlight";
+
+const sleipnirResultCardIcons = [
+  Search,
+  LayoutDashboard,
+  Cpu,
+  Shield,
+] as const;
+
+function renderHeroWithAccent(text: string) {
+  const parts = text.split(/<\/?accent>/);
+  if (parts.length < 3) return text;
+  return (
+    <>
+      {parts[0]}
+      <span className="text-lime-primary font-semibold">{parts[1]}</span>
+      {parts[2]}
+    </>
+  );
+}
 
 export default function SleipnirProject() {
   const { t } = useLanguage();
@@ -59,10 +94,7 @@ export default function SleipnirProject() {
                 Sleipnir
               </h1>
               <p className="text-xl md:text-2xl text-white/70 font-light max-w-xl leading-relaxed">
-                {(() => {
-                  const parts = t.projectPages.sleipnir.hero.split(/<\/?accent>/);
-                  return <>{parts[0]}<span className="text-lime-primary font-semibold">{parts[1]}</span>{parts[2]}</>;
-                })()}
+                {renderHeroWithAccent(t.projectPages.sleipnir.hero)}
               </p>
             </div>
 
@@ -97,7 +129,7 @@ export default function SleipnirProject() {
                 <Calendar className="w-6 h-6 text-lime-primary" />
               </div>
               <div>
-                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.common.metadata.duration}</span>
+                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.sleipnir.metadata.contextLabel}</span>
                 <h3 className="text-2xl font-bold text-white">{t.projectPages.sleipnir.metadata.duration.title}</h3>
                 <p className="text-text-muted text-sm mt-2">{t.projectPages.sleipnir.metadata.duration.description}</p>
               </div>
@@ -108,7 +140,7 @@ export default function SleipnirProject() {
                 <Code2 className="w-6 h-6 text-lime-primary" />
               </div>
               <div>
-                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.common.metadata.stack}</span>
+                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.sleipnir.metadata.stackLabel}</span>
                 <h3 className="text-xl font-bold text-white">{t.projectPages.sleipnir.metadata.stack.title}</h3>
                 <p className="text-text-muted text-sm mt-2">{t.projectPages.sleipnir.metadata.stack.description}</p>
               </div>
@@ -119,7 +151,7 @@ export default function SleipnirProject() {
                 <Briefcase className="w-6 h-6 text-lime-primary" />
               </div>
               <div>
-                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.common.metadata.model}</span>
+                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.sleipnir.metadata.modelLabel}</span>
                 <h3 className="text-2xl font-bold text-white">{t.projectPages.sleipnir.metadata.model.title}</h3>
                 <p className="text-text-muted text-sm mt-2">{t.projectPages.sleipnir.metadata.model.description}</p>
               </div>
@@ -151,9 +183,10 @@ export default function SleipnirProject() {
       <section id="architecture" className="py-16 lg:py-24 px-4 relative z-10 w-full">
         <div className="max-w-6xl mx-auto space-y-24 lg:space-y-32">
           
-          <div className="text-center mb-10 lg:mb-16">
+          <div className="text-center mb-10 lg:mb-16 max-w-3xl mx-auto">
             <span className="text-lime-primary text-xs font-bold tracking-widest uppercase mb-2 block">{t.projectPages.common.architecture.eyebrow}</span>
             <h2 className="text-4xl font-bold text-white">{t.projectPages.common.architecture.title}</h2>
+            <p className="mt-4 text-text-body text-base md:text-lg leading-relaxed">{t.projectPages.sleipnir.architectureIntro}</p>
           </div>
 
           {/* Feature 1 (Texto Esquerda, Imagem Direita) - FORMATO DOCUMENTAL */}
@@ -161,7 +194,8 @@ export default function SleipnirProject() {
             <div className="space-y-6 order-1 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">{t.projectPages.sleipnir.features.f1.eyebrow}</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                {t.projectPages.sleipnir.features.f1.title} <span className="inline-block whitespace-nowrap text-lime-primary">{t.projectPages.sleipnir.features.f1.highlight}</span>
+                {t.projectPages.sleipnir.features.f1.title}{" "}
+                <FeatureHighlight text={t.projectPages.sleipnir.features.f1.highlight} className="text-lime-primary" />
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
                 {t.projectPages.sleipnir.features.f1.description}
@@ -274,7 +308,8 @@ export default function SleipnirProject() {
             <div className="space-y-6 order-1 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-lime-primary pl-3">{t.projectPages.sleipnir.features.f3.eyebrow}</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                {t.projectPages.sleipnir.features.f3.title} <span className="inline-block whitespace-nowrap text-lime-primary">{t.projectPages.sleipnir.features.f3.highlight}</span>
+                {t.projectPages.sleipnir.features.f3.title}{" "}
+                <FeatureHighlight text={t.projectPages.sleipnir.features.f3.highlight} className="text-lime-primary" />
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
                 {t.projectPages.sleipnir.features.f3.description}
@@ -336,104 +371,47 @@ export default function SleipnirProject() {
         </div>
 
         <div className="max-w-6xl mx-auto relative z-10 space-y-12 lg:space-y-16">
-          <div className="text-center">
-            <span className="text-lime-primary text-xs font-bold tracking-widest uppercase block mb-2">{t.projectPages.common.results.eyebrow}</span>
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="text-lime-primary text-xs font-bold tracking-widest uppercase block mb-2">{t.projectPages.sleipnir.results.eyebrow}</span>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">
-              {t.projectPages.common.results.title}
+              {t.projectPages.sleipnir.results.title}
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-             {/* Anim Metric 1: Progress Bar shrinking */}
-             <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} className="bg-[#111] border border-lime-primary/30 p-8 rounded-3xl text-center shadow-[0_0_30px_rgba(163,230,53,0.05)] relative overflow-hidden flex flex-col items-center justify-center min-h-[250px]">
-               <Zap className="w-8 h-8 text-lime-primary mb-4" />
-               <h4 className="text-5xl font-extrabold text-white mb-2">{t.projectPages.sleipnir.results.m1.value}</h4>
-               <p className="text-white/60 font-medium text-sm">{t.projectPages.sleipnir.results.m1.label}</p>
-               
-               {/* Progress bar animation */}
-               <div className="w-full h-1 bg-white/10 rounded-full mt-6 overflow-hidden">
-                 <motion.div 
-                   initial={{ width: "100%" }} 
-                   whileInView={{ width: "15%" }} 
-                   viewport={{ once: true }}
-                   transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
-                   className="h-full bg-lime-primary shadow-[0_0_10px_#a3e635]" 
-                 />
-               </div>
-             </motion.div>
-             
-             {/* Anim Metric 2: Pulsing Server / Heartbeat */}
-             <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} transition={{ delay: 0.1 }} className="bg-[#111] border border-lime-primary/30 p-8 rounded-3xl text-center shadow-[0_0_30px_rgba(163,230,53,0.05)] relative overflow-hidden flex flex-col items-center justify-center min-h-[250px]">
-               <motion.div
-                 animate={{ scale: [1, 1.2, 1] }}
-                 transition={{ repeat: Infinity, duration: 2 }}
-               >
-                 <Server className="w-8 h-8 text-lime-primary mb-4" />
-               </motion.div>
-               <h4 className="text-5xl font-extrabold text-white mb-2 drop-shadow-[0_0_15px_rgba(163,230,53,0.5)]">{t.projectPages.sleipnir.results.m2.value}</h4>
-               <p className="text-white/60 font-medium text-sm">{t.projectPages.sleipnir.results.m2.label}</p>
-               <span className="mt-4 px-3 py-1 bg-lime-primary/10 text-lime-primary text-xs rounded-full border border-lime-primary/20 flex items-center gap-2">
-                 <div className="w-1.5 h-1.5 rounded-full bg-lime-primary animate-pulse" /> {t.projectPages.common.online}
-               </span>
-             </motion.div>
-
-             {/* Anim Metric 3: Flowing requests (dots moving) */}
-             <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} transition={{ delay: 0.2 }} className="bg-[#111] border border-lime-primary/30 p-8 rounded-3xl text-center shadow-[0_0_30px_rgba(163,230,53,0.05)] relative overflow-hidden flex flex-col items-center justify-center min-h-[250px]">
-               <Activity className="w-8 h-8 text-lime-primary mb-4" />
-               <h4 className="text-5xl font-extrabold text-white mb-2">{t.projectPages.sleipnir.results.m3.value}</h4>
-               <p className="text-white/60 font-medium text-sm">{t.projectPages.sleipnir.results.m3.label}</p>
-               
-               {/* Conveyor belt animation dots */}
-               <div className="flex gap-2 mt-6 overflow-hidden w-full justify-center opacity-50">
-                 {[1,2,3,4].map((i) => (
-                   <motion.div 
-                     key={i}
-                     animate={{ x: [20, -20], opacity: [0, 1, 0] }}
-                     transition={{ repeat: Infinity, duration: 1.5, delay: i * 0.2 }}
-                     className="w-2 h-2 rounded-full bg-lime-primary"
-                   />
-                 ))}
-               </div>
-             </motion.div>
-
-             {/* Anim Metric 4: Trending Up Chart */}
-             <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} transition={{ delay: 0.3 }} className="bg-[#111] border border-lime-primary/30 p-8 rounded-3xl text-center shadow-[0_0_30px_rgba(163,230,53,0.05)] relative overflow-hidden flex flex-col items-center justify-center min-h-[250px]">
-               <TrendingUp className="w-8 h-8 text-lime-primary mb-4" />
-               <h4 className="text-5xl font-extrabold text-white mb-2">{t.projectPages.sleipnir.results.m4.value}</h4>
-               <p className="text-white/60 font-medium text-sm">{t.projectPages.sleipnir.results.m4.label}</p>
-               
-               <div className="flex items-end gap-1.5 mt-6 h-8 justify-center">
-                 {[40, 60, 50, 80, 100].map((height, i) => (
-                   <motion.div 
-                     key={i}
-                     initial={{ height: 0 }}
-                     whileInView={{ height: `${height}%` }}
-                     viewport={{ once: true }}
-                     transition={{ duration: 0.8, delay: 0.5 + (i * 0.1), ease: "easeOut" }}
-                     className="w-3 bg-lime-primary rounded-t-sm opacity-80"
-                   />
-                 ))}
-               </div>
-             </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {(["m1", "m2", "m3", "m4"] as const).map((key, i) => {
+              const card = t.projectPages.sleipnir.results[key];
+              const Icon = sleipnirResultCardIcons[i];
+              return (
+                <motion.div
+                  key={key}
+                  initial={{ y: 40, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  whileHover={{ y: -4, borderColor: "rgba(163, 230, 53, 0.45)" }}
+                  className="group bg-[#111111]/90 border border-lime-primary/25 p-8 rounded-2xl text-left shadow-[0_0_24px_rgba(163,230,53,0.06)] flex flex-col justify-center min-h-[180px] transition-colors"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-lime-primary/10 border border-lime-primary/20 flex items-center justify-center text-lime-primary mb-4 shrink-0 transition-transform group-hover:scale-110">
+                    <Icon className="w-6 h-6" strokeWidth={2} aria-hidden />
+                  </div>
+                  <h4 className="text-lg md:text-xl font-bold text-white mb-3 leading-snug">{card.value}</h4>
+                  <p className="text-white/60 text-sm leading-relaxed">{card.label}</p>
+                </motion.div>
+              );
+            })}
           </div>
-          
+
           <div id="cta" className="pt-16 flex flex-col items-center gap-6 text-center">
-            <h3 className="text-3xl font-bold text-white">{t.projectPages.common.cta.title}</h3>
-            <p className="text-white/60 mb-4 max-w-xl">{t.projectPages.common.cta.description}</p>
+            <h3 className="text-3xl font-bold text-white max-w-xl">{t.projectPages.sleipnir.cta.title}</h3>
+            <p className="text-white/60 mb-4 max-w-xl">{t.projectPages.sleipnir.cta.description}</p>
             <Link href="/#contact" className="bg-lime-primary hover:bg-[#b4f04b] text-black px-10 py-4 rounded-full font-bold transition-all text-lg shadow-[0_0_40px_rgba(163,230,53,0.4)] hover:shadow-[0_0_60px_rgba(163,230,53,0.6)] hover:scale-105">
-              {t.projectPages.common.cta.button}
+              {t.projectPages.sleipnir.cta.button}
             </Link>
           </div>
         </div>
       </section>
       
-      {/* Footer idêntico ao da Home */}
-      <footer className="w-full text-center py-6 text-text-muted text-sm relative z-10 border-t border-white/5 mt-auto bg-black">
-        <div className="max-w-5xl mx-auto px-4">
-          <p>&copy; {new Date().getFullYear()} Gustavo Resende. {t.projectPages.common.footer}</p>
-        </div>
-      </footer>
-
       <BackToTop />
 
     </main>
@@ -477,6 +455,7 @@ function JourneyAnimatedSection() {
           </motion.div>
           <div>
             <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{t.projectPages.common.journey.problem}</h3>
+            <p className="text-lg font-semibold text-white mb-2">{t.projectPages.sleipnir.journey.problemHeadline}</p>
             <p className="text-text-muted leading-relaxed text-sm md:text-base">
               {t.projectPages.sleipnir.journey.problem}
             </p>
@@ -493,6 +472,7 @@ function JourneyAnimatedSection() {
           </motion.div>
           <div>
             <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{t.projectPages.common.journey.objective}</h3>
+            <p className="text-lg font-semibold text-white mb-2">{t.projectPages.sleipnir.journey.objectiveHeadline}</p>
             <p className="text-text-muted leading-relaxed text-sm md:text-base">
               {t.projectPages.sleipnir.journey.objective}
             </p>
@@ -509,6 +489,7 @@ function JourneyAnimatedSection() {
           </motion.div>
           <div>
             <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{t.projectPages.common.journey.solution}</h3>
+            <p className="text-lg font-semibold text-white mb-2">{t.projectPages.sleipnir.journey.solutionHeadline}</p>
             <p className="text-text-muted leading-relaxed text-sm md:text-base">
               {t.projectPages.sleipnir.journey.solution}
             </p>

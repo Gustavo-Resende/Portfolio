@@ -2,7 +2,23 @@
 
 import { useState, useRef } from "react";
 import { motion, useScroll, AnimatePresence } from "framer-motion";
-import { CheckCircle2, Calendar, Code2, Briefcase, Target, Lightbulb, AlertTriangle, Zap, Server, Activity, TrendingUp, ChevronLeft, ChevronRight, Globe, MessageCircle } from "lucide-react";
+import {
+  CheckCircle2,
+  Calendar,
+  Code2,
+  Briefcase,
+  Target,
+  Lightbulb,
+  AlertTriangle,
+  ChevronLeft,
+  ChevronRight,
+  Globe,
+  MessageCircle,
+  GitBranch,
+  Globe2,
+  ShieldCheck,
+  Workflow,
+} from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { ProjectHeader } from "@/components/ProjectHeader";
@@ -10,6 +26,7 @@ import { BackToTop } from "@/components/BackToTop";
 import { ContactCTA } from "@/components/ContactCTA";
 import { TechStack } from "@/components/TechStack";
 import { ImageCarousel } from "@/components/ImageCarousel";
+import { FeatureHighlight } from "@/components/FeatureHighlight";
 
 const ACCENT = {
   text: "text-amber-500",
@@ -26,6 +43,20 @@ const ACCENT = {
   ctaShadow: "shadow-[0_0_40px_rgba(245,158,11,0.4)]",
   ctaShadowHover: "hover:shadow-[0_0_60px_rgba(245,158,11,0.6)]",
 };
+
+const muninnResultCardIcons = [GitBranch, Globe2, ShieldCheck, Workflow] as const;
+
+function renderHeroWithAccent(text: string) {
+  const parts = text.split(/<\/?accent>/);
+  if (parts.length < 3) return text;
+  return (
+    <>
+      {parts[0]}
+      <span className="text-amber-500 font-semibold">{parts[1]}</span>
+      {parts[2]}
+    </>
+  );
+}
 
 export default function MuninnProject() {
   const { t } = useLanguage();
@@ -81,10 +112,7 @@ export default function MuninnProject() {
                 Muninn
               </h1>
               <p className="text-xl md:text-2xl text-white/70 font-light max-w-xl leading-relaxed">
-                {(() => {
-                  const parts = t.projectPages.muninn.hero.split(/<\/?accent>/);
-                  return <>{parts[0]}<span className="text-amber-500 font-semibold">{parts[1]}</span>{parts[2]}</>;
-                })()}
+                {renderHeroWithAccent(t.projectPages.muninn.hero)}
               </p>
             </div>
 
@@ -118,9 +146,9 @@ export default function MuninnProject() {
                 <Calendar className="w-6 h-6 text-amber-500" />
               </div>
               <div>
-                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.muninn.metadata.operation.label}</span>
-                <h3 className="text-2xl font-bold text-white">{t.projectPages.muninn.metadata.operation.title}</h3>
-                <p className="text-text-muted text-sm mt-2">{t.projectPages.muninn.metadata.operation.description}</p>
+                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.muninn.metadata.contextLabel}</span>
+                <h3 className="text-2xl font-bold text-white">{t.projectPages.muninn.metadata.duration.title}</h3>
+                <p className="text-text-muted text-sm mt-2">{t.projectPages.muninn.metadata.duration.description}</p>
               </div>
             </motion.div>
 
@@ -129,7 +157,7 @@ export default function MuninnProject() {
                 <Code2 className="w-6 h-6 text-amber-500" />
               </div>
               <div>
-                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.common.metadata.stack}</span>
+                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.muninn.metadata.stackLabel}</span>
                 <h3 className="text-xl font-bold text-white">{t.projectPages.muninn.metadata.stack.title}</h3>
                 <p className="text-text-muted text-sm mt-2">{t.projectPages.muninn.metadata.stack.description}</p>
               </div>
@@ -140,7 +168,7 @@ export default function MuninnProject() {
                 <Briefcase className="w-6 h-6 text-amber-500" />
               </div>
               <div>
-                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.common.metadata.model}</span>
+                <span className="text-white/50 text-xs font-bold tracking-widest uppercase block mb-1">{t.projectPages.muninn.metadata.modelLabel}</span>
                 <h3 className="text-2xl font-bold text-white">{t.projectPages.muninn.metadata.model.title}</h3>
                 <p className="text-text-muted text-sm mt-2">{t.projectPages.muninn.metadata.model.description}</p>
               </div>
@@ -149,9 +177,9 @@ export default function MuninnProject() {
 
           {/* A Jornada: Problema -> Objetivo -> Solução */}
           <div className="w-full relative pt-10">
-            <div className="text-center mb-16 lg:mb-24">
-               <span className="text-amber-500 text-xs font-bold tracking-widest uppercase mb-2 block">{t.projectPages.common.journey.eyebrow}</span>
-               <h2 className="text-4xl font-bold text-white">{t.projectPages.common.journey.title}</h2>
+            <div className="text-center mb-16 lg:mb-24 max-w-3xl mx-auto">
+               <span className="text-amber-500 text-xs font-bold tracking-widest uppercase mb-2 block">{t.projectPages.muninn.journeySection.eyebrow}</span>
+               <h2 className="text-4xl font-bold text-white">{t.projectPages.muninn.journeySection.title}</h2>
             </div>
             
             <JourneyAnimatedSection />
@@ -172,9 +200,10 @@ export default function MuninnProject() {
       <section id="architecture" className="py-16 lg:py-24 px-4 relative z-10 w-full">
         <div className="max-w-6xl mx-auto space-y-24 lg:space-y-32">
           
-          <div className="text-center mb-10 lg:mb-16">
+          <div className="text-center mb-10 lg:mb-16 max-w-3xl mx-auto">
             <span className="text-amber-500 text-xs font-bold tracking-widest uppercase mb-2 block">{t.projectPages.common.architecture.eyebrow}</span>
             <h2 className="text-4xl font-bold text-white">{t.projectPages.common.architecture.title}</h2>
+            <p className="mt-4 text-text-body text-base md:text-lg leading-relaxed">{t.projectPages.muninn.architectureIntro}</p>
           </div>
 
           {/* Feature 1: Domain Guard Pattern (Texto Esquerda, Code Direita) */}
@@ -182,7 +211,8 @@ export default function MuninnProject() {
             <div className="space-y-6 order-1 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-amber-500 pl-3">{t.projectPages.muninn.features.f1.eyebrow}</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                {t.projectPages.muninn.features.f1.title} <span className="inline-block whitespace-nowrap text-amber-500">{t.projectPages.muninn.features.f1.highlight}</span>
+                {t.projectPages.muninn.features.f1.title}{" "}
+                <FeatureHighlight text={t.projectPages.muninn.features.f1.highlight} className="text-amber-500" />
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
                 {t.projectPages.muninn.features.f1.description}
@@ -197,48 +227,46 @@ export default function MuninnProject() {
                  color="amber"
                  snippets={[
                    {
-                     title: "IDomainGuard Interface",
-                     code: `public interface IDomainGuard { }
-
-public class Domain : IDomainGuard
+                     title: "Outbox — registro de evento",
+                     code: `public class OutboxMessage
 {
-    public static IDomainGuard Against { get; } = new Domain();
-    private Domain() { }
+    public Guid Id { get; set; }
+    public string Type { get; set; } = "";
+    public string Payload { get; set; } = "";
+    public DateTimeOffset CreatedAt { get; set; }
+    public bool Processed { get; set; }
 }`
                    },
                    {
-                     title: "Guard Extension Methods",
-                     code: `public static partial class IDomainGuardExtensions
-{
-    public static void When(this IDomainGuard _, bool condition, string message)
-    {
-        if (condition)
-            throw new DomainException(message);
-    }
+                     title: "Transação: lead + outbox",
+                     code: `await using var tx = await _db.Database
+    .BeginTransactionAsync(ct);
 
-    public static T Ensure<T>(this IDomainGuard _, T input,
-        Func<T, bool> predicate, string message)
-    {
-        if (!predicate(input))
-            throw new DomainException(message);
-        return input;
-    }
-}`
+await _db.Leads.AddAsync(lead, ct);
+await _db.Outbox.AddAsync(new OutboxMessage
+{
+    Type = nameof(LeadSubmittedEvent),
+    Payload = JsonSerializer.Serialize(evt),
+    CreatedAt = DateTimeOffset.UtcNow
+}, ct);
+
+await _db.SaveChangesAsync(ct);
+await tx.CommitAsync(ct);`
                    },
                    {
-                     title: "DomainException Definition",
-                     code: `// Exceção semântica para regras de negócio
-internal class DomainException : Exception
+                     title: "Worker → SQS",
+                     code: `var pending = await _db.Outbox
+    .Where(m => !m.Processed)
+    .OrderBy(m => m.CreatedAt)
+    .Take(50)
+    .ToListAsync(ct);
+
+foreach (var msg in pending)
 {
-    public DomainException(string message)
-        : base(message) { }
+    await _sqs.SendMessageAsync(_queueUrl, msg.Payload, ct);
+    msg.Processed = true;
 }
-
-// Uso prático no domínio:
-Domain.Against.When(
-    _tokens.Count >= MaxTokens,
-    "Limite de tokens excedido."
-);`
+await _db.SaveChangesAsync(ct);`
                    }
                  ]}
                />
@@ -249,61 +277,49 @@ Domain.Against.When(
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
              <div className="relative w-full aspect-square md:aspect-[4/3] order-2 lg:order-1">
                 <CodeCarousel 
-                  color="red"
+                  color="amber"
                   snippets={[
                     {
-                      title: "Account Aggregate Root",
-                      code: `public class Account : Entity<Guid>, IAggregateRoot
-{
-    private readonly List<AccountToken> _tokens = new();
-    private readonly List<string> _roles = new();
-
-    public Account(Email email, Password password, FullName fullName)
+                      title: "JWT Bearer",
+                      code: `services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
     {
-        Email = email;
-        Password = password;
-        FullName = fullName;
-        IsActive = true;
-
-        AddDomainEvent(new AccountCreatedSendEmailEvent(Email.Value));
-        AddDomainEvent(new AccountCreatedSignalEvent(Email.Value));
-    }
-}`
+        options.TokenValidationParameters = new()
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            IssuerSigningKey = new SymmetricSecurityKey(key)
+        };
+    });`
                     },
                     {
-                      title: "Token Generation Logic",
-                      code: `public AccountToken GenerateToken(AccountTokenType type, TimeSpan lifetime)
+                      title: "Upload KYC → S3",
+                      code: `var req = new PutObjectRequest
 {
-    var token = new AccountToken(type, lifetime);
-    _tokens.Add(token);
-
-    AddDomainEvent(new AccountRequestTokenOutboxEvent(
-        Id, Email.Value, token.Value, type));
-
-    return token;
+    BucketName = _options.KycBucket,
+    Key = $"{tenantId}/{documentId}.pdf",
+    InputStream = stream,
+    ContentType = "application/pdf",
+    ServerSideEncryptionMethod = ServerSideEncryptionMethod.AES256
+};
+await _s3.PutObjectAsync(req, ct);`
+                    },
+                    {
+                      title: "Status do documento",
+                      code: `public enum KycDocumentStatus
+{
+    PendingReview,
+    Approved,
+    Rejected
 }
 
-public void UseToken(string value, AccountTokenType type)
+public void Approve(Guid docId)
 {
-    var token = _tokens.FirstOrDefault(t =>
-        t.Type == type && t.Value == value);
-    Guard.Against.Null(token, nameof(value), "Token não encontrado.");
-    token!.MarkAsUsed();
+    var doc = _db.KycDocuments.Find(docId)
+        ?? throw new NotFoundException();
+    doc.Status = KycDocumentStatus.Approved;
 }`
-                    },
-                    {
-                      title: "Value Objects (Email/Password)",
-                      code: `public Email Email { get; private set; }
-public Password Password { get; private set; }
-public FullName FullName { get; private set; }
-public bool IsActive { get; private set; }
-public bool EmailConfirmed { get; private set; }
-
-public IReadOnlyCollection<AccountToken> Tokens => _tokens.AsReadOnly();
-public IReadOnlyCollection<string> Roles => _roles.AsReadOnly();
-
-// Encapsulamento total via Value Objects
-public void SetPassword(Password password) => Password = password;`
                     }
                   ]}
                 />
@@ -311,14 +327,15 @@ public void SetPassword(Password password) => Password = password;`
             <div className="space-y-6 order-1 lg:order-2 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-amber-500 pl-3">{t.projectPages.muninn.features.f2.eyebrow}</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                {t.projectPages.muninn.features.f2.title} <span className="inline-block whitespace-nowrap text-amber-500">{t.projectPages.muninn.features.f2.highlight}</span>
+                {t.projectPages.muninn.features.f2.title}{" "}
+                <FeatureHighlight text={t.projectPages.muninn.features.f2.highlight} className="text-amber-500" />
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
                 {t.projectPages.muninn.features.f2.description}
               </p>
               <ul className="space-y-3 pt-4 font-mono text-sm md:text-base flex flex-col items-center lg:items-start px-2 max-w-[26rem]">
-                <li className="flex items-start gap-3 text-white/80 text-left break-words leading-relaxed"><CheckCircle2 className="text-red-500 w-4 h-4 shrink-0" /> {t.projectPages.muninn.features.f2.checks[0]}</li>
-                <li className="flex items-start gap-3 text-white/80 text-left break-words leading-relaxed"><CheckCircle2 className="text-red-500 w-4 h-4 shrink-0" /> {t.projectPages.muninn.features.f2.checks[1]}</li>
+                <li className="flex items-start gap-3 text-white/80 text-left break-words leading-relaxed"><CheckCircle2 className="text-amber-500 w-4 h-4 shrink-0" /> {t.projectPages.muninn.features.f2.checks[0]}</li>
+                <li className="flex items-start gap-3 text-white/80 text-left break-words leading-relaxed"><CheckCircle2 className="text-amber-500 w-4 h-4 shrink-0" /> {t.projectPages.muninn.features.f2.checks[1]}</li>
               </ul>
             </div>
           </div>
@@ -328,7 +345,8 @@ public void SetPassword(Password password) => Password = password;`
             <div className="space-y-6 order-1 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
               <span className="text-white/50 text-sm font-mono tracking-widest uppercase block mb-4 border-l-2 border-amber-500 pl-3">{t.projectPages.muninn.features.f3.eyebrow}</span>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                {t.projectPages.muninn.features.f3.title} <span className="inline-block whitespace-nowrap text-amber-500">{t.projectPages.muninn.features.f3.highlight}</span>
+                {t.projectPages.muninn.features.f3.title}{" "}
+                <FeatureHighlight text={t.projectPages.muninn.features.f3.highlight} className="text-amber-500" />
               </h2>
               <p className="text-text-body text-lg font-light pt-4 leading-relaxed max-w-xl">
                 {t.projectPages.muninn.features.f3.description}
@@ -343,63 +361,44 @@ public void SetPassword(Password password) => Password = password;`
                  color="amber"
                  snippets={[
                    {
-                     title: "InMemory Event Bus",
-                     code: `public class InMemoryEventBus : IEventBus
+                     title: "Localização (i18n)",
+                     code: `services.AddLocalization(options =>
 {
-    private readonly Channel<DomainEventBase> _channel =
-        Channel.CreateUnbounded<DomainEventBase>();
+    options.ResourcesPath = "Resources";
+});
 
-    public ValueTask PublishAsync<TEvent>(TEvent @event, CancellationToken ct)
-        where TEvent : DomainEventBase
-    {
-        return _channel.Writer.WriteAsync(@event, ct);
-    }
-
-    public ChannelReader<DomainEventBase> Reader => _channel.Reader;
-}`
+services.Configure<RequestLocalizationOptions>(o =>
+{
+    o.DefaultRequestCulture = new RequestCulture("en-CA");
+    o.SupportedCultures = new[] {
+        new CultureInfo("en-CA"),
+        new CultureInfo("fr-CA")
+    };
+});`
                    },
                    {
-                     title: "Local Event Consumer",
-                     code: `public class LocalEventConsumer : BackgroundService
+                     title: "Contexto de tenant",
+                     code: `public interface ITenantContext
 {
-    private readonly ChannelReader<DomainEventBase> _reader;
-    private readonly IServiceProvider _provider;
-
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
-    {
-        await foreach (var evt in _reader.ReadAllAsync(stoppingToken))
-        {
-            using var scope = _provider.CreateScope();
-            var handlerType = typeof(IEventHandler<>)
-                .MakeGenericType(evt.GetType());
-            var handler = scope.ServiceProvider.GetService(handlerType);
-
-            if (handler is not null)
-            {
-                var method = handlerType.GetMethod("HandleAsync")!;
-                await (Task)method.Invoke(handler, new object[] { evt, stoppingToken })!;
-            }
-        }
-    }
-}`
-                   },
-                   {
-                     title: "Event Handler Interface",
-                     code: `// Contrato para handlers de eventos de domínio
-public interface IEventHandler<TEvent> where TEvent : DomainEventBase
-{
-    Task HandleAsync(TEvent @event, CancellationToken ct);
+    string? TenantId { get; }
 }
 
-// Exemplo de handler concreto:
-public class SendWelcomeEmailHandler : IEventHandler<AccountCreatedSendEmailEvent>
+public class TenantContext : ITenantContext
 {
-    public async Task HandleAsync(AccountCreatedSendEmailEvent @event, CancellationToken ct)
-    {
-        // Envio de e-mail assíncrono desacoplado
-        await _emailService.SendWelcomeAsync(@event.Email, ct);
-    }
+    public string? TenantId { get; set; }
 }`
+                   },
+                   {
+                     title: "Pipeline: cultura + tenant",
+                     code: `app.UseRequestLocalization();
+
+app.Use(async (ctx, next) =>
+{
+    var tenant = ctx.Request.Headers["X-Tenant-Id"].FirstOrDefault();
+    ctx.RequestServices.GetRequiredService<TenantContext>()
+        .TenantId = tenant;
+    await next();
+});`
                    }
                  ]}
                />
@@ -418,102 +417,47 @@ public class SendWelcomeEmailHandler : IEventHandler<AccountCreatedSendEmailEven
         </div>
 
         <div className="max-w-6xl mx-auto relative z-10 space-y-12 lg:space-y-16">
-          <div className="text-center">
-            <span className="text-amber-500 text-xs font-bold tracking-widest uppercase block mb-2">{t.projectPages.common.results.eyebrow}</span>
+          <div className="text-center max-w-3xl mx-auto">
+            <span className="text-amber-500 text-xs font-bold tracking-widest uppercase block mb-2">{t.projectPages.muninn.results.eyebrow}</span>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">
               {t.projectPages.muninn.results.title}
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-             {/* Metric 1 */}
-             <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} className="bg-[#111] border border-amber-500/30 p-8 rounded-3xl text-center shadow-[0_0_30px_rgba(245,158,11,0.05)] relative overflow-hidden flex flex-col items-center justify-center min-h-[250px]">
-               <Zap className="w-8 h-8 text-amber-500 mb-4" />
-               <h4 className="text-2xl font-extrabold text-white mb-2">{t.projectPages.muninn.results.m1.value}</h4>
-               <p className="text-white/60 font-medium text-sm">{t.projectPages.muninn.results.m1.label}</p>
-               
-               <div className="w-full h-1 bg-white/10 rounded-full mt-6 overflow-hidden">
-                 <motion.div 
-                   initial={{ width: "100%" }} 
-                   whileInView={{ width: "30%" }} 
-                   viewport={{ once: true }}
-                   transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
-                   className="h-full bg-amber-500 shadow-[0_0_10px_#f59e0b]" 
-                 />
-               </div>
-             </motion.div>
-             
-             {/* Metric 2 */}
-             <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} transition={{ delay: 0.1 }} className="bg-[#111] border border-amber-500/30 p-8 rounded-3xl text-center shadow-[0_0_30px_rgba(245,158,11,0.05)] relative overflow-hidden flex flex-col items-center justify-center min-h-[250px]">
-               <motion.div
-                 animate={{ scale: [1, 1.2, 1] }}
-                 transition={{ repeat: Infinity, duration: 2 }}
-               >
-                 <Server className="w-8 h-8 text-amber-500 mb-4" />
-               </motion.div>
-               <h4 className="text-5xl font-extrabold text-white mb-2 drop-shadow-[0_0_15px_rgba(245,158,11,0.5)]">{t.projectPages.muninn.results.m2.value}</h4>
-               <p className="text-white/60 font-medium text-sm">{t.projectPages.muninn.results.m2.label}</p>
-               <span className="mt-4 px-3 py-1 bg-amber-500/10 text-amber-500 text-xs rounded-full border border-amber-500/20 flex items-center gap-2">
-                 <div className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" /> {t.projectPages.muninn.results.m2status}
-               </span>
-             </motion.div>
-
-             {/* Metric 3 */}
-             <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} transition={{ delay: 0.2 }} className="bg-[#111] border border-amber-500/30 p-8 rounded-3xl text-center shadow-[0_0_30px_rgba(245,158,11,0.05)] relative overflow-hidden flex flex-col items-center justify-center min-h-[250px]">
-               <Activity className="w-8 h-8 text-amber-500 mb-4" />
-               <h4 className="text-5xl font-extrabold text-white mb-2">{t.projectPages.muninn.results.m3.value}</h4>
-               <p className="text-white/60 font-medium text-sm">{t.projectPages.muninn.results.m3.label}</p>
-               
-               <div className="flex gap-2 mt-6 overflow-hidden w-full justify-center opacity-50">
-                 {[1,2,3,4].map((i) => (
-                   <motion.div 
-                     key={i}
-                     animate={{ x: [20, -20], opacity: [0, 1, 0] }}
-                     transition={{ repeat: Infinity, duration: 1.5, delay: i * 0.2 }}
-                     className="w-2 h-2 rounded-full bg-amber-500"
-                   />
-                 ))}
-               </div>
-             </motion.div>
-
-             {/* Metric 4 */}
-             <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once:true }} transition={{ delay: 0.3 }} className="bg-[#111] border border-amber-500/30 p-8 rounded-3xl text-center shadow-[0_0_30px_rgba(245,158,11,0.05)] relative overflow-hidden flex flex-col items-center justify-center min-h-[250px]">
-               <TrendingUp className="w-8 h-8 text-amber-500 mb-4" />
-               <h4 className="text-5xl font-extrabold text-white mb-2">{t.projectPages.muninn.results.m4.value}</h4>
-               <p className="text-white/60 font-medium text-sm">{t.projectPages.muninn.results.m4.label}</p>
-               
-               <div className="flex items-end gap-1.5 mt-6 h-8 justify-center">
-                 {[40, 60, 50, 80, 100].map((height, i) => (
-                   <motion.div 
-                     key={i}
-                     initial={{ height: 0 }}
-                     whileInView={{ height: `${height}%` }}
-                     viewport={{ once: true }}
-                     transition={{ duration: 0.8, delay: 0.5 + (i * 0.1), ease: "easeOut" }}
-                     className="w-3 bg-amber-500 rounded-t-sm opacity-80"
-                   />
-                 ))}
-               </div>
-             </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {(["m1", "m2", "m3", "m4"] as const).map((key, i) => {
+              const card = t.projectPages.muninn.results[key];
+              const Icon = muninnResultCardIcons[i];
+              return (
+                <motion.div
+                  key={key}
+                  initial={{ y: 40, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  whileHover={{ y: -4, borderColor: "rgba(245, 158, 11, 0.45)" }}
+                  className="group bg-[#111111]/90 border border-amber-500/25 p-8 rounded-2xl text-left shadow-[0_0_24px_rgba(245,158,11,0.06)] flex flex-col justify-center min-h-[180px] transition-colors"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 mb-4 shrink-0 transition-transform group-hover:scale-110">
+                    <Icon className="w-6 h-6" strokeWidth={2} aria-hidden />
+                  </div>
+                  <h4 className="text-lg md:text-xl font-bold text-white mb-3 leading-snug">{card.value}</h4>
+                  <p className="text-white/60 text-sm leading-relaxed">{card.label}</p>
+                </motion.div>
+              );
+            })}
           </div>
-          
+
           <div id="cta" className="pt-16 flex flex-col items-center gap-6 text-center">
-            <h3 className="text-3xl font-bold text-white">{t.projectPages.common.cta.title}</h3>
-            <p className="text-white/60 mb-4 max-w-xl">{t.projectPages.common.cta.description}</p>
-            <Link href="/#contact" className="bg-amber-500 hover:bg-amber-400 text-black px-10 py-4 rounded-full font-bold transition-all text-lg shadow-[0_0_40px_rgba(245,158,11,0.4)] hover:shadow-[0_0_60px_rgba(245,158,11,0.6)] hover:scale-105">
-              {t.projectPages.common.cta.button}
+            <h3 className="text-3xl font-bold text-white max-w-xl">{t.projectPages.muninn.cta.title}</h3>
+            <p className="text-white/60 mb-4 max-w-xl">{t.projectPages.muninn.cta.description}</p>
+            <Link href="/#contact" className={`bg-amber-500 ${ACCENT.hoverBg} text-black px-10 py-4 rounded-full font-bold transition-all text-lg ${ACCENT.ctaShadow} ${ACCENT.ctaShadowHover} hover:scale-105`}>
+              {t.projectPages.muninn.cta.button}
             </Link>
           </div>
         </div>
       </section>
       
-      {/* Footer */}
-      <footer className="w-full text-center py-6 text-text-muted text-sm relative z-10 border-t border-white/5 mt-auto bg-black">
-        <div className="max-w-5xl mx-auto px-4">
-          <p>&copy; {new Date().getFullYear()} Gustavo Resende. {t.projectPages.common.footer}</p>
-        </div>
-      </footer>
-
       <BackToTop />
 
     </main>
@@ -555,6 +499,7 @@ function JourneyAnimatedSection() {
           </motion.div>
           <div>
             <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{t.projectPages.common.journey.problem}</h3>
+            <p className="text-lg font-semibold text-white mb-2">{t.projectPages.muninn.journey.problemHeadline}</p>
             <p className="text-text-muted leading-relaxed text-sm md:text-base">
               {t.projectPages.muninn.journey.problem}
             </p>
@@ -571,6 +516,7 @@ function JourneyAnimatedSection() {
           </motion.div>
           <div>
             <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{t.projectPages.common.journey.objective}</h3>
+            <p className="text-lg font-semibold text-white mb-2">{t.projectPages.muninn.journey.objectiveHeadline}</p>
             <p className="text-text-muted leading-relaxed text-sm md:text-base">
               {t.projectPages.muninn.journey.objective}
             </p>
@@ -587,6 +533,7 @@ function JourneyAnimatedSection() {
           </motion.div>
           <div>
             <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{t.projectPages.common.journey.solution}</h3>
+            <p className="text-lg font-semibold text-white mb-2">{t.projectPages.muninn.journey.solutionHeadline}</p>
             <p className="text-text-muted leading-relaxed text-sm md:text-base">
               {t.projectPages.muninn.journey.solution}
             </p>

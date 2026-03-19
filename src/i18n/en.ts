@@ -10,7 +10,8 @@ export const en = {
   hero: {
     greeting: "Hi, I'm Gustavo",
     role: "Backend Developer",
-    description: "A <strong class=\"text-white font-semibold\">backend developer</strong> with solid foundations in <strong class=\"text-white font-semibold\">software architecture</strong>. Passionate about crafting scalable APIs, I thrive at the intersection of performance and clean code.",
+    description:
+      "I build software with a focus on quality, structure, and clarity—solutions that are easier to maintain, evolve, and scale.",
     github: "Github",
     email: "Email",
     linkedin: "LinkedIn",
@@ -29,53 +30,61 @@ export const en = {
     code: "Code",
     live: "Live",
     descriptions: {
-      sleipnir: "High-performance logistics engine for Transportar Veículos, with DDD, real-time tracking, and .NET 9.",
-      muninn: "International lead capture and resale platform for Nova Auto Drive (Canada), with paid traffic and AI.",
-      frigg: "Complex real estate management ecosystem for Assistente Frigg, with automations and API integrations.",
-      botfatura: "Autonomous WhatsApp billing automation solution, reducing delinquency with intelligent rules.",
+      sleipnir: "Logistics traceability platform with .NET, PostgreSQL, and observability — centralized queries and real-time visibility.",
+      muninn: "International platform for lead capture, qualification, and monetization — scale, automation, and Canada operations.",
+      frigg: "Platform for real estate and financial flows — conversational automation, WhatsApp, OpenAI, and AWS integrations.",
+      botfatura: "Automated billing engine — recurring receivables, WhatsApp workflows, and more predictable financial flows.",
       resumax: "AI-powered intelligent resume adaptation platform (In Development)."
     }
   },
   skills: {
-    eyebrow: "SKILLS",
-    title: "Building Digital Experiences",
-    subtitle: "I specialize in creating robust architectures and developing high-quality applications that scale.",
+    eyebrow: "STACK",
+    title: "Stack & specialties",
+    subtitle:
+      "Main technologies, skills, and practices that shape how I build software.",
     whatICanDo: {
-      title: "What I can do",
-      description: "I can help develop solutions that will help you grow your business:",
+      title: "Areas I work in",
+      description: "The main fronts where I contribute in software development:",
       items: [
-        "Backend System Architecture",
-        "API Integration & Development",
-        "Database Design & Optimization",
-        "Web Application Development",
-        "Process Automation",
+        "REST API development",
+        "Application architecture",
+        "Service integration",
+        "Distributed systems",
+        "Messaging & asynchronous processing",
       ]
     },
     toolsIUse: {
-      title: "Tools I Use",
-      description: "I use the latest tools and technologies to build functional and scalable products:",
-      backend: "C#, .NET, Entity Framework",
-      database: "SQL Server, PostgreSQL",
-      devops: "Docker, Git, CI/CD, AWS",
-      frontend: "React, Next.js, Tailwind CSS"
+      title: "Core stack",
+      description: "Technologies and tools I use day to day to build software:",
+      lines: [
+        "Backend: C#, .NET, ASP.NET Core, EF Core, Dapper, Carter",
+        "Data: PostgreSQL, SQL Server, MongoDB, Redis",
+        "Messaging: RabbitMQ, Amazon SQS",
+        "Cloud & DevOps: AWS, Docker, GitHub Actions, Terraform, .NET Aspire",
+      ]
     },
     architecture: {
-      title: "Software Architecture",
-      description: "I am a backend developer first. I can help design clean and performant structures:",
+      title: "Technical foundations",
+      description:
+        "Practices that guide how I organize code, shape architecture, and evolve systems with clarity.",
       items: [
         "Clean Architecture",
-        "Domain-Driven Design (DDD)",
-        "SOLID Principles",
-        "High Performance APIs"
+        "DDD",
+        "CQRS",
+        "SOLID",
+        "Outbox Pattern",
+        "Resilience with Polly",
+        "Automated testing",
+        "Observability",
       ]
     }
   },
   about: {
     eyebrow: "ABOUT",
     title: "About Me",
-    p1: "Hello! I'm Gustavo, a developer driven by complex challenges and elegant solutions. My programming journey started with a fascination for creating systems that not only work but perform with excellence.",
-    p2: "Over the years, I've specialized in the <strong class=\"text-white font-bold\">.NET</strong> ecosystem and the <strong class=\"text-white font-bold\">React/Next.js</strong> stack, acquiring a full-stack vision focused on software quality. I strongly believe in modular architectures, like <strong class=\"text-lime-primary\">Clean Architecture</strong> and <strong class=\"text-lime-primary\">Domain-Driven Design (DDD)</strong>, to ensure the projects I work on scale efficiently.",
-    p3: "Beyond code, I'm fascinated by process automation (using tools like n8n) to simplify heavy routines. When I'm not architecting APIs or developing performant SPAs, I like to explore new technologies that further boost my results."
+    p1: "I'm Gustavo, a software developer with experience building APIs, distributed systems, and integrations in the .NET ecosystem. I focus on solutions with a solid foundation, clear internal organization, and real room to evolve.",
+    p2: "I work across software architecture, messaging, authentication, observability, resilience, and AWS infrastructure—practices that help systems stay clear, reliable, and sustainable over time.",
+    p3: "I believe in building software guided by sound technical decisions, readable code, and clear responsibilities across the system.",
   },
   testimonials: {
     eyebrow: "TESTIMONIALS",
@@ -104,14 +113,18 @@ export const en = {
   contact: {
     eyebrow: "CONTACT",
     title: "Let's Discuss",
+    inviteTitle: "Have an idea or project in mind?",
+    inviteBody:
+      "Message me on WhatsApp and tell me what you need. I can help turn it into a well-structured solution with technical clarity and focus on what makes sense for your context.",
     namePlaceholder: "Your Name",
     emailPlaceholder: "Your Email",
     subjectPlaceholder: "Subject",
     budgetPlaceholder: "Your Budget",
     messagePlaceholder: "Tell me something about your project",
-    submitText: "Submit Now",
+    submitText: "Message on WhatsApp",
     submittingText: "Submitting...",
-    successMessage: "Message sent successfully!"
+    successMessage: "Message sent successfully!",
+    availabilityText: "Open to new projects",
   },
   cta: {
     inline: {
@@ -126,8 +139,10 @@ export const en = {
     }
   },
   footer: {
-    builtWith: "Built with Next.js & Tailwind CSS.",
-    contact: "Get in Touch"
+    tagline: "Gustavo Resende. Software developer.",
+    linkedinLabel: "LinkedIn",
+    githubLabel: "GitHub",
+    contactCta: "Get in touch",
   },
   projectPages: {
     common: {
@@ -165,227 +180,429 @@ export const en = {
         description: "Cutting-edge software demands robust foundations and clean code. Let's build your next Success Story together.",
         button: "Talk About My Project",
       },
-      footer: "Built with Next.js & Tailwind CSS.",
       zeroDowntime: "Zero Downtime",
       online: "Online",
     },
     sleipnir: {
-      hero: "A scalable logistics tracking ecosystem that ensures <accent>total fleet and route visibility</accent> in real time.",
+      hero: "A logistics traceability platform built to centralize queries, automate shipment tracking, and deliver more <accent>operational visibility in real time</accent>.",
+      architectureIntro:
+        "A view of the engineering decisions that helped keep the system cohesive, resilient, and ready to evolve.",
       metadata: {
-        duration: { title: "Continuous Cycle", description: "From MVP to industrial scale, with active maintenance and constant architecture evolution." },
-        stack: { title: ".NET 9, PostgreSQL, Docker", description: "Using EF Core for persistence and MediatR for event decoupling." },
-        model: { title: "Corporate Delivery", description: "Custom software licensing with critical engineering support." },
+        contextLabel: "CONTEXT",
+        stackLabel: "TECH STACK",
+        modelLabel: "DELIVERY MODEL",
+        duration: {
+          title: "Traceability at Scale",
+          description:
+            "A platform created to centralize shipment tracking and replace manual lookups with a smoother, more accessible operation.",
+        },
+        stack: {
+          title: ".NET, PostgreSQL, and Docker",
+          description:
+            ".NET APIs with PostgreSQL persistence, JWT authentication, and a containerized setup to support continuous evolution.",
+        },
+        model: {
+          title: "Custom Software",
+          description:
+            "A bespoke solution for a real logistics operation, focused on stability, day-to-day support, and continuous improvement.",
+        },
       },
       journey: {
-        problem: "Inefficient traceability and lack of standards in fleet management, generating inconsistent data and critical operational delays.",
-        objective: "Architect a resilient monitoring system, focused on Domain-Driven Design to ensure unbreakable and auditable business rules.",
-        solution: "A scalable .NET 9 API with PostgreSQL, implementing tracking queues and domain events for full route automation.",
+        problemHeadline: "Decentralized traceability",
+        problem:
+          "Manual lookups and scattered information made shipment tracking slower, less reliable, and more error-prone.",
+        objectiveHeadline: "Bring clarity to operations",
+        objective:
+          "Structure a solution that centralizes tracking, improves logistics visibility, and supports the operation with greater consistency.",
+        solutionHeadline: "APIs, data, and observability",
+        solution:
+          "A .NET platform with PostgreSQL, JWT authentication, and .NET Aspire observability to support a more reliable, scalable operation.",
       },
       features: {
         f1: {
-          eyebrow: "DATA INTEGRITY",
-          title: "Rich Domain with",
-          highlight: "{ DDD & Validations }",
-          description: "All business logic is centered in the `Core`, where Aggregates like `Route` manage their own state through strict Guard Clauses, ensuring the system never enters an invalid state.",
-          checks: ["Entities protected against inconsistencies.", "Historical tracking of every event (Audit\u00A0Log)."],
+          eyebrow: "DOMAIN INTEGRITY",
+          title: "Domain integrity with",
+          highlight: "{ DDD & Guard Clauses }",
+          description:
+            "Business logic lives in the Core, with entities responsible for protecting their own state through domain rules and validations—reducing inconsistencies and keeping the system dependable as it evolves.",
+          checks: ["Entities guarded by domain invariants", "Business rules enforced in the model itself"],
         },
         f2: {
-          eyebrow: "HIGH AVAILABILITY",
-          title: "High-Performance Persistence with",
+          eyebrow: "RESILIENT PERSISTENCE",
+          title: "Resilient persistence with",
           highlight: "{ PostgreSQL & EF Core }",
-          description: "Using a modern .NET 9-based infrastructure, the data layer was optimized with Npgsql and connection Retry policies, ensuring resilience in high-concurrency environments.",
-          checks: ["Resilient connection with Retry Policy.", "Optimized persistence with PostgreSQL."],
+          description:
+            "The data layer uses PostgreSQL and EF Core with connection retry policies to stay resilient under transient failures and concurrency.",
+          checks: ["Resilient connection with retry policy", "Structured persistence on PostgreSQL"],
         },
         f3: {
-          eyebrow: "MAXIMUM SCALABILITY",
-          title: "Decoupling via",
-          highlight: "{ MediatR & Event Bus }",
-          description: "The application uses internal messaging patterns to process domain events asynchronously, allowing new features (like notifications or webhooks) to be added without changing the core route logic.",
-          checks: ["Asynchronous processing via MediatR.", "Fully decoupled events."],
+          eyebrow: "DISTRIBUTED OBSERVABILITY",
+          title: "Distributed observability with",
+          highlight: "{ .NET Aspire }",
+          description:
+            "The app is instrumented for logs, metrics, and traces—making behavior easier to follow and supporting continuous improvement in a distributed setup.",
+          checks: ["Centralized application telemetry", "Clearer monitoring and diagnostics"],
         },
       },
       results: {
-        m1: { value: "-85%", label: "Manual Operation Time" },
-        m2: { value: "Zero", label: "Downtime Registered" },
-        m3: { value: "10k+", label: "Reqs/min No Bottleneck" },
-        m4: { value: "+30%", label: "Capacity Increase" },
+        eyebrow: "RESULTS & DELIVERABLES",
+        title: "Implementation outcomes",
+        m1: {
+          value: "Centralized queries",
+          label: "Replacing manual steps with a clearer, more accessible tracking experience for operations.",
+        },
+        m2: {
+          value: "Greater operational visibility",
+          label: "Tracking history and arrival forecasts organized in a single query interface.",
+        },
+        m3: {
+          value: "Foundation ready to grow",
+          label: "Architecture designed for ongoing maintenance, new requirements, and platform growth.",
+        },
+        m4: {
+          value: "Delivery focused on reliability",
+          label: "Authentication, structured persistence, observability, and delivery automation as the backbone of the solution.",
+        },
       },
       techStack: {
-        title: "Technologies Used",
-        description: "A modern and robust architecture focused on horizontal scalability and data integrity.",
+        title: "Project stack",
+        description:
+          "A technical foundation built for traceability, authentication, observability, and continuous evolution.",
         items: [
-          { name: ".NET 9", description: "High-throughput processing engine.", type: "Backend" },
-          { name: "Next.js 15", description: "Fast and SEO-optimized frontend.", type: "Frontend" },
-          { name: "PostgreSQL", description: "Relational database for critical data.", type: "Database" },
-          { name: "Docker", description: "Containerization for consistent deploys.", type: "Infrastructure" },
-          { name: "MediatR", description: "Mediator pattern for domain events.", type: "Architecture" },
-        ]
+          { name: ".NET 8", description: "API backbone for business logic and centralized tracking queries.", type: "Backend" },
+          { name: "PostgreSQL", description: "Operational data and logistics tracking history.", type: "Database" },
+          { name: "JWT", description: "Authentication and authorization to protect endpoints and critical operational data.", type: "Backend" },
+          { name: ".NET Aspire", description: "Observability with logs, metrics, and traces in distributed environments.", type: "Integration" },
+          { name: "Docker", description: "Containerization for consistent environments and smoother delivery.", type: "Infrastructure" },
+          { name: "GitHub Actions", description: "Delivery pipeline automation and support for continuous evolution.", type: "Infrastructure" },
+        ],
+      },
+      cta: {
+        title: "Want to talk about your project?",
+        description:
+          "If you want a well-structured solution with technical clarity and a focus on evolution, reach out and we’ll align what makes sense for your context.",
+        button: "Message on WhatsApp",
       },
     },
     frigg: {
-      hero: "An <accent>autonomous billing and real estate management</accent> ecosystem that automates the complete cycle of contracts, billing, and service orders.",
+      hero: "An intelligent platform for <accent>real estate management and financial flows</accent>, built to automate operations, integrate conversational channels, and make administration clearer, faster, and more scalable.",
+      architectureIntro:
+        "A view of the engineering decisions that made the platform more automated, resilient, and ready to evolve.",
+      journeySection: {
+        eyebrow: "STORY",
+        title: "From challenge to solution",
+      },
       metadata: {
-        duration: { title: "Continuous Cycle", description: "From MVP to SaaS platform, with constant evolution and new integrations every sprint." },
-        stack: { title: ".NET 9, PostgreSQL, Docker", description: "Clean Architecture with EF Core, MediatR, Clicksign API and Evolution API (WhatsApp)." },
-        model: { title: "PropTech Platform", description: "Corporate solution for real estate agencies with contract, billing, and maintenance management." },
+        contextLabel: "CONTEXT",
+        stackLabel: "TECH STACK",
+        modelLabel: "DELIVERY MODEL",
+        duration: {
+          title: "Real Estate Management with Automation",
+          description:
+            "Built to structure assets, contracts, and financial flows for a real estate operation with strong conversational automation support.",
+        },
+        stack: {
+          title: ".NET, PostgreSQL, and AWS",
+          description:
+            ".NET APIs, PostgreSQL persistence, and cloud integrations for messaging, contracts, documents, and notifications.",
+        },
+        model: {
+          title: "Custom Software",
+          description:
+            "A bespoke solution for a real property-management operation, focused on automation, reliability, and continuous evolution.",
+        },
       },
       journey: {
-        problem: "Manual management of contracts and properties creates immense bottlenecks, lack of sync between owner and tenant, and cash flow delays.",
-        objective: "Automate the \"Lead to Lease\" cycle, ensuring digitally signed contracts integrated with finances without manual intervention.",
-        solution: "A .NET 9 platform with DDD, Clicksign integration for digital signatures and Evolution API for automatic WhatsApp communication.",
+        problemHeadline: "Scattered processes and low operational fluidity",
+        problem:
+          "The real estate operation relied on fragmented interactions for financial queries, contracts, delinquency, and tenant communication—hurting scale and organization.",
+        objectiveHeadline: "Unify management, service, and automation on one foundation",
+        objective:
+          "The goal was a platform that centralizes business information, automates interactions, and supports financial flows with greater clarity and control.",
+        solutionHeadline: "A platform focused on automation and conversational experience",
+        solution:
+          "Delivered with .NET APIs, WhatsApp and OpenAI integration, asynchronous messaging, and a foundation ready for contracts, notifications, and steady growth.",
       },
       features: {
         f1: {
-          eyebrow: "DATA INTEGRITY",
-          title: "Rich Domain with",
-          highlight: "{ DDD & Validations }",
-          description: "Frigg's business logic is centered on Aggregates like `Residence` and `Contract`, which manage their own state through Guard Clauses, ensuring a property never has two active contracts simultaneously.",
-          checks: ["Strict contract validity validation.", "Protected aggregates (Residence/Contract)."],
+          eyebrow: "CONVERSATIONAL AUTOMATION",
+          title: "Integrated experience with",
+          highlight: "{ WhatsApp & OpenAI }",
+          description:
+            "Designed for natural-language interactions in a channel users already know—bringing service, queries, and operations closer together.",
+          checks: ["Automated natural-language queries", "Conversational channel wired into the operation"],
         },
         f2: {
-          eyebrow: "DIGITAL SIGNATURE",
-          title: "Integration with",
-          highlight: "{ Clicksign API }",
-          description: "Frigg automates contract draft generation via Clicksign, reducing the rental closing cycle from days to minutes. Dynamic templates automatically fill in tenant data.",
-          checks: ["Automatic PDF generation via Templates.", "Complete flow: Document → Signer → URL."],
+          eyebrow: "OPERATIONAL RESILIENCE",
+          title: "Reliability with",
+          highlight: "{ SQS & Polly }",
+          description:
+            "Async flows and external integrations use messaging and resilience policies to reduce coupling and improve platform stability.",
+          checks: ["Decoupled asynchronous tasks", "Retry and circuit breaker on critical integrations"],
         },
         f3: {
-          eyebrow: "MAINTENANCE MANAGEMENT",
-          title: "Service Orders with",
-          highlight: "{ State Machine }",
-          description: "The Service Orders module uses a strict State Machine to control status transitions, ensuring only valid flows are executed (Open → InProgress → Resolved).",
-          checks: ["Controlled state transitions.", "Message history per order."],
+          eyebrow: "DOCUMENTS & NOTIFICATIONS",
+          title: "Integrated flows with",
+          highlight: "{ Clicksign, SES & S3 }",
+          description:
+            "Contracts, notifications, and documents are first-class, with integrations aimed at automating the property and financial lifecycle.",
+          checks: ["Digital signature integrated into the flow", "Automated document storage and delivery"],
         },
       },
       results: {
-        m1: { value: "-90%", label: "Signing Time" },
-        m2: { value: "Zero", label: "Downtime Registered" },
-        m3: { value: "100+", label: "Contracts Managed" },
-        m4: { value: "+40%", label: "Operational Efficiency" },
+        eyebrow: "RESULTS & DELIVERABLES",
+        title: "Implementation outcomes",
+        m1: {
+          value: "More centralized operations",
+          label: "Information, financial flows, and interactions organized in a clearer, more accessible base.",
+        },
+        m2: {
+          value: "More automation in service",
+          label: "Conversational channel and AI to reduce friction in daily queries and operational actions.",
+        },
+        m3: {
+          value: "More reliable flows",
+          label: "Messaging, resilience, and structured integrations to support critical tasks more safely.",
+        },
+        m4: {
+          value: "Foundation ready to grow",
+          label: "Architecture prepared for functional expansion, ongoing maintenance, and platform growth.",
+        },
       },
       techStack: {
-        title: "Technologies Used",
-        description: "Cutting-edge integrations for full real estate cycle automation.",
+        title: "Project stack",
+        description:
+          "A structured technical base for conversational automation, financial flows, documents, and continuous platform evolution.",
         items: [
-          { name: ".NET 9", description: "Robust backend with Clean Architecture.", type: "Backend" },
-          { name: "Next.js 15", description: "High-performance administrative interface.", type: "Frontend" },
-          { name: "AI Integration", description: "Artificial Intelligence for analysis and automation.", type: "AI" },
-          { name: "Clicksign API", description: "Digital signature with legal validity.", type: "Integration" },
-          { name: "Evolution API", description: "Automated WhatsApp communication.", type: "Messaging" },
-        ]
+          { name: ".NET 8/9", description: "API foundation for business logic, real estate flows, and platform integrations.", type: "Backend" },
+          { name: "PostgreSQL", description: "Operational and financial data persistence.", type: "Database" },
+          { name: "OpenAI", description: "Powers the virtual assistant for financial queries and natural-language records.", type: "AI" },
+          { name: "WhatsApp / Evolution API", description: "Conversational channel to automate interactions and align UX with real operations.", type: "Messaging" },
+          { name: "Amazon SQS", description: "Orchestrates async tasks to decouple flows and improve reliability.", type: "Queuing" },
+          { name: "Polly", description: "Retry and circuit-breaker policies for more resilient external integrations.", type: "Integration" },
+          { name: "AWS SES / AWS S3 / Clicksign", description: "Automated notifications, contract storage, and digital signatures.", type: "Integration" },
+          { name: "Docker, GitHub Actions & .NET Aspire", description: "Containerization, delivery automation, and distributed observability.", type: "Infrastructure" },
+        ],
+      },
+      cta: {
+        title: "Want to talk about your project?",
+        description:
+          "If you want a well-structured solution with technical clarity and a focus on evolution, reach out and we’ll align what makes sense for your context.",
+        button: "Message on WhatsApp",
       },
     },
     botFatura: {
-      hero: "An intelligent solution to end delinquency. Automate the <accent>billing cycle via WhatsApp</accent> with personalized rules and direct ERP integration.",
-      metadata: {
-        duration: { title: "Continuous Cycle", description: "From MVP to SaaS platform, with constant evolution and new integrations every sprint." },
-        stack: { title: ".NET 9, PostgreSQL, Docker", description: "Clean Architecture with Evolution API (WhatsApp), AI reconciliation and ERP integration." },
-        model: { title: "FinTech SaaS", description: "Billing automation platform for companies with high volumes of recurring invoices." },
+      hero: "An automated billing engine built to <accent>organize recurring receivables</accent>, run collection workflows over WhatsApp, and bring more predictability to financial operations.",
+      architectureIntro:
+        "A view of the engineering decisions that structured recurrence, automated communication, and prepared the platform to grow consistently.",
+      journeySection: {
+        eyebrow: "STORY",
+        title: "From challenge to solution",
       },
-      architecture: {
-        eyebrow: "Billing Intelligence",
-        title: "Billing Architecture",
+      metadata: {
+        contextLabel: "CONTEXT",
+        stackLabel: "TECH STACK",
+        modelLabel: "DELIVERY MODEL",
+        duration: {
+          title: "Recurring Billing with Automation",
+          description:
+            "Built to structure periodic collection flows, organize receivables, and automate financial communications in a recurring operation.",
+        },
+        stack: {
+          title: ".NET, PostgreSQL, and WhatsApp",
+          description:
+            ".NET APIs, PostgreSQL persistence, and WhatsApp integration to support recurrence rules and automated messaging.",
+        },
+        model: {
+          title: "Custom Software",
+          description:
+            "A bespoke system for a real billing operation, focused on automation, flexibility, and continuous platform evolution.",
+        },
       },
       journey: {
-        problem: "Companies lose millions annually trying to collect from clients manually. Emails are ignored and calls are invasive, generating slow bureaucratic processes.",
-        objective: "Transform billing into a friendly, frictionless experience, ensuring the boleto or PIX is always at hand for the client via WhatsApp.",
-        solution: "A .NET 9 platform with automated billing rules, WhatsApp integration via Evolution API, and intelligent receipt reconciliation.",
+        problemHeadline: "Manual collection and low predictability in cash flow",
+        problem:
+          "The operation needed to handle recurring charges, reminders, and delinquency in a more organized way—avoiding manual dependency and inconsistent communication.",
+        objectiveHeadline: "Automate recurrence, messaging, and financial rules",
+        objective:
+          "The goal was a solution that controls billing validity, runs an automated workflow, and clarifies receivables tracking.",
+        solutionHeadline: "A platform focused on billing automation",
+        solution:
+          "Delivered with .NET APIs, PostgreSQL persistence, WhatsApp integration, and a structure ready for dynamic messaging, resilience, and continuous evolution.",
       },
       features: {
         f1: {
-          eyebrow: "DATA LOGISTICS",
-          title: "Billing Rules",
-          highlight: "{ Automated }",
-          description: "Bot-Fatura proactively monitors invoices and triggers time-based notifications, ensuring the client feels reminded, not harassed. The rules control 3 days before, due date, and post-due.",
-          checks: ["State control: Pending, Sent, Paid.", "Guaranteed no-duplicate sends."],
+          eyebrow: "RECURRENCE LOGIC",
+          title: "Financial control with",
+          highlight: "{ Validity & Expiration }",
+          description:
+            "Designed for periodic charges with structured start, recurrence, validity, and cycle closure in the core domain logic.",
+          checks: ["Validity and expiration rules per contract", "Recurring charges modeled in the domain"],
         },
         f2: {
-          eyebrow: "WHATSAPP CONNECTIVITY",
-          title: "Engagement",
-          highlight: "{ Humanized }",
-          description: "Integrated with Evolution API, the system simulates human presence (`composing`) and introduces variable delays to ensure WhatsApp account integrity and increase read rates.",
-          checks: ["Multi-instance support.", "Batch PDF and receipt delivery."],
+          eyebrow: "COMMUNICATION AUTOMATION",
+          title: "Operational workflow with",
+          highlight: "{ WhatsApp & Dynamic Templates }",
+          description:
+            "Messaging supports reminders, due notices, and delinquency alerts with configurable content for each stage of the financial journey.",
+          checks: ["Multi-step collection workflow", "Context-specific templates"],
         },
         f3: {
-          eyebrow: "INTELLIGENT RECONCILIATION",
-          title: "Payment Verification with",
-          highlight: "{ AI & ERP }",
-          description: "The reconciliation module automatically cross-references receipts received via WhatsApp with ERP records, eliminating manual checking and reducing operational errors.",
-          checks: ["Automatic receipt validation.", "Bidirectional ERP integration."],
+          eyebrow: "RESILIENCE & EVOLUTION",
+          title: "Foundation with",
+          highlight: "{ Polly & Multi-tenant Ready }",
+          description:
+            "External integrations are protected with resilience policies, while the application structure supports future expansion without compromising the existing base.",
+          checks: ["Retry on critical integrations", "Architecture prepared for multi-tenant evolution"],
         },
       },
       results: {
-        m1: { value: "-70%", label: "Delinquency" },
-        m2: { value: "Zero", label: "Downtime Registered" },
-        m3: { value: "5k+", label: "Messages/Month" },
-        m4: { value: "+95%", label: "Read Rate" },
+        eyebrow: "RESULTS & DELIVERABLES",
+        title: "Implementation outcomes",
+        m1: {
+          value: "More structured billing",
+          label: "Recurring flows organized with clear rules for validity, recurrence, and financial tracking.",
+        },
+        m2: {
+          value: "More day-to-day automation",
+          label: "Reminders, notices, and notifications with less reliance on manual actions.",
+        },
+        m3: {
+          value: "More flexible communication",
+          label: "Dynamic templates to adapt messages to different stages and scenarios in the collection workflow.",
+        },
+        m4: {
+          value: "Foundation ready to grow",
+          label: "Architecture designed for continuity, maintenance, and future evolution of the solution.",
+        },
       },
       techStack: {
-        title: "Technologies Used",
-        description: "Financial automation focused on engagement and bank reconciliation.",
+        title: "Project stack",
+        description:
+          "A structured technical base for recurring billing, message automation, operational flexibility, and continuous evolution.",
         items: [
-          { name: ".NET 9", description: "Billing rules processing.", type: "Backend" },
-          { name: "Vite", description: "Ultra-fast and responsive frontend.", type: "Frontend" },
-          { name: "AI Integration", description: "Intelligent reconciliation and data analysis.", type: "AI" },
-          { name: "Evolution API", description: "WhatsApp messaging gateway.", type: "Messaging" },
-          { name: "ERP Sync", description: "Bidirectional integration with legacy systems.", type: "Integration" },
-        ]
+          { name: ".NET 8", description: "API foundation for billing logic, recurrence, and financial flow organization.", type: "Backend" },
+          { name: "Minimal APIs", description: "Lightweight, direct HTTP surface aligned with a modular application profile.", type: "Backend" },
+          { name: "Carter", description: "Modular route organization for more scalable endpoint structure.", type: "Backend" },
+          { name: "PostgreSQL", description: "Persistence for financial data and recurrence-related rules.", type: "Database" },
+          { name: "WhatsApp / Evolution API", description: "Channel for the collection workflow and automated messages across the financial flow.", type: "Messaging" },
+          { name: "Polly", description: "Resilience policies (retry, etc.) for external integrations and transient failures.", type: "Integration" },
+          { name: "Clean Architecture", description: "Separation of concerns to support evolution with lower coupling.", type: "Architecture" },
+        ],
+      },
+      cta: {
+        title: "Want to talk about your project?",
+        description:
+          "If you want a well-structured solution with technical clarity and a focus on evolution, reach out and we’ll align what makes sense for your context.",
+        button: "Message on WhatsApp",
       },
     },
     muninn: {
       heroBadge: "International Project — Canada",
-      hero: "A platform for <accent>lead capture and authentication system</accent> for the Canadian market, with multi-step forms and backend integration via OpenAPI.",
+      hero: "An international platform built to <accent>capture, qualify, and process high-conversion leads</accent>, supporting a scalable operation with automation, integrations, and a focus on monetization.",
+      architectureIntro:
+        "A view of the engineering decisions that made the platform more reliable, decoupled, and ready to expand.",
+      journeySection: {
+        eyebrow: "STORY",
+        title: "From challenge to solution",
+      },
       metadata: {
-        operation: { label: "Operation", title: "🇨🇦 Active Production", description: "System operating in Canada with active paid traffic, integrated Meta Pixel, and leads being captured and resold to dealerships." },
-        stack: { title: "Next.js 15, .NET 9, Docker", description: "Frontend with React 19, Tailwind CSS 4 and Meta Pixel. Backend with Clean Architecture, DDD and generated OpenAPI clients." },
-        model: { title: "Lead Resale B2B", description: "Captures leads via paid traffic (Meta Ads) and resells to Canadian dealerships — where cost per lead is high." },
+        contextLabel: "CONTEXT",
+        stackLabel: "TECH STACK",
+        modelLabel: "DELIVERY MODEL",
+        duration: {
+          title: "Capture and Qualification at Scale",
+          description:
+            "Built to support an international lead acquisition and processing operation, focused on high conversion and automation across the commercial funnel.",
+        },
+        stack: {
+          title: ".NET, PostgreSQL, and AWS",
+          description:
+            "APIs in .NET, PostgreSQL persistence, and cloud integrations for authentication, documents, queues, and continuous evolution.",
+        },
+        model: {
+          title: "Custom Software",
+          description:
+            "A bespoke solution for a real lead-generation operation, focused on scalability, data integrity, and sustainable growth.",
+        },
       },
       journey: {
-        problem: "In Canada, automotive lead cost is extremely high. Managing captures manually without conversion tracking and without Meta Pixel results in wasted ad spend.",
-        objective: "Create a lead capture platform with Meta Pixel, conversion-optimized forms, and JWT authentication for secure resale to dealerships.",
-        solution: "Full-stack application with Next.js 15, .NET 9 and integrated Meta Pixel, multi-step forms with validation, NextAuth.js and B2B resale pipeline.",
+        problemHeadline: "Distributed capture and failure-sensitive flows",
+        problem:
+          "The operation needed a system that could ingest leads at scale, handle multiple entry paths, and avoid data loss in critical steps such as notifications, documents, and qualification.",
+        objectiveHeadline: "Build a reliable foundation for international growth",
+        objective:
+          "The goal was a platform that organizes the lead funnel, protects sensitive data, supports multiple languages, and lets the operation evolve safely.",
+        solutionHeadline: "A platform ready for scale, integrity, and evolution",
+        solution:
+          "Delivered with .NET APIs, PostgreSQL persistence, JWT authentication, asynchronous processing with SQS, and an architecture designed for ongoing expansion.",
       },
       features: {
         f1: {
-          eyebrow: "DOMAIN PROTECTION",
-          title: "Guard Clauses with",
-          highlight: "{ IDomainGuard }",
-          description: "Muninn implements a custom Guard Clauses pattern that goes beyond simple validations: the `IDomainGuard` allows creating semantic extensions that protect domain invariants in a fluent and reusable way.",
-          checks: ["Extensible Guard Clauses via interface.", "DomainException for business failures."],
+          eyebrow: "EVENT INTEGRITY",
+          title: "Consistency with",
+          highlight: "{ Outbox Pattern & SQS }",
+          description:
+            "Designed to prevent loss of critical lead-processing events by decoupling persistence from async dispatch—more reliable behavior under failure.",
+          checks: ["Consistency between the database and outbound events", "Async processing with lower risk of loss"],
         },
         f2: {
-          eyebrow: "RICH AGGREGATES",
-          title: "Entities with",
-          highlight: "{ Value Objects & Events }",
-          description: "The `Account` Aggregate demonstrates the power of DDD: typed Value Objects (Email, Password, FullName), token generation with controlled lifecycle, and automatic Domain Event emission in the constructor.",
-          checks: ["Value Objects for strong typing.", "Automatically dispatched Domain Events."],
+          eyebrow: "SECURITY & IDENTITY",
+          title: "Protection with",
+          highlight: "{ JWT & KYC Flow }",
+          description:
+            "Authentication and document validation were structured to protect sensitive data and support identity flows with secure, scalable storage.",
+          checks: ["JWT-based authentication", "Document upload and validation with AWS S3"],
         },
         f3: {
-          eyebrow: "EVENT-DRIVEN ARCHITECTURE",
-          title: "Messaging via",
-          highlight: "{ Channels & Event Bus }",
-          description: "Muninn uses `System.Threading.Channels` to process domain events asynchronously and decoupled. A `BackgroundService` consumes events in real time, resolving handlers via DI.",
-          checks: ["In-memory Event Bus via Channels.", "Async consumer as BackgroundService."],
+          eyebrow: "BUSINESS SCALABILITY",
+          title: "Growth with",
+          highlight: "{ Multi-language & Multi-tenant Ready }",
+          description:
+            "The architecture supports multiple languages and a path to multi-tenant evolution so the platform can grow without compromising its structural base.",
+          checks: ["Multi-language flows", "Foundation prepared for multi-tenant evolution"],
         },
       },
       results: {
-        title: "The Impact on the Canadian Market",
-        m1: { value: "High Conversion", label: "Canadian Market" },
-        m2: { value: "Meta", label: "Pixel Integrated" },
-        m2status: "Tracking",
-        m3: { value: "B2B", label: "Lead Resale" },
-        m4: { value: "Ads", label: "Optimized Paid Traffic" },
+        eyebrow: "RESULTS & DELIVERABLES",
+        title: "Implementation outcomes",
+        m1: {
+          value: "More reliable flows",
+          label: "Structured processing to reduce the risk of losing critical events in capture and qualification.",
+        },
+        m2: {
+          value: "Operation ready to scale",
+          label: "Architecture built for international expansion, multiple languages, and future multi-tenant evolution.",
+        },
+        m3: {
+          value: "Data protection built into the product",
+          label: "Authentication, document validation, and secure storage as core parts of the solution.",
+        },
+        m4: {
+          value: "Delivery focused on continuity",
+          label: "Observability, containerization, and an automated pipeline supporting maintenance and platform evolution.",
+        },
       },
       techStack: {
-        title: "Technologies Used",
-        description: "High-performance full-stack optimized for conversion and ad tracking.",
+        title: "Project stack",
+        description:
+          "A structured technical base for lead capture, async processing, data protection, and continuous platform evolution.",
         items: [
-          { name: "Next.js 15", description: "Fast frontend with App Router 15.", type: "Frontend" },
-          { name: ".NET 9", description: "Robust backend for lead processing.", type: "Backend" },
-          { name: "Amazon SES", description: "High-scale email delivery.", type: "Email" },
-          { name: "Queue System", description: "Async processing for high data volume.", type: "Queuing" },
-          { name: "Meta Pixel", description: "Advanced conversion tracking.", type: "Analytics/Ads" },
-        ]
+          { name: ".NET 8", description: "API foundation for business logic, authentication, and capture/qualification flows.", type: "Backend" },
+          { name: "PostgreSQL", description: "Operational persistence and structured evolution of the data model.", type: "Database" },
+          { name: "Amazon SQS", description: "Async event and notification processing with less coupling and more reliable flows.", type: "Queuing" },
+          { name: "Outbox Pattern", description: "Keeps data writes and event dispatch aligned to avoid losing critical information.", type: "Architecture" },
+          { name: "JWT", description: "Authentication and protection of sensitive data across the platform.", type: "Backend" },
+          { name: "AWS S3", description: "KYC document upload and validation with scalable object storage.", type: "Integration" },
+          { name: ".NET Aspire", description: "Distributed observability with logs, metrics, and traces.", type: "Integration" },
+          { name: "Docker & GitHub Actions", description: "Containerization and automated delivery pipelines.", type: "Infrastructure" },
+        ],
+      },
+      cta: {
+        title: "Want to talk about your project?",
+        description:
+          "If you want a well-structured solution with technical clarity and a focus on evolution, reach out and we’ll align what makes sense for your context.",
+        button: "Message on WhatsApp",
       },
     },
     resumax: {
